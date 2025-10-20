@@ -1,0 +1,47 @@
+{
+  "experiment_summary": {
+    "total_execution_time": 106.05266094207764,
+    "start_time": "2025-10-16T22:35:25.432868",
+    "end_time": "2025-10-16T22:35:25.432871",
+    "total_experiments": 4,
+    "successful_experiments": 2
+  },
+  "experiments": {
+    "baseline_cluster": {
+      "experiment_name": "Baseline Cluster Model",
+      "status": "error",
+      "execution_time": 0.04123497009277344,
+      "error": "Unknown error",
+      "timestamp": "2025-10-16T22:33:39.421247"
+    },
+    "baseline_hybrid": {
+      "experiment_name": "Baseline Hybrid Model",
+      "status": "error",
+      "execution_time": 0.03324294090270996,
+      "error": "Unknown error",
+      "timestamp": "2025-10-16T22:33:39.454563"
+    },
+    "improved_cluster": {
+      "experiment_name": "Improved Cluster Model",
+      "status": "success",
+      "execution_time": 41.931272983551025,
+      "results": {
+        "accuracy": 0.2139,
+        "representativeness": 0.945
+      },
+      "timestamp": "2025-10-16T22:34:21.386404"
+    },
+    "improved_hybrid": {
+      "experiment_name": "Improved Hybrid Model",
+      "status": "success",
+      "execution_time": 64.04593086242676,
+      "results": {
+        "hits_at_3": 0.3694,
+        "hits_at_5": 0.5273,
+        "accuracy": 0.1863,
+        "representativeness": 0.945
+      },
+      "timestamp": "2025-10-16T22:35:25.432584"
+    }
+  }
+}
