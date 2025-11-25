@@ -55,7 +55,7 @@ This repository presents an evaluation of four POI (Point of Interest) recommend
 
 ```bash
 git clone <repository-url>
-cd poi_recommender_
+cd <repository-name>
 pip install -r requirements.txt
 ```
 

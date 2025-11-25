@@ -26,8 +26,8 @@ def train_baseline_cluster(epochs=25, save_model=True, verbose=True):
         print(f"Training Baseline Cluster Model (epochs={epochs}, lr=0.001)...")
     
     try:
-        from scripts.baseline_cluster_model import main as train_cluster
-        train_cluster()
+        from scripts.baseline_cluster_model import train_cluster_model
+        train_cluster_model()
         return True
     except Exception as e:
         print(f"Error training baseline cluster model: {e}")
@@ -39,8 +39,8 @@ def train_baseline_hybrid(epochs=30, save_model=True, verbose=True):
         print(f"Training Baseline Hybrid Model (epochs={epochs}, lr=0.0008)...")
     
     try:
-        from scripts.baseline_hybrid_model import main as train_hybrid
-        train_hybrid()
+        from scripts.baseline_hybrid_model import train_hybrid_model
+        train_hybrid_model()
         return True
     except Exception as e:
         print(f"Error training baseline hybrid model: {e}")

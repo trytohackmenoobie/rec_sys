@@ -24,23 +24,25 @@ from pathlib import Path
 project_root = Path(__file__).parent.parent
 sys.path.append(str(project_root))
 
-def run_experiment(script_name, experiment_name):
+def run_experiment(script_name, experiment_name, script_dir):
     """Execute a single experiment and capture results"""
     print(f"Executing {experiment_name}...")
     
     start_time = time.time()
+    original_dir = os.getcwd()
     
     try:
-        # Change to experiments directory
-        experiments_dir = project_root / "experiments"
-        os.chdir(experiments_dir)
+        script_path = project_root / script_dir / script_name
         
-        # Run the experiment
+        if not script_path.exists():
+            raise FileNotFoundError(f"Script not found: {script_path}")
+        
         result = subprocess.run(
-            [sys.executable, script_name],
+            [sys.executable, str(script_path)],
+            cwd=str(project_root),
             capture_output=True,
             text=True,
-            timeout=1800  # 30 minutes timeout
+            timeout=1800
         )
         
         execution_time = time.time() - start_time
@@ -79,6 +81,8 @@ def run_experiment(script_name, experiment_name):
             "execution_time": execution_time,
             "error": str(e)
         }
+    finally:
+        os.chdir(original_dir)
 
 def extract_results_from_output(stdout_text):
     """Extract numerical results from experiment output"""
@@ -127,22 +131,26 @@ def main():
         {
             "script": "baseline_cluster_model.py",
             "name": "Baseline Cluster Model",
-            "key": "baseline_cluster"
+            "key": "baseline_cluster",
+            "dir": "scripts"
         },
         {
             "script": "baseline_hybrid_model.py", 
             "name": "Baseline Hybrid Model",
-            "key": "baseline_hybrid"
+            "key": "baseline_hybrid",
+            "dir": "scripts"
         },
         {
             "script": "improved_cluster_experiment.py",
             "name": "Improved Cluster Model", 
-            "key": "improved_cluster"
+            "key": "improved_cluster",
+            "dir": "experiments"
         },
         {
             "script": "improved_hybrid_experiment.py",
             "name": "Improved Hybrid Model",
-            "key": "improved_hybrid"
+            "key": "improved_hybrid",
+            "dir": "experiments"
         }
     ]
     
@@ -154,7 +162,7 @@ def main():
         print(f"Starting {exp['name']}...")
         
         # Run experiment
-        result = run_experiment(exp["script"], exp["name"])
+        result = run_experiment(exp["script"], exp["name"], exp["dir"])
         
         # Extract numerical results
         if result["status"] == "success":

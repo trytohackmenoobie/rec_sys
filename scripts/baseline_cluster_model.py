@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 """
-POI Cluster Model - Radical Quality Improvement Through Clustering
-Expected Result: 25-40% accuracy instead of 8.7%
+POI Cluster Model - Improvement Through Clustering
 """
 
 import torch
@@ -22,7 +21,6 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 import json
 
 # Import modules
-from POI_RECOMMENDER.utils.model import PersonalityAwareLoss
 from POI_RECOMMENDER.config import Config
 
 # Setup logging
@@ -375,8 +373,7 @@ def train_cluster_model():
     """Train cluster model"""
     print("POI CLUSTER MODEL TRAINING")
     print("=" * 60)
-    print("Strategy: POI Clustering → 15 categories instead of 100 POIs")
-    print("Expected: 25-40% accuracy (vs 8.7% current)")
+    print("Strategy: POI Clustering -> 15 categories instead of 100 POIs")
     print("=" * 60)
     
     # Load data
