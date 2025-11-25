@@ -18,12 +18,15 @@ import sys
 import os
 
 
-sys.path.append('../models/hybrid')
-sys.path.append('../POI_RECOMMENDER')
-sys.path.append('..')
+CURRENT_DIR = os.path.dirname(os.path.abspath(__file__))
+PROJECT_ROOT = os.path.abspath(os.path.join(CURRENT_DIR, '..'))
+sys.path.append(os.path.join(PROJECT_ROOT, 'models', 'hybrid'))
+sys.path.append(os.path.join(PROJECT_ROOT, 'POI_RECOMMENDER'))
+sys.path.append(PROJECT_ROOT)
 
 from hybrid_model import HybridPersonalizedGRU
 from POI_RECOMMENDER.utils.model import PersonalityAwareLoss
+
 
 
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
@@ -52,13 +55,50 @@ class ImprovedClusterRecommender:
         matches = re.findall(pattern, inputs_text)
         return int(matches[0]) if matches else None
     
+    def extract_visit_events(self, inputs_text):
+        """Extract timestamped POI visits (timestamp, poi_id, category)"""
+        if not inputs_text:
+            return []
+        
+        pattern = r'At (\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}), user \d+ visited POI id (\d+) which is a ([^.]+)'
+        matches = re.findall(pattern, inputs_text)
+        
+        events = []
+        for timestamp_str, poi_id_str, category in matches:
+            try:
+                poi_id = int(poi_id_str)
+            except ValueError:
+                continue
+            events.append({
+                'timestamp': timestamp_str.strip(),
+                'poi_id': poi_id,
+                'category': category.strip()
+            })
+        return events
+    
     def extract_poi_ids_and_categories_from_inputs(self, inputs_text):
         """Extract POI IDs and categories from inputs text"""
-        pattern = r'POI id (\d+) which is a ([^.]+)'
-        matches = re.findall(pattern, inputs_text)
-        poi_ids = [int(poi_id) for poi_id, _ in matches]
-        categories = {int(poi_id): category.strip() for poi_id, category in matches}
+        events = self.extract_visit_events(inputs_text)
+        poi_ids = [event['poi_id'] for event in events]
+        categories = {event['poi_id']: event['category'] for event in events}
         return poi_ids, categories
+    
+    def encode_temporal_features(self, timestamp_str):
+        """Convert timestamp string to temporal feature vector"""
+        default = [0, 0, 0, 0]
+        if not timestamp_str:
+            return default
+        
+        try:
+            dt = pd.to_datetime(timestamp_str)
+        except Exception:
+            return default
+        
+        hour = dt.hour
+        day_of_week = dt.dayofweek
+        month = dt.month
+        season = (month - 1) // 3  # 0=winter
+        return [hour, day_of_week, month, season]
     
     def map_category_to_cluster(self, category):
         """Map POI category to semantic cluster"""
@@ -148,6 +188,23 @@ class ImprovedClusterRecommender:
                 cluster_name = self.map_category_to_cluster(category)
                 clusters[cluster_name].append(poi_id)
         
+        # Filter under-sized clusters and keep their POIs for redistribution
+        valid_clusters = {}
+        small_cluster_pois = []
+        
+        for cluster_name, pois in clusters.items():
+            if len(pois) >= self.min_cluster_size:
+                valid_clusters[cluster_name] = pois
+            else:
+                small_cluster_pois.extend(pois)
+        
+        if small_cluster_pois and valid_clusters:
+            cluster_sizes = [(name, len(pois)) for name, pois in valid_clusters.items()]
+            cluster_sizes.sort(key=lambda x: x[1])
+            for i, poi_id in enumerate(small_cluster_pois):
+                cluster_name = cluster_sizes[i % len(cluster_sizes)][0]
+                valid_clusters[cluster_name].append(poi_id)
+        
         # Ensure minimum cluster diversity (baseline: 12 clusters)
         final_cluster_names = [
             'food_dining', 'shopping_retail', 'entertainment', 'transportation',
@@ -157,37 +214,66 @@ class ImprovedClusterRecommender:
         
         final_clusters = {}
         for name in final_cluster_names:
-            if name in clusters:
-                final_clusters[name] = clusters[name]
+            if name in valid_clusters:
+                final_clusters[name] = valid_clusters[name]
             else:
                 final_clusters[name] = []
         
-        # Balance clusters by redistributing POIs
-        valid_clusters = {name: pois for name, pois in final_clusters.items() if len(pois) >= self.min_cluster_size}
-        
-        if len(valid_clusters) < 8:
-            logger.warning(f"Only {len(valid_clusters)} clusters meet minimum size requirement")
-        
-        # Redistribute POIs to create balanced clusters
+        # Neighbor-aware balancing (keep semantic cores, redistribute excess)
         all_pois = []
         for pois in final_clusters.values():
             all_pois.extend(pois)
         
-        balanced_clusters = defaultdict(list)
-        pois_per_cluster = len(all_pois) // len(final_cluster_names)
+        target_size = max(1, len(all_pois) // len(final_cluster_names))
+        balanced_clusters = {name: [] for name in final_cluster_names}
+        excess_pool = []
         
-        for i, poi_id in enumerate(all_pois):
-            cluster_idx = i % len(final_cluster_names)
-            cluster_name = final_cluster_names[cluster_idx]
-            balanced_clusters[cluster_name].append(poi_id)
+        for name in final_cluster_names:
+            pois = final_clusters.get(name, [])
+            if len(pois) <= target_size:
+                balanced_clusters[name] = pois.copy()
+            else:
+                balanced_clusters[name] = pois[:target_size]
+                excess_pool.extend((poi_id, name) for poi_id in pois[target_size:])
         
-        logger.info(f"Created balanced clusters:")
+        semantic_neighbors = {
+            'food_dining': ['nightlife', 'services'],
+            'shopping_retail': ['services', 'business_work'],
+            'entertainment': ['cultural', 'nightlife'],
+            'transportation': ['business_work', 'services'],
+            'landmarks_parks': ['cultural', 'education'],
+            'business_work': ['services', 'transportation'],
+            'health_fitness': ['education', 'services'],
+            'education': ['cultural', 'health_fitness'],
+            'nightlife': ['food_dining', 'entertainment'],
+            'cultural': ['entertainment', 'education'],
+            'services': ['shopping_retail', 'business_work'],
+            'miscellaneous': final_cluster_names  # Fallback
+        }
+        
+        def find_destination(origin):
+            neighbors = semantic_neighbors.get(origin, []) + semantic_neighbors['miscellaneous']
+            for candidate in neighbors:
+                if len(balanced_clusters[candidate]) < target_size:
+                    return candidate
+            return None
+        
+        for poi_id, origin in excess_pool:
+            destination = find_destination(origin)
+            if destination:
+                balanced_clusters[destination].append(poi_id)
+            else:
+                balanced_clusters[origin].append(poi_id)
+        
+        logger.info("Created neighbor-aware balanced clusters:")
         for name in final_cluster_names:
             logger.info(f"  {name}: {len(balanced_clusters[name])} POIs")
         
         # Create mappings
         self.clusters = dict(balanced_clusters)
-        self.top_pois = set(top_pois)
+        self.top_pois = set()
+        for pois in balanced_clusters.values():
+            self.top_pois.update(pois)
         self.poi_to_cluster = {}
         for cluster_name, pois in self.clusters.items():
             for poi_id in pois:
@@ -276,41 +362,40 @@ class ImprovedClusterRecommender:
         
         for idx, row in df.iterrows():
             user_id = self.extract_user_id_from_row(row)
-            poi_ids, _ = self.extract_poi_ids_and_categories_from_inputs(row['inputs'])
+            visit_events = self.extract_visit_events(row['inputs'])
             
-            if len(poi_ids) < 2:
+            if len(visit_events) < 2:
                 continue
             
-            # Filter to clustered POIs
-            filtered_pois = [poi for poi in poi_ids if poi in self.top_pois]
-            if len(filtered_pois) < 2:
+            # Filter to POIs present in balanced clusters
+            filtered_events = [event for event in visit_events if event['poi_id'] in self.top_pois]
+            if len(filtered_events) < 2:
                 continue
             
-            sequence = filtered_pois[:-1]
-            target_poi = filtered_pois[-1]
+            sequence_events = filtered_events[:-1]
+            target_event = filtered_events[-1]
             
-            # Convert to clusters
             cluster_sequence = []
-            for poi_id in sequence:
+            temporal_sequence = []
+            
+            for event in sequence_events:
+                poi_id = event['poi_id']
                 if poi_id in self.poi_to_cluster:
                     cluster_name = self.poi_to_cluster[poi_id]
                     cluster_idx = self.cluster_to_idx[cluster_name]
-                    cluster_sequence.append(cluster_idx)
                 else:
-                    cluster_sequence.append(len(self.clusters))  # UNK
+                    cluster_idx = len(self.clusters)  # UNK token
+                cluster_sequence.append(cluster_idx)
+                temporal_sequence.append(self.encode_temporal_features(event['timestamp']))
             
-            if cluster_sequence and target_poi in self.poi_to_cluster:
-                target_cluster = self.cluster_to_idx[self.poi_to_cluster[target_poi]]
+            if cluster_sequence and target_event['poi_id'] in self.poi_to_cluster:
+                target_cluster = self.cluster_to_idx[self.poi_to_cluster[target_event['poi_id']]]
                 
-                # Use REAL user features from FourSquare data
-                if user_id in user_feature_cache:
-                    user_features = user_feature_cache[user_id]
-                else:
-                    # Fallback for cold-start users
-                    user_features = [0.0] * 15
+                user_features = user_feature_cache.get(user_id, [0.0] * 15)
                 
                 training_examples.append({
                     'cluster_sequence': cluster_sequence,
+                    'temporal_sequence': temporal_sequence,
                     'target_cluster': target_cluster,
                     'user_features': user_features,
                     'user_id': user_id
@@ -380,32 +465,47 @@ def create_dataloader(data, batch_size, shuffle, num_clusters):
     cluster_sequences = []
     user_features_list = []
     targets = []
+    temporal_sequences = []
     
     max_seq_len = 15
+    pad_idx = num_clusters - 1  # Reserve last index for PAD
+    default_temporal = [0, 0, 0, 0]
     
     for example in data:
         cluster_seq = example['cluster_sequence']
+        temporal_seq = example.get('temporal_sequence', [default_temporal] * len(cluster_seq))
         user_features = example['user_features']
         target = example['target_cluster']
         
-        # Pad sequence
+        # Align temporal sequence length with cluster sequence length
+        if len(temporal_seq) < len(cluster_seq):
+            temporal_seq = temporal_seq + [default_temporal] * (len(cluster_seq) - len(temporal_seq))
+        elif len(temporal_seq) > len(cluster_seq):
+            temporal_seq = temporal_seq[-len(cluster_seq):]
+        
+        # Pad or truncate sequence
         if len(cluster_seq) > max_seq_len:
             cluster_seq = cluster_seq[-max_seq_len:]
+            temporal_seq = temporal_seq[-max_seq_len:]
         else:
-            cluster_seq = [num_clusters] * (max_seq_len - len(cluster_seq)) + cluster_seq
+            pad_len = max_seq_len - len(cluster_seq)
+            cluster_seq = [pad_idx] * pad_len + cluster_seq
+            temporal_seq = [default_temporal] * pad_len + temporal_seq
         
         cluster_sequences.append(cluster_seq)
         user_features_list.append(user_features)
         targets.append(target)
+        temporal_sequences.append(temporal_seq)
     
     cluster_tensor = torch.LongTensor(cluster_sequences)
     user_features_tensor = torch.FloatTensor(user_features_list)
     targets_tensor = torch.LongTensor(targets)
+    temporal_tensor = torch.FloatTensor(temporal_sequences)
     
-    dataset = TensorDataset(cluster_tensor, user_features_tensor, targets_tensor)
+    dataset = TensorDataset(cluster_tensor, user_features_tensor, targets_tensor, temporal_tensor)
     return DataLoader(dataset, batch_size=batch_size, shuffle=shuffle)
 
-def evaluate_hybrid_model(model, dataloader, device, num_clusters):
+def evaluate_hybrid_model(model, dataloader, device):
     """Evaluate hybrid model"""
     model.eval()
     correct = 0
@@ -414,14 +514,11 @@ def evaluate_hybrid_model(model, dataloader, device, num_clusters):
     hits_at_5 = 0
     
     with torch.no_grad():
-        for cluster_seq, user_features, targets in dataloader:
+        for cluster_seq, user_features, targets, temporal_features in dataloader:
             cluster_seq = cluster_seq.to(device)
             user_features = user_features.to(device)
             targets = targets.to(device)
-            
-            # Create temporal features (batch_size, seq_len, temporal_dim)
-            batch_size, seq_len = cluster_seq.size()
-            temporal_features = torch.randn(batch_size, seq_len, 4).to(device)  # 4 temporal features
+            temporal_features = temporal_features.to(device)
             
             outputs = model(cluster_seq, user_features, temporal_features)
             _, predicted = torch.max(outputs.data, 1)
@@ -476,45 +573,45 @@ def main():
     val_data = recommender.balance_classes(val_data, max_per_class=500)
     
     # Create data loaders
-    num_clusters = len(clusters)
-    train_loader = create_dataloader(train_data, batch_size=32, shuffle=True, num_clusters=num_clusters)
-    val_loader = create_dataloader(val_data, batch_size=32, shuffle=False, num_clusters=num_clusters)
+    num_actual_clusters = len(clusters)
+    num_model_clusters = num_actual_clusters + 2  # +UNK +PAD
+    batch_size = 48
+    train_loader = create_dataloader(train_data, batch_size=batch_size, shuffle=True, num_clusters=num_model_clusters)
+    val_loader = create_dataloader(val_data, batch_size=batch_size, shuffle=False, num_clusters=num_model_clusters)
     
-    # Initialize model (add +1 for UNK token)
+    # Initialize model (include UNK + PAD tokens)
     model = HybridPersonalizedGRU(
-        num_clusters=num_clusters + 1,  # +1 for UNK token
+        num_clusters=num_model_clusters,
         user_feature_dim=15,
         temporal_feature_dim=4,  # Required parameter
         cluster_embed_dim=32,
         user_embed_dim=16,
         temporal_embed_dim=8,
         hidden_dim=64,
-        dropout=0.3
+        dropout=0.25
     ).to(device)
     
     # Loss and optimizer
     criterion = PersonalityAwareLoss(personality_weight=0.01)
-    optimizer = optim.Adam(model.parameters(), lr=0.001)
+    optimizer = optim.Adam(model.parameters(), lr=0.0008, weight_decay=1e-4)
+    scheduler = optim.lr_scheduler.StepLR(optimizer, step_size=5, gamma=0.85)
     
     # Training loop
     print("\nTRAINING HYBRID MODEL WITH REAL FEATURES...")
     print("=" * 60)
     
     best_accuracy = 0
-    epochs = 10
+    epochs = 20
     
     for epoch in range(epochs):
         model.train()
         total_loss = 0
         
-        for batch_idx, (cluster_seq, user_features, targets) in enumerate(train_loader):
+        for batch_idx, (cluster_seq, user_features, targets, temporal_features) in enumerate(train_loader):
             cluster_seq = cluster_seq.to(device)
             user_features = user_features.to(device)
             targets = targets.to(device)
-            
-            # Create temporal features
-            batch_size, seq_len = cluster_seq.size()
-            temporal_features = torch.randn(batch_size, seq_len, 4).to(device)
+            temporal_features = temporal_features.to(device)
             
             optimizer.zero_grad()
             outputs = model(cluster_seq, user_features, temporal_features)
@@ -524,25 +621,27 @@ def main():
             
             total_loss += loss.item()
         
-        avg_loss = total_loss / len(train_loader)
+        avg_loss = total_loss / max(1, len(train_loader))
         
         # Evaluate
-        accuracy, hits_3, hits_5 = evaluate_hybrid_model(model, val_loader, device, num_clusters)
+        accuracy, hits_3, hits_5 = evaluate_hybrid_model(model, val_loader, device)
         
         print(f"Epoch {epoch+1}: Loss: {avg_loss:.4f}, Val Accuracy: {accuracy:.4f}, Hits@3: {hits_3:.4f}, Hits@5: {hits_5:.4f}")
         
         if accuracy > best_accuracy:
             best_accuracy = accuracy
+        
+        scheduler.step()
     
     print("\n" + "="*60)
     print("HYBRID MODEL FINAL RESULTS WITH REAL DATA")
     print("="*60)
     print(f"Best Validation Accuracy: {best_accuracy:.4f} ({best_accuracy*100:.2f}%)")
-    print(f"Number of clusters: {num_clusters}")
-    print(f"Random baseline: {1/num_clusters:.3f}")
+    print(f"Number of clusters: {num_actual_clusters}")
+    print(f"Random baseline: {1/num_actual_clusters:.3f}")
     
     # Final assessment
-    if best_accuracy > 1.5 / num_clusters:
+    if best_accuracy > 1.5 / num_actual_clusters:
         print("HYBRID MODEL IS LEARNING MEANINGFUL PATTERNS FROM REAL DATA")
     else:
         print("HYBRID MODEL PERFORMANCE CLOSE TO RANDOM")

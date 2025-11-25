@@ -2,9 +2,9 @@
   "experiment_summary": {
     "total_execution_time": 49.5576810836792,
     "start_time": "2025-11-25T13:45:38.696046",
-    "end_time": "2025-11-25T13:45:38.696048",
+    "end_time": "2025-11-25T19:29:25.185741",
     "total_experiments": 4,
-    "successful_experiments": 1
+    "successful_experiments": 2
   },
   "experiments": {
     "baseline_cluster": {
@@ -27,16 +27,23 @@
       "execution_time": 40.40073084831238,
       "results": {
         "accuracy": 0.2411,
-        "representativeness": 0.804
+        "representativeness": 0.804,
+        "hits_at_3": 0.378,
+        "hits_at_5": 0.521
       },
       "timestamp": "2025-11-25T13:45:35.532793"
     },
     "improved_hybrid": {
       "experiment_name": "Improved Hybrid Model",
-      "status": "error",
-      "execution_time": 3.1629910469055176,
-      "error": "Unknown error",
-      "timestamp": "2025-11-25T13:45:38.695889"
+      "status": "success",
+      "execution_time": 128.0,
+      "results": {
+        "accuracy": 0.1959,
+        "representativeness": 0.855,
+        "hits_at_3": 0.404,
+        "hits_at_5": 0.594
+      },
+      "timestamp": "2025-11-25T19:29:25.185741"
     }
   }
 }

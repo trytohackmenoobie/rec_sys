@@ -29,38 +29,40 @@ def load_raw_results():
 def process_experiment_results(raw_data):
     """Process raw results into structured format"""
     
+    summary = raw_data.get("experiment_summary", {})
     processed_results = {
         "metadata": {
             "generation_time": datetime.now().isoformat(),
-            "total_experiments": raw_data["experiment_summary"]["total_experiments"],
-            "successful_experiments": raw_data["experiment_summary"]["successful_experiments"],
-            "total_execution_time": raw_data["experiment_summary"]["total_execution_time"]
+            "total_experiments": summary.get("total_experiments", 0),
+            "successful_experiments": summary.get("successful_experiments", 0),
+            "total_execution_time": summary.get("total_execution_time", 0.0)
         },
         "models": {}
     }
     
     # Process each experiment
-    for model_key, exp_data in raw_data["experiments"].items():
-        if exp_data["status"] == "success":
+    experiments = raw_data.get("experiments", {})
+    for model_key, exp_data in experiments.items():
+        if exp_data.get("status") == "success":
             results = exp_data.get("results", {})
             
             processed_results["models"][model_key] = {
-                "model_name": exp_data["experiment_name"],
+                "model_name": exp_data.get("experiment_name", model_key),
                 "status": "success",
                 "accuracy": results.get("accuracy", 0.0),
                 "representativeness": results.get("representativeness", 0.0),
                 "hits_at_3": results.get("hits_at_3", 0.0),
                 "hits_at_5": results.get("hits_at_5", 0.0),
-                "execution_time": exp_data["execution_time"],
-                "timestamp": exp_data["timestamp"]
+                "execution_time": exp_data.get("execution_time", 0.0),
+                "timestamp": exp_data.get("timestamp", datetime.now().isoformat())
             }
         else:
             processed_results["models"][model_key] = {
-                "model_name": exp_data["experiment_name"],
+                "model_name": exp_data.get("experiment_name", model_key),
                 "status": "failed",
                 "error": exp_data.get("error", "Unknown error"),
-                "execution_time": exp_data["execution_time"],
-                "timestamp": exp_data["timestamp"]
+                "execution_time": exp_data.get("execution_time", 0.0),
+                "timestamp": exp_data.get("timestamp", datetime.now().isoformat())
             }
     
     return processed_results
@@ -173,7 +175,8 @@ def main():
         # Load raw results
         print("Loading raw experiment results...")
         raw_data = load_raw_results()
-        print(f"Loaded results for {raw_data['experiment_summary']['total_experiments']} experiments")
+        total_experiments = raw_data.get("experiment_summary", {}).get("total_experiments", 0)
+        print(f"Loaded results for {total_experiments} experiments")
         
         # Process results
         print("Processing experiment results...")

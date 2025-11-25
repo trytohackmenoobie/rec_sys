@@ -63,12 +63,11 @@ Advanced hybrid architecture incorporating:
 ## Training Configuration
 
 ### Hyperparameters
-- Learning Rate: 0.001
-- Batch Size: 32
-- Epochs: 10
-- Hidden Dimensions: 64
-- Dropout: 0.3-0.4
-- Optimizer: Adam
+- Improved Cluster: LR=0.001, Batch=32, Epochs=10 (Adam, StepLR 8/0.9)
+- Improved Hybrid: LR=0.0008, Batch=48, Epochs=20 (Adam, StepLR 5/0.85)
+- Hidden Dimensions: 64 (bidirectional GRU)
+- Dropout: 0.25 on MLP/projection layers
+- Optimizer: Adam + weight decay 1e-4
 
 ### Loss Functions
 - Cross-entropy for classification

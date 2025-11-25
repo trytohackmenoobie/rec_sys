@@ -33,10 +33,12 @@
 - **User Features**: Real (extracted from FourSquare)
 
 #### Improved Hybrid Model
-- **Epochs**: 10
-- **Learning Rate**: 0.001
-- **Batch Size**: 32
+- **Epochs**: 20
+- **Learning Rate**: 0.0008
+- **Batch Size**: 48
 - **Optimizer**: Adam
+- **Weight Decay**: 1e-4
+- **Scheduler**: StepLR (step_size=5, gamma=0.85)
 - **User Features**: Real (extracted from FourSquare)
 
 ## Dataset Configuration
@@ -48,10 +50,10 @@
 - **Random Seed**: 42 (fixed for reproducibility)
 
 ### Model Architecture
-- **Hidden Dimensions**: 64
-- **Dropout**: 0.3-0.4
-- **Embedding Dimensions**: 32 (clusters), 16 (users)
-- **Sequence Length**: Variable (2+ POIs)
+- **Hidden Dimensions**: 64 (bidirectional GRU)
+- **Dropout**: 0.25 on projection/MLP layers (GRU dropout disabled for 1 layer)
+- **Embedding Dimensions**: 32 (clusters), 16 (users), 8 (temporal)
+- **Sequence Length**: Up to 15 cluster tokens (left-padded)
 
 ## Expected Results (with these parameters)
 
@@ -60,7 +62,7 @@
 | Baseline Cluster | 18.7% | 0.921 | 25 |
 | Baseline Hybrid | 16.8% | 0.946 | 30 |
 | Improved Cluster | 24.11% | 0.804 | 10 |
-| Improved Hybrid | 19.21% | 0.953 | 10 |
+| Improved Hybrid | 19.59% | 0.855 | 20 |
 
 ## IMPORTANT NOTES
 
@@ -79,5 +81,5 @@ python scripts/train_model.py --model baseline_hybrid   # Should use 30 epochs
 
 # Verify improved parameters  
 python scripts/train_model.py --model improved_cluster  # Should use 10 epochs
-python scripts/train_model.py --model improved_hybrid   # Should use 10 epochs
+python scripts/train_model.py --model improved_hybrid   # Should use 20 epochs
 ```

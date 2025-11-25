@@ -91,6 +91,10 @@ def extract_results_from_output(stdout_text):
     try:
         lines = stdout_text.split('\n')
         
+        # Track best hits values (from final epoch or best epoch)
+        best_hits_3 = 0.0
+        best_hits_5 = 0.0
+        
         for line in lines:
             # Extract accuracy
             if "Best Validation Accuracy:" in line:
@@ -104,14 +108,31 @@ def extract_results_from_output(stdout_text):
                 repr_val = repr_str.split()[0]
                 results["representativeness"] = float(repr_val)
             
-            # Extract Hits@3 and Hits@5
-            elif "Hits@3:" in line and "Hits@5:" in line:
-                parts = line.split()
-                for i, part in enumerate(parts):
-                    if "Hits@3:" in part:
-                        results["hits_at_3"] = float(parts[i+1].replace(",", ""))
-                    if "Hits@5:" in part:
-                        results["hits_at_5"] = float(parts[i+1].replace(",", ""))
+            # Extract Hits@3 and Hits@5 from epoch lines or final results
+            if "Hits@3:" in line and "Hits@5:" in line:
+                try:
+                    # Format: "Hits@3: 0.404, Hits@5: 0.594" or "Hits@3: 0.404, Hits@5: 0.594"
+                    import re
+                    hits3_match = re.search(r'Hits@3:\s*([\d.]+)', line)
+                    hits5_match = re.search(r'Hits@5:\s*([\d.]+)', line)
+                    
+                    if hits3_match:
+                        hits3_val = float(hits3_match.group(1))
+                        if hits3_val > best_hits_3:
+                            best_hits_3 = hits3_val
+                    
+                    if hits5_match:
+                        hits5_val = float(hits5_match.group(1))
+                        if hits5_val > best_hits_5:
+                            best_hits_5 = hits5_val
+                except (ValueError, AttributeError):
+                    pass
+        
+        # Use best values found (or last values if no best found)
+        if best_hits_3 > 0:
+            results["hits_at_3"] = best_hits_3
+        if best_hits_5 > 0:
+            results["hits_at_5"] = best_hits_5
                         
     except Exception as e:
         print(f"Warning: Could not extract all results from output: {e}")

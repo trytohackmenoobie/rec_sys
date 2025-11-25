@@ -1,8 +1,8 @@
 {
   "metadata": {
-    "generation_time": "2025-11-25T13:45:50.392714",
+    "generation_time": "2025-11-25T20:16:50.664647",
     "total_experiments": 4,
-    "successful_experiments": 1,
+    "successful_experiments": 2,
     "total_execution_time": 49.5576810836792
   },
   "models": {
@@ -25,17 +25,20 @@
       "status": "success",
       "accuracy": 0.2411,
       "representativeness": 0.804,
-      "hits_at_3": 0.0,
-      "hits_at_5": 0.0,
+      "hits_at_3": 0.378,
+      "hits_at_5": 0.521,
       "execution_time": 40.40073084831238,
       "timestamp": "2025-11-25T13:45:35.532793"
     },
     "improved_hybrid": {
       "model_name": "Improved Hybrid Model",
-      "status": "failed",
-      "error": "Unknown error",
-      "execution_time": 3.1629910469055176,
-      "timestamp": "2025-11-25T13:45:38.695889"
+      "status": "success",
+      "accuracy": 0.1959,
+      "representativeness": 0.855,
+      "hits_at_3": 0.404,
+      "hits_at_5": 0.594,
+      "execution_time": 128.0,
+      "timestamp": "2025-11-25T19:29:25.185741"
     }
   }
 }

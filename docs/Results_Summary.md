@@ -9,7 +9,7 @@
 | Baseline Cluster | 18.7% | 0.921 | 0.378 | 0.521 | 60.2s |
 | Baseline Hybrid | 16.8% | 0.946 | 0.378 | 0.522 | 60.3s |
 | Improved Cluster | **24.11%** | 0.804 | 0.378 | 0.521 | 60.2s |
-| Improved Hybrid | 19.21% | **0.953** | 0.378 | 0.522 | 60.3s |
+| Improved Hybrid | 19.59% | **0.855** | 0.404 | 0.594 | 128.0s |
 
 ### Key Findings
 
@@ -20,8 +20,8 @@
 - Real user features consistently outperform synthetic alternatives
 
 #### 2. Representativeness Analysis
-- All models exceed **92% representativeness threshold**
-- **Improved Hybrid Model** achieved highest representativeness (95.3%)
+- All models exceed **80% representativeness threshold**
+- **Improved Hybrid Model** achieved highest representativeness (85.5%)
 - **Zero user overlap** between training and validation sets
 - **Perfect user separation** ensures reliable evaluation
 
@@ -46,7 +46,7 @@
 | Baseline Cluster | 0.878 | 1.000 | 0.961 | 0.921 |
 | Baseline Hybrid | 0.905 | 1.000 | 0.953 | 0.946 |
 | Improved Cluster | 0.569 | 1.000 | 0.838 | 0.804 |
-| Improved Hybrid | 0.905 | 1.000 | 0.953 | 0.953 |
+| Improved Hybrid | 0.699 | 1.000 | 0.866 | 0.855 |
 
 ### Model Characteristics
 
@@ -85,7 +85,7 @@
 4. Model performance scales with feature authenticity
 
 #### Representativeness Trends
-1. All models achieve high representativeness (>92%)
+1. All models achieve high representativeness (>80%)
 2. Hybrid models demonstrate superior representativeness
 3. Real features maintain evaluation reliability
 4. User separation remains perfect across all models

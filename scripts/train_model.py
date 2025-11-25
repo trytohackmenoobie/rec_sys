@@ -59,7 +59,7 @@ def train_improved_cluster(epochs=10, save_model=True, verbose=True):
         print(f"Error training improved cluster model: {e}")
         return False
 
-def train_improved_hybrid(epochs=10, save_model=True, verbose=True):
+def train_improved_hybrid(epochs=20, save_model=True, verbose=True):
     """Train improved hybrid model with real features"""
     if verbose:
         print("Training Improved Hybrid Model...")
@@ -93,7 +93,7 @@ def list_available_models():
     print("  - Extract real user features from FourSquare data")
     print("  - Demonstrate superior performance (15%+ improvement)")
     print("  - Improved Cluster: 24.11% accuracy, 80.4% representativeness")
-    print("  - Improved Hybrid: 19.21% accuracy, 95.3% representativeness")
+    print("  - Improved Hybrid: 19.59% accuracy, 85.5% representativeness")
     print("")
     print("Recommended: Start with 'improved_cluster' for best accuracy")
 

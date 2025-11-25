@@ -73,9 +73,9 @@ def create_accuracy_comparison_chart(results_data):
     representativeness_scores = []
     
     for model_key, model_data in successful_models.items():
-        model_names.append(model_data["model_name"])
-        accuracies.append(model_data["accuracy"])
-        representativeness_scores.append(model_data["representativeness"])
+        model_names.append(model_data.get("model_name", model_key))
+        accuracies.append(model_data.get("accuracy", 0.0))
+        representativeness_scores.append(model_data.get("representativeness", 0.0))
     
     # Create figure with professional styling
     fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(16, 8))
@@ -138,10 +138,10 @@ def create_performance_heatmap(results_data):
     data_matrix = []
     for model_data in successful_models.values():
         data_matrix.append([
-            model_data["accuracy"],
-            model_data["representativeness"],
-            model_data["hits_at_3"],
-            model_data["hits_at_5"]
+            model_data.get("accuracy", 0.0),
+            model_data.get("representativeness", 0.0),
+            model_data.get("hits_at_3", 0.0),
+            model_data.get("hits_at_5", 0.0)
         ])
     
     # Create DataFrame
@@ -259,10 +259,10 @@ def create_performance_radar_chart(results_data):
     
     for model_key, model_data in successful_models.items():
         values = [
-            model_data["accuracy"],
-            model_data["representativeness"],
-            model_data["hits_at_3"],
-            model_data["hits_at_5"]
+            model_data.get("accuracy", 0.0),
+            model_data.get("representativeness", 0.0),
+            model_data.get("hits_at_3", 0.0),
+            model_data.get("hits_at_5", 0.0)
         ]
         values += values[:1]  # Complete the circle
         

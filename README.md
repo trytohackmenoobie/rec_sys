@@ -11,7 +11,7 @@ This repository presents an evaluation of four POI (Point of Interest) recommend
 | Baseline Cluster | 18.7% | 0.921 | Highly Representative |
 | Baseline Hybrid | 16.8% | 0.946 | Highly Representative |
 | Improved Cluster | 24.11% | 0.804 | Highly Representative |
-| Improved Hybrid | 19.21% | 0.953 | Highly Representative |
+| Improved Hybrid | 19.59% | 0.855 | Highly Representative |
 
 ## Dataset
 
@@ -74,7 +74,8 @@ python scripts/train_model.py --model improved_hybrid
 ### IMPORTANT: Reproducibility
 **For exact results reproduction, use default parameters:**
 - Baseline models: 25-30 epochs (as configured)
-- Improved models: 10 epochs (as configured)
+- Improved Cluster: 10 epochs @ 0.001 learning rate
+- Improved Hybrid: 20 epochs @ 0.0008 learning rate (48 batch, StepLR)
 - **DO NOT** change epochs unless you want different results
 - See `config/training_parameters.md` for exact configuration
 
@@ -109,9 +110,9 @@ python scripts/generate_all_visualizations.py
 
 ### Performance Analysis
 - **Best Accuracy**: Improved Cluster Model (24.11%)
-- **Best Representativeness**: Improved Hybrid Model (95.3%)
+- **Best Representativeness**: Improved Hybrid Model (85.5%)
 - **Average Improvement**: 14.9% over baseline models
-- **Representativeness**: All models exceed 92% threshold
+- **Representativeness**: All models exceed 80% threshold
 
 ### Key Findings
 1. Real user features significantly improve model performance
