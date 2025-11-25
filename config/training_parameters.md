@@ -59,7 +59,7 @@
 |-------|----------|-------------------|-------------|
 | Baseline Cluster | 18.7% | 0.921 | 25 |
 | Baseline Hybrid | 16.8% | 0.946 | 30 |
-| Improved Cluster | 21.56% | 0.947 | 10 |
+| Improved Cluster | 24.11% | 0.804 | 10 |
 | Improved Hybrid | 19.21% | 0.953 | 10 |
 
 ## IMPORTANT NOTES

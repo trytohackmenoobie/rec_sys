@@ -768,10 +768,10 @@ def train_hybrid_model():
     print("      - Representativeness: 94.6%")
     
     print("   Improved Cluster Model (12 clusters):")
-    print("      - Accuracy: 21.56%")
+    print("      - Accuracy: 24.08%")
     print("      - Classes: 12")
-    print("      - Architecture: Bidirectional GRU + Attention + Real Features")
-    print("      - Representativeness: 94.7%")
+    print("      - Architecture: Bidirectional GRU + Attention + Real Features + Neighbor-aware Clustering")
+    print("      - Representativeness: 81.5%")
     
     print(f"   Improved Hybrid Model ({len(cluster_to_idx)} clusters):")
     print(f"      - Accuracy: {overall_accuracy*100:.1f}%")

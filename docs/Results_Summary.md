@@ -8,15 +8,15 @@
 |-------|----------|-------------------|---------|---------|----------------|
 | Baseline Cluster | 18.7% | 0.921 | 0.378 | 0.521 | 60.2s |
 | Baseline Hybrid | 16.8% | 0.946 | 0.378 | 0.522 | 60.3s |
-| Improved Cluster | **21.56%** | 0.947 | 0.378 | 0.521 | 60.2s |
+| Improved Cluster | **24.11%** | 0.804 | 0.378 | 0.521 | 60.2s |
 | Improved Hybrid | 19.21% | **0.953** | 0.378 | 0.522 | 60.3s |
 
 ### Key Findings
 
 #### 1. Accuracy Improvements
-- **Improved Cluster Model** achieved the highest accuracy (21.56%)
-- **15.3% improvement** over baseline cluster model
-- **14.4% improvement** over baseline hybrid model
+- **Improved Cluster Model** achieved the highest accuracy (24.11%)
+- **28.9% improvement** over baseline cluster model
+- **43.5% improvement** over baseline hybrid model
 - Real user features consistently outperform synthetic alternatives
 
 #### 2. Representativeness Analysis
@@ -45,7 +45,7 @@
 |-------|------------------|-----------------|----------------|---------------|
 | Baseline Cluster | 0.878 | 1.000 | 0.961 | 0.921 |
 | Baseline Hybrid | 0.905 | 1.000 | 0.953 | 0.946 |
-| Improved Cluster | 0.878 | 1.000 | 0.961 | 0.947 |
+| Improved Cluster | 0.569 | 1.000 | 0.838 | 0.804 |
 | Improved Hybrid | 0.905 | 1.000 | 0.953 | 0.953 |
 
 ### Model Characteristics

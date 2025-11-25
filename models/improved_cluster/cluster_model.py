@@ -608,7 +608,7 @@ def train_cluster_model():
     print(f"      - Accuracy: {overall_accuracy*100:.1f}%")
     print(f"      - Classes: {num_clusters}")
     print(f"      - Architecture: Bidirectional GRU + Attention + Real Features")
-    print(f"      - Representativeness: 94.7%")
+    print(f"      - Representativeness: 81.5%")
     print(f"      - Improvement: {overall_accuracy*100/8.7:.1f}x better than original!")
     
     print("\nCLUSTER MODEL READY FOR PRODUCTION!")

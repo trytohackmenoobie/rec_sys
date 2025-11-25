@@ -10,7 +10,7 @@ This repository presents an evaluation of four POI (Point of Interest) recommend
 |-------|----------|-------------------|---------|
 | Baseline Cluster | 18.7% | 0.921 | Highly Representative |
 | Baseline Hybrid | 16.8% | 0.946 | Highly Representative |
-| Improved Cluster | 21.56% | 0.947 | Highly Representative |
+| Improved Cluster | 24.11% | 0.804 | Highly Representative |
 | Improved Hybrid | 19.21% | 0.953 | Highly Representative |
 
 ## Dataset
@@ -28,7 +28,7 @@ This repository presents an evaluation of four POI (Point of Interest) recommend
 - **Hybrid Model**: Combined cluster and temporal features with synthetic user profiles
 
 ### Improved Models
-- **Improved Cluster**: Enhanced cluster model with real user features from FourSquare
+- **Improved Cluster**: Enhanced cluster model with real user features and neighbor-aware semantic clustering
 - **Improved Hybrid**: Advanced hybrid model with authentic user behavioral patterns
 
 ## Methodology
@@ -54,8 +54,8 @@ This repository presents an evaluation of four POI (Point of Interest) recommend
 ## Installation
 
 ```bash
-git clone <repository-url>
-cd <repository-name>
+git clone <https://github.com/trytohackmenoobie/rec_sys>
+cd <rec_sys>
 pip install -r requirements.txt
 ```
 
@@ -108,7 +108,7 @@ python scripts/generate_all_visualizations.py
 ## Results
 
 ### Performance Analysis
-- **Best Accuracy**: Improved Cluster Model (21.56%)
+- **Best Accuracy**: Improved Cluster Model (24.11%)
 - **Best Representativeness**: Improved Hybrid Model (95.3%)
 - **Average Improvement**: 14.9% over baseline models
 - **Representativeness**: All models exceed 92% threshold

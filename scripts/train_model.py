@@ -92,7 +92,7 @@ def list_available_models():
     print("Improved Models:")
     print("  - Extract real user features from FourSquare data")
     print("  - Demonstrate superior performance (15%+ improvement)")
-    print("  - Improved Cluster: 21.56% accuracy, 94.7% representativeness")
+    print("  - Improved Cluster: 24.11% accuracy, 80.4% representativeness")
     print("  - Improved Hybrid: 19.21% accuracy, 95.3% representativeness")
     print("")
     print("Recommended: Start with 'improved_cluster' for best accuracy")

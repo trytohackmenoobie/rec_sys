@@ -1,24 +1,24 @@
 {
   "accuracy": {
-    "mean": 0.2001,
-    "min": 0.1863,
-    "max": 0.2139,
+    "mean": 0.2411,
+    "min": 0.2411,
+    "max": 0.2411,
     "best_model": "improved_cluster"
   },
   "representativeness": {
-    "mean": 0.945,
-    "min": 0.945,
-    "max": 0.945,
+    "mean": 0.804,
+    "min": 0.804,
+    "max": 0.804,
     "best_model": "improved_cluster"
   },
   "hits_at_3": {
-    "mean": 0.1847,
+    "mean": 0.0,
     "min": 0.0,
-    "max": 0.3694
+    "max": 0.0
   },
   "hits_at_5": {
-    "mean": 0.26365,
+    "mean": 0.0,
     "min": 0.0,
-    "max": 0.5273
+    "max": 0.0
   }
 }

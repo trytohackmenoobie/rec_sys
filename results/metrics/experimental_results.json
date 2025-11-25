@@ -1,44 +1,41 @@
 {
   "metadata": {
-    "generation_time": "2025-10-16T22:35:31.022176",
+    "generation_time": "2025-11-25T13:45:50.392714",
     "total_experiments": 4,
-    "successful_experiments": 2,
-    "total_execution_time": 106.05266094207764
+    "successful_experiments": 1,
+    "total_execution_time": 49.5576810836792
   },
   "models": {
     "baseline_cluster": {
       "model_name": "Baseline Cluster Model",
       "status": "failed",
       "error": "Unknown error",
-      "execution_time": 0.04123497009277344,
-      "timestamp": "2025-10-16T22:33:39.421247"
+      "execution_time": 4.215105056762695,
+      "timestamp": "2025-11-25T13:44:53.353432"
     },
     "baseline_hybrid": {
       "model_name": "Baseline Hybrid Model",
       "status": "failed",
       "error": "Unknown error",
-      "execution_time": 0.03324294090270996,
-      "timestamp": "2025-10-16T22:33:39.454563"
+      "execution_time": 1.7779090404510498,
+      "timestamp": "2025-11-25T13:44:55.131485"
     },
     "improved_cluster": {
       "model_name": "Improved Cluster Model",
       "status": "success",
-      "accuracy": 0.2139,
-      "representativeness": 0.945,
+      "accuracy": 0.2411,
+      "representativeness": 0.804,
       "hits_at_3": 0.0,
       "hits_at_5": 0.0,
-      "execution_time": 41.931272983551025,
-      "timestamp": "2025-10-16T22:34:21.386404"
+      "execution_time": 40.40073084831238,
+      "timestamp": "2025-11-25T13:45:35.532793"
     },
     "improved_hybrid": {
       "model_name": "Improved Hybrid Model",
-      "status": "success",
-      "accuracy": 0.1863,
-      "representativeness": 0.945,
-      "hits_at_3": 0.3694,
-      "hits_at_5": 0.5273,
-      "execution_time": 64.04593086242676,
-      "timestamp": "2025-10-16T22:35:25.432584"
+      "status": "failed",
+      "error": "Unknown error",
+      "execution_time": 3.1629910469055176,
+      "timestamp": "2025-11-25T13:45:38.695889"
     }
   }
 }

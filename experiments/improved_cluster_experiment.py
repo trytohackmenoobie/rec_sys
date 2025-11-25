@@ -131,7 +131,13 @@ class ImprovedClusterRecommender:
         return 'miscellaneous'
     
     def create_balanced_clusters(self, df):
-        """Create balanced semantic clusters"""
+        """Create balanced semantic clusters using neighbor-aware redistribution.
+        
+        This method preserves semantic relationships by:
+        1. Keeping semantic core of each cluster (first target_size POIs)
+        2. Redistributing excess POIs to semantically close neighbor clusters
+        3. Maintaining balanced cluster sizes while preserving semantics
+        """
         logger.info("Creating balanced semantic clusters...")
         
         # Extract all categories
@@ -198,25 +204,64 @@ class ImprovedClusterRecommender:
                 # Create minimal cluster
                 final_clusters[name] = []
         
-        # Final redistribution to balance sizes
+        # Final redistribution to balance sizes (neighbor-aware)
         all_pois = []
         for pois in final_clusters.values():
             all_pois.extend(pois)
         
-        target_size = len(all_pois) // len(final_clusters)
+        target_size = max(1, len(all_pois) // len(final_clusters))
+        balanced_clusters = {name: [] for name in final_cluster_names}
+        excess_pool = []
         
-        balanced_clusters = defaultdict(list)
-        for i, poi_id in enumerate(all_pois):
-            cluster_idx = i % len(final_clusters)
-            cluster_name = list(final_clusters.keys())[cluster_idx]
-            balanced_clusters[cluster_name].append(poi_id)
+        # Keep semantic cores, collect excess from oversized clusters
+        for name in final_cluster_names:
+            pois = final_clusters.get(name, [])
+            if len(pois) <= target_size:
+                balanced_clusters[name] = pois.copy()
+            else:
+                balanced_clusters[name] = pois[:target_size]
+                excess_pool.extend((poi_id, name) for poi_id in pois[target_size:])
         
-        logger.info("Created balanced clusters:")
+        # Define semantic neighbors for smart redistribution
+        semantic_neighbors = {
+            'food_dining': ['nightlife', 'services'],
+            'shopping_retail': ['services', 'business_work'],
+            'entertainment': ['cultural', 'nightlife'],
+            'transportation': ['business_work', 'services'],
+            'landmarks_parks': ['cultural', 'education'],
+            'business_work': ['services', 'transportation'],
+            'health_fitness': ['education', 'services'],
+            'education': ['cultural', 'health_fitness'],
+            'nightlife': ['food_dining', 'entertainment'],
+            'cultural': ['entertainment', 'education'],
+            'services': ['shopping_retail', 'business_work'],
+            'miscellaneous': final_cluster_names  # fallback bucket
+        }
+        
+        def find_destination(origin):
+            neighbors = semantic_neighbors.get(origin, []) + semantic_neighbors['miscellaneous']
+            for candidate in neighbors:
+                if len(balanced_clusters[candidate]) < target_size:
+                    return candidate
+            return None
+        
+        # Redistribute excess POIs into semantically close clusters
+        for poi_id, origin in excess_pool:
+            destination = find_destination(origin)
+            if destination:
+                balanced_clusters[destination].append(poi_id)
+            else:
+                # If everyone is full (due to rounding), append to origin
+                balanced_clusters[origin].append(poi_id)
+        
+        logger.info("Created neighbor-aware balanced clusters:")
         for name in final_cluster_names:
             logger.info(f"  {name}: {len(balanced_clusters[name])} POIs")
         
         self.clusters = dict(balanced_clusters)
-        self.top_pois = all_pois
+        self.top_pois = []
+        for pois in balanced_clusters.values():
+            self.top_pois.extend(pois)
         
         # Create mappings
         self.poi_to_cluster = {}

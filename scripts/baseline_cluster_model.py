@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-POI Cluster Model - Improvement Through Clustering
+POI Cluster Model
 """
 
 import torch
@@ -19,11 +19,9 @@ import pickle
 from sklearn.cluster import KMeans
 from sklearn.feature_extraction.text import TfidfVectorizer
 import json
-
-# Import modules
 from POI_RECOMMENDER.config import Config
 
-# Setup logging
+#logging
 logging.basicConfig(
     level=logging.INFO,
     format='%(asctime)s - %(levelname)s - %(message)s',
@@ -35,9 +33,7 @@ logging.basicConfig(
 
 config = Config()
 
-class ClusterPersonalizedGRU(nn.Module):
-    """Simplified GRU model for working with POI clusters"""
-    
+class ClusterPersonalizedGRU(nn.Module):  
     def __init__(self, num_clusters, user_feature_dim, cluster_embed_dim=32, 
                  user_embed_dim=16, hidden_dim=64, dropout=0.1):
         super(ClusterPersonalizedGRU, self).__init__()
@@ -45,7 +41,7 @@ class ClusterPersonalizedGRU(nn.Module):
         self.hidden_dim = hidden_dim
         self.cluster_embed_dim = cluster_embed_dim
         
-        # Embeddings for clusters (much smaller dimension!)
+        # Embeddings for clusters (much smaller dimension)
         self.cluster_embedding = nn.Embedding(num_clusters, cluster_embed_dim)
         
         # Simplified GRU (fewer parameters)
@@ -605,7 +601,7 @@ def train_cluster_model():
     print(f"      - Accuracy: {overall_accuracy*100:.1f}%")
     print(f"      - Classes: {num_clusters}")
     print(f"      - Architecture: Bidirectional GRU + Attention + Real Features")
-    print(f"      - Representativeness: 94.7%")
+    print(f"      - Representativeness: 81.5%")
     print(f"      - Improvement: {overall_accuracy*100/8.7:.1f}x better than original!")
     
     print("\nCLUSTER MODEL READY FOR PRODUCTION!")

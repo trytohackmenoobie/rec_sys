@@ -49,7 +49,7 @@ Combined approach using:
 ### Improved Cluster Model
 Enhanced cluster-based approach with:
 - Real user features from FourSquare data
-- Personalized loss function
+- **Neighbor-aware semantic clustering** (preserves semantic relationships)
 - Advanced sequence modeling
 - Real behavioral pattern integration
 
