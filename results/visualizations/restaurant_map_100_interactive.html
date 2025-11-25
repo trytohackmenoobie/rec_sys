@@ -1,0 +1,4805 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_ecb33fa3bab448f2e4c9e10b54f2a488 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_ecb33fa3bab448f2e4c9e10b54f2a488" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_ecb33fa3bab448f2e4c9e10b54f2a488 = L.map(
+                "map_ecb33fa3bab448f2e4c9e10b54f2a488",
+                {
+                    center: [55.75330026409572, 37.5942275205066],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 12,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_685c03eb4b17935c1305fa8a8be4a36f = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 19,
+  "maxNativeZoom": 19,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_685c03eb4b17935c1305fa8a8be4a36f.addTo(map_ecb33fa3bab448f2e4c9e10b54f2a488);
+        
+    
+            var marker_d7c57c6dcfd45362aef1fc791e9f3f21 = L.marker(
+                [55.78783107530738, 37.68065929412842],
+                {
+}
+            ).addTo(map_ecb33fa3bab448f2e4c9e10b54f2a488);
+        
+    
+            var icon_769cf7f3d6d1475bcd27afc3733842b6 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "cutlery",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_3465ec050c3e2f5ce09729fd22cbe19f = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_1663e3b4396ee475027904e16e01e01e = $(`<div id="html_1663e3b4396ee475027904e16e01e01e" style="width: 100.0%; height: 100.0%;">         <b>G&T Gourmet</b><br>         <b>Rating:</b> 5.0/5<br>         <b>Average Price:</b> 2000.0<br>         <b>Address:</b> Русаковская ул., 24<br>         </div>`)[0];
+                popup_3465ec050c3e2f5ce09729fd22cbe19f.setContent(html_1663e3b4396ee475027904e16e01e01e);
+            
+        
+
+        marker_d7c57c6dcfd45362aef1fc791e9f3f21.bindPopup(popup_3465ec050c3e2f5ce09729fd22cbe19f)
+        ;
+
+        
+    
+    
+            marker_d7c57c6dcfd45362aef1fc791e9f3f21.bindTooltip(
+                `<div>
+                     G&T Gourmet
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_d7c57c6dcfd45362aef1fc791e9f3f21.setIcon(icon_769cf7f3d6d1475bcd27afc3733842b6);
+            
+    
+            var marker_dccd99cf67fc78f0359bba2e697f19b1 = L.marker(
+                [55.76819071340471, 37.61599123477936],
+                {
+}
+            ).addTo(map_ecb33fa3bab448f2e4c9e10b54f2a488);
+        
+    
+            var icon_873999d6db2b98d3c14672c51ab9650e = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "cutlery",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_5a9d52266e0db77b67fe6797a218a2b3 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_384747a51ccbd4339d2965df3d44a857 = $(`<div id="html_384747a51ccbd4339d2965df3d44a857" style="width: 100.0%; height: 100.0%;">         <b>Винный базар</b><br>         <b>Rating:</b> 4.9/5<br>         <b>Average Price:</b> 2500.0<br>         <b>Address:</b> Петровский бул., 15, стр. 1<br>         </div>`)[0];
+                popup_5a9d52266e0db77b67fe6797a218a2b3.setContent(html_384747a51ccbd4339d2965df3d44a857);
+            
+        
+
+        marker_dccd99cf67fc78f0359bba2e697f19b1.bindPopup(popup_5a9d52266e0db77b67fe6797a218a2b3)
+        ;
+
+        
+    
+    
+            marker_dccd99cf67fc78f0359bba2e697f19b1.bindTooltip(
+                `<div>
+                     Винный базар
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_dccd99cf67fc78f0359bba2e697f19b1.setIcon(icon_873999d6db2b98d3c14672c51ab9650e);
+            
+    
+            var marker_3327d725735dc0d9b4a11d7d0691e565 = L.marker(
+                [55.730199, 37.626827],
+                {
+}
+            ).addTo(map_ecb33fa3bab448f2e4c9e10b54f2a488);
+        
+    
+            var icon_9ccd7a784323f5a7e3e8d48594805ce1 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "cutlery",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_ad4ab7013c80db27839ea5a3ce06aa2d = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_caa8fde667aae3656f91faa046e7d428 = $(`<div id="html_caa8fde667aae3656f91faa046e7d428" style="width: 100.0%; height: 100.0%;">         <b>Støy Craft Bar</b><br>         <b>Rating:</b> 4.8/5<br>         <b>Average Price:</b> 1600.0<br>         <b>Address:</b> Валовая ул., 30<br>         </div>`)[0];
+                popup_ad4ab7013c80db27839ea5a3ce06aa2d.setContent(html_caa8fde667aae3656f91faa046e7d428);
+            
+        
+
+        marker_3327d725735dc0d9b4a11d7d0691e565.bindPopup(popup_ad4ab7013c80db27839ea5a3ce06aa2d)
+        ;
+
+        
+    
+    
+            marker_3327d725735dc0d9b4a11d7d0691e565.bindTooltip(
+                `<div>
+                     Støy Craft Bar
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_3327d725735dc0d9b4a11d7d0691e565.setIcon(icon_9ccd7a784323f5a7e3e8d48594805ce1);
+            
+    
+            var marker_7be1b3a2043432d7e14b263d328935b1 = L.marker(
+                [55.765171751522665, 37.60233820081446],
+                {
+}
+            ).addTo(map_ecb33fa3bab448f2e4c9e10b54f2a488);
+        
+    
+            var icon_2fc21047bc7fd1c039be7373feae9bb1 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "cutlery",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_a2adbc5d0ade282a9ed497d3962ed42f = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_4102accad5cf31abdde43b03c774090f = $(`<div id="html_4102accad5cf31abdde43b03c774090f" style="width: 100.0%; height: 100.0%;">         <b>Crafter Bar</b><br>         <b>Rating:</b> 4.6/5<br>         <b>Average Price:</b> 2000.0<br>         <b>Address:</b> Малый Палашевский пер., 6<br>         </div>`)[0];
+                popup_a2adbc5d0ade282a9ed497d3962ed42f.setContent(html_4102accad5cf31abdde43b03c774090f);
+            
+        
+
+        marker_7be1b3a2043432d7e14b263d328935b1.bindPopup(popup_a2adbc5d0ade282a9ed497d3962ed42f)
+        ;
+
+        
+    
+    
+            marker_7be1b3a2043432d7e14b263d328935b1.bindTooltip(
+                `<div>
+                     Crafter Bar
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_7be1b3a2043432d7e14b263d328935b1.setIcon(icon_2fc21047bc7fd1c039be7373feae9bb1);
+            
+    
+            var marker_45460efbae28caa03d554b7ebe2d5245 = L.marker(
+                [55.76612968391955, 37.59087862951719],
+                {
+}
+            ).addTo(map_ecb33fa3bab448f2e4c9e10b54f2a488);
+        
+    
+            var icon_d8917a364079c9db3e6849b9792aeb6f = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "cutlery",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_317a29b62d48962b128149f5eb07c25e = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_78bfe3be2fc103f03c459a9cfb1c7d47 = $(`<div id="html_78bfe3be2fc103f03c459a9cfb1c7d47" style="width: 100.0%; height: 100.0%;">         <b>Винный базар</b><br>         <b>Rating:</b> 4.9/5<br>         <b>Average Price:</b> 2500.0<br>         <b>Address:</b> Большая Садовая ул., 1<br>         </div>`)[0];
+                popup_317a29b62d48962b128149f5eb07c25e.setContent(html_78bfe3be2fc103f03c459a9cfb1c7d47);
+            
+        
+
+        marker_45460efbae28caa03d554b7ebe2d5245.bindPopup(popup_317a29b62d48962b128149f5eb07c25e)
+        ;
+
+        
+    
+    
+            marker_45460efbae28caa03d554b7ebe2d5245.bindTooltip(
+                `<div>
+                     Винный базар
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_45460efbae28caa03d554b7ebe2d5245.setIcon(icon_d8917a364079c9db3e6849b9792aeb6f);
+            
+    
+            var marker_2c1375ad1f723da5ccb4d59771a8930c = L.marker(
+                [55.731396, 37.590645],
+                {
+}
+            ).addTo(map_ecb33fa3bab448f2e4c9e10b54f2a488);
+        
+    
+            var icon_110f2b2cc97bbf816cd2021661134f4b = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "cutlery",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_828368a1680c0c142004ee1f3c75e1b3 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_19712f5fa228b8d4875e7005bbe76e8a = $(`<div id="html_19712f5fa228b8d4875e7005bbe76e8a" style="width: 100.0%; height: 100.0%;">         <b>Винный базар</b><br>         <b>Rating:</b> 4.9/5<br>         <b>Average Price:</b> 1500.0<br>         <b>Address:</b> Комсомольский просп., 14/1, корп. 2<br>         </div>`)[0];
+                popup_828368a1680c0c142004ee1f3c75e1b3.setContent(html_19712f5fa228b8d4875e7005bbe76e8a);
+            
+        
+
+        marker_2c1375ad1f723da5ccb4d59771a8930c.bindPopup(popup_828368a1680c0c142004ee1f3c75e1b3)
+        ;
+
+        
+    
+    
+            marker_2c1375ad1f723da5ccb4d59771a8930c.bindTooltip(
+                `<div>
+                     Винный базар
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_2c1375ad1f723da5ccb4d59771a8930c.setIcon(icon_110f2b2cc97bbf816cd2021661134f4b);
+            
+    
+            var marker_3e9272b53152942fa3f548470da88411 = L.marker(
+                [55.762513622109104, 37.60806954693348],
+                {
+}
+            ).addTo(map_ecb33fa3bab448f2e4c9e10b54f2a488);
+        
+    
+            var icon_9134dd5a4b2231496ebcc1c6e931df5c = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "cutlery",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_0e634a432b7a653616e52f04ca52e7cc = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_2894718b1e2e6e5f4a9b09c5432f5c00 = $(`<div id="html_2894718b1e2e6e5f4a9b09c5432f5c00" style="width: 100.0%; height: 100.0%;">         <b>Howard Loves Craft</b><br>         <b>Rating:</b> 4.8/5<br>         <b>Average Price:</b> 2500.0<br>         <b>Address:</b> Тверская ул., 15<br>         </div>`)[0];
+                popup_0e634a432b7a653616e52f04ca52e7cc.setContent(html_2894718b1e2e6e5f4a9b09c5432f5c00);
+            
+        
+
+        marker_3e9272b53152942fa3f548470da88411.bindPopup(popup_0e634a432b7a653616e52f04ca52e7cc)
+        ;
+
+        
+    
+    
+            marker_3e9272b53152942fa3f548470da88411.bindTooltip(
+                `<div>
+                     Howard Loves Craft
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_3e9272b53152942fa3f548470da88411.setIcon(icon_9134dd5a4b2231496ebcc1c6e931df5c);
+            
+    
+            var marker_3d276398825c4985a991ca9a7ff7c117 = L.marker(
+                [55.759856, 37.596112],
+                {
+}
+            ).addTo(map_ecb33fa3bab448f2e4c9e10b54f2a488);
+        
+    
+            var icon_95d085a0ac04ec31a259bbdd1c4beeea = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "cutlery",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_d6f2d802aaa4e2ec7b169746ddc286b6 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_07024a09520c0d2f807901f22226aea1 = $(`<div id="html_07024a09520c0d2f807901f22226aea1" style="width: 100.0%; height: 100.0%;">         <b>№ 13</b><br>         <b>Rating:</b> 4.9/5<br>         <b>Average Price:</b> 2000.0<br>         <b>Address:</b> 13 Malaya Bronnaya Street<br>         </div>`)[0];
+                popup_d6f2d802aaa4e2ec7b169746ddc286b6.setContent(html_07024a09520c0d2f807901f22226aea1);
+            
+        
+
+        marker_3d276398825c4985a991ca9a7ff7c117.bindPopup(popup_d6f2d802aaa4e2ec7b169746ddc286b6)
+        ;
+
+        
+    
+    
+            marker_3d276398825c4985a991ca9a7ff7c117.bindTooltip(
+                `<div>
+                     № 13
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_3d276398825c4985a991ca9a7ff7c117.setIcon(icon_95d085a0ac04ec31a259bbdd1c4beeea);
+            
+    
+            var marker_58748a1e80440ae7054bc9d9733dc3fe = L.marker(
+                [55.746038, 37.602141],
+                {
+}
+            ).addTo(map_ecb33fa3bab448f2e4c9e10b54f2a488);
+        
+    
+            var icon_a203067e41155917fb106a46a1898723 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "cutlery",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_3f515e8f5daa68197f13b57342f81deb = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_422058ec4a4e815664cddf0fa02be997 = $(`<div id="html_422058ec4a4e815664cddf0fa02be997" style="width: 100.0%; height: 100.0%;">         <b>Pinzeria by Bontempi</b><br>         <b>Rating:</b> 4.9/5<br>         <b>Average Price:</b> 2250.0<br>         <b>Address:</b> Большой Знаменский пер., 2, стр. 3<br>         </div>`)[0];
+                popup_3f515e8f5daa68197f13b57342f81deb.setContent(html_422058ec4a4e815664cddf0fa02be997);
+            
+        
+
+        marker_58748a1e80440ae7054bc9d9733dc3fe.bindPopup(popup_3f515e8f5daa68197f13b57342f81deb)
+        ;
+
+        
+    
+    
+            marker_58748a1e80440ae7054bc9d9733dc3fe.bindTooltip(
+                `<div>
+                     Pinzeria by Bontempi
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_58748a1e80440ae7054bc9d9733dc3fe.setIcon(icon_a203067e41155917fb106a46a1898723);
+            
+    
+            var marker_eb529b687f726802424f622367179fab = L.marker(
+                [55.740226, 37.593749],
+                {
+}
+            ).addTo(map_ecb33fa3bab448f2e4c9e10b54f2a488);
+        
+    
+            var icon_e633605f606ae1cb45f85665a7668a8a = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "cutlery",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_ec1d3a43175784bba87e64b8f6f8d06f = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_18c794eca16e7fc4c0017ea3000f3021 = $(`<div id="html_18c794eca16e7fc4c0017ea3000f3021" style="width: 100.0%; height: 100.0%;">         <b>Cavina</b><br>         <b>Rating:</b> 4.8/5<br>         <b>Average Price:</b> 1250.0<br>         <b>Address:</b> Мансуровский переулок, 10, стр.2<br>         </div>`)[0];
+                popup_ec1d3a43175784bba87e64b8f6f8d06f.setContent(html_18c794eca16e7fc4c0017ea3000f3021);
+            
+        
+
+        marker_eb529b687f726802424f622367179fab.bindPopup(popup_ec1d3a43175784bba87e64b8f6f8d06f)
+        ;
+
+        
+    
+    
+            marker_eb529b687f726802424f622367179fab.bindTooltip(
+                `<div>
+                     Cavina
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_eb529b687f726802424f622367179fab.setIcon(icon_e633605f606ae1cb45f85665a7668a8a);
+            
+    
+            var marker_ebca192206a6f11ed0aa678df6b8791f = L.marker(
+                [55.741789, 37.599192],
+                {
+}
+            ).addTo(map_ecb33fa3bab448f2e4c9e10b54f2a488);
+        
+    
+            var icon_d3dd825dbe87536e83165044daa34656 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "cutlery",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_d4d52725f766ebfaff6851941df70a04 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_8b1e73d945625af53aad356c383b73dd = $(`<div id="html_8b1e73d945625af53aad356c383b73dd" style="width: 100.0%; height: 100.0%;">         <b>Айна</b><br>         <b>Rating:</b> 4.8/5<br>         <b>Average Price:</b> 2000.0<br>         <b>Address:</b> ул. Остоженка, 14/2<br>         </div>`)[0];
+                popup_d4d52725f766ebfaff6851941df70a04.setContent(html_8b1e73d945625af53aad356c383b73dd);
+            
+        
+
+        marker_ebca192206a6f11ed0aa678df6b8791f.bindPopup(popup_d4d52725f766ebfaff6851941df70a04)
+        ;
+
+        
+    
+    
+            marker_ebca192206a6f11ed0aa678df6b8791f.bindTooltip(
+                `<div>
+                     Айна
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_ebca192206a6f11ed0aa678df6b8791f.setIcon(icon_d3dd825dbe87536e83165044daa34656);
+            
+    
+            var marker_3246c7488a5169fcf4142fc6ad6324e5 = L.marker(
+                [55.76707764191021, 37.60738324891043],
+                {
+}
+            ).addTo(map_ecb33fa3bab448f2e4c9e10b54f2a488);
+        
+    
+            var icon_6a5fe956010b7ea9e10df530b56c160a = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "cutlery",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_44e38659de533badc46ed55d5ce82c19 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_7adff81211780d3d24afdf5a945369a5 = $(`<div id="html_7adff81211780d3d24afdf5a945369a5" style="width: 100.0%; height: 100.0%;">         <b>Black Thai</b><br>         <b>Rating:</b> 5.0/5<br>         <b>Average Price:</b> 4500.0<br>         <b>Address:</b> Большой Путинковский пер., 5<br>         </div>`)[0];
+                popup_44e38659de533badc46ed55d5ce82c19.setContent(html_7adff81211780d3d24afdf5a945369a5);
+            
+        
+
+        marker_3246c7488a5169fcf4142fc6ad6324e5.bindPopup(popup_44e38659de533badc46ed55d5ce82c19)
+        ;
+
+        
+    
+    
+            marker_3246c7488a5169fcf4142fc6ad6324e5.bindTooltip(
+                `<div>
+                     Black Thai
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_3246c7488a5169fcf4142fc6ad6324e5.setIcon(icon_6a5fe956010b7ea9e10df530b56c160a);
+            
+    
+            var marker_bc3ab4f5179a2e75c9f0fc993523fd6b = L.marker(
+                [55.765865, 37.615705],
+                {
+}
+            ).addTo(map_ecb33fa3bab448f2e4c9e10b54f2a488);
+        
+    
+            var icon_18b8dec480b7d7b0501877490d486c2e = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "cutlery",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_5e19c7db4eb0b28c047cc44429deeddd = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_1cbbc0bb949727c83938c6c933cca0b5 = $(`<div id="html_1cbbc0bb949727c83938c6c933cca0b5" style="width: 100.0%; height: 100.0%;">         <b>Shortlist. Books and Spirits</b><br>         <b>Rating:</b> 4.8/5<br>         <b>Average Price:</b> 2500.0<br>         <b>Address:</b> ул. Петровка, 26, стр. 3<br>         </div>`)[0];
+                popup_5e19c7db4eb0b28c047cc44429deeddd.setContent(html_1cbbc0bb949727c83938c6c933cca0b5);
+            
+        
+
+        marker_bc3ab4f5179a2e75c9f0fc993523fd6b.bindPopup(popup_5e19c7db4eb0b28c047cc44429deeddd)
+        ;
+
+        
+    
+    
+            marker_bc3ab4f5179a2e75c9f0fc993523fd6b.bindTooltip(
+                `<div>
+                     Shortlist. Books and Spirits
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_bc3ab4f5179a2e75c9f0fc993523fd6b.setIcon(icon_18b8dec480b7d7b0501877490d486c2e);
+            
+    
+            var marker_90ee81d1d994456eb2546fd78320503e = L.marker(
+                [55.758586, 37.591406],
+                {
+}
+            ).addTo(map_ecb33fa3bab448f2e4c9e10b54f2a488);
+        
+    
+            var icon_5c1a30f0f85621447b438e15780b05d9 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "cutlery",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_6e472dd4d30487f9b1a6f5cee11dceb7 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_91bb011ad286d3fccbe956a20facb256 = $(`<div id="html_91bb011ad286d3fccbe956a20facb256" style="width: 100.0%; height: 100.0%;">         <b>Mina</b><br>         <b>Rating:</b> 4.9/5<br>         <b>Average Price:</b> 3500.0<br>         <b>Address:</b> Малая Никитская ул., 16<br>         </div>`)[0];
+                popup_6e472dd4d30487f9b1a6f5cee11dceb7.setContent(html_91bb011ad286d3fccbe956a20facb256);
+            
+        
+
+        marker_90ee81d1d994456eb2546fd78320503e.bindPopup(popup_6e472dd4d30487f9b1a6f5cee11dceb7)
+        ;
+
+        
+    
+    
+            marker_90ee81d1d994456eb2546fd78320503e.bindTooltip(
+                `<div>
+                     Mina
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_90ee81d1d994456eb2546fd78320503e.setIcon(icon_5c1a30f0f85621447b438e15780b05d9);
+            
+    
+            var marker_1998c1e968ac065dcb7b442778a6c449 = L.marker(
+                [55.755425, 37.608681],
+                {
+}
+            ).addTo(map_ecb33fa3bab448f2e4c9e10b54f2a488);
+        
+    
+            var icon_f50b3682142b1bc51a362e55e2ae0032 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "cutlery",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_de5acae60d392a89479ffddb83dc69c5 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_efd79338f808d6d593c707e8d1040ff1 = $(`<div id="html_efd79338f808d6d593c707e8d1040ff1" style="width: 100.0%; height: 100.0%;">         <b>Гвидон</b><br>         <b>Rating:</b> 5.0/5<br>         <b>Average Price:</b> 4000.0<br>         <b>Address:</b> Большая Никитская ул., 5<br>         </div>`)[0];
+                popup_de5acae60d392a89479ffddb83dc69c5.setContent(html_efd79338f808d6d593c707e8d1040ff1);
+            
+        
+
+        marker_1998c1e968ac065dcb7b442778a6c449.bindPopup(popup_de5acae60d392a89479ffddb83dc69c5)
+        ;
+
+        
+    
+    
+            marker_1998c1e968ac065dcb7b442778a6c449.bindTooltip(
+                `<div>
+                     Гвидон
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_1998c1e968ac065dcb7b442778a6c449.setIcon(icon_f50b3682142b1bc51a362e55e2ae0032);
+            
+    
+            var marker_4fb06865f81a76e1b9f71a7748e75279 = L.marker(
+                [55.730386, 37.579025],
+                {
+}
+            ).addTo(map_ecb33fa3bab448f2e4c9e10b54f2a488);
+        
+    
+            var icon_cb48322942885d5b61ba883b524a48c6 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "cutlery",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_84a7c18accd6047d48406605dec3333b = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_85532c7f2355c634411fc6b9dcd3384d = $(`<div id="html_85532c7f2355c634411fc6b9dcd3384d" style="width: 100.0%; height: 100.0%;">         <b>La Scarpetta</b><br>         <b>Rating:</b> 4.7/5<br>         <b>Average Price:</b> 3000.0<br>         <b>Address:</b> Оболенский пер., 9, корп. 1<br>         </div>`)[0];
+                popup_84a7c18accd6047d48406605dec3333b.setContent(html_85532c7f2355c634411fc6b9dcd3384d);
+            
+        
+
+        marker_4fb06865f81a76e1b9f71a7748e75279.bindPopup(popup_84a7c18accd6047d48406605dec3333b)
+        ;
+
+        
+    
+    
+            marker_4fb06865f81a76e1b9f71a7748e75279.bindTooltip(
+                `<div>
+                     La Scarpetta
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_4fb06865f81a76e1b9f71a7748e75279.setIcon(icon_cb48322942885d5b61ba883b524a48c6);
+            
+    
+            var marker_e1704e4b6981c42dda2e985f433d587f = L.marker(
+                [55.7468341506741, 37.58701031013226],
+                {
+}
+            ).addTo(map_ecb33fa3bab448f2e4c9e10b54f2a488);
+        
+    
+            var icon_5ae2af4f698db240a30328a7b898e046 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "cutlery",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_9c1c57d9eb55c9572cfeda99f086f65a = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_0aba7587d76acdf7caa528c6c62c5432 = $(`<div id="html_0aba7587d76acdf7caa528c6c62c5432" style="width: 100.0%; height: 100.0%;">         <b>Абу Гош</b><br>         <b>Rating:</b> 4.8/5<br>         <b>Average Price:</b> 700.0<br>         <b>Address:</b> пер. Сивцев Вражек, 42, стр. 5<br>         </div>`)[0];
+                popup_9c1c57d9eb55c9572cfeda99f086f65a.setContent(html_0aba7587d76acdf7caa528c6c62c5432);
+            
+        
+
+        marker_e1704e4b6981c42dda2e985f433d587f.bindPopup(popup_9c1c57d9eb55c9572cfeda99f086f65a)
+        ;
+
+        
+    
+    
+            marker_e1704e4b6981c42dda2e985f433d587f.bindTooltip(
+                `<div>
+                     Абу Гош
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_e1704e4b6981c42dda2e985f433d587f.setIcon(icon_5ae2af4f698db240a30328a7b898e046);
+            
+    
+            var marker_ca1310e91a9c06c215b3641ffa52224b = L.marker(
+                [55.72756520480314, 37.56769425070793],
+                {
+}
+            ).addTo(map_ecb33fa3bab448f2e4c9e10b54f2a488);
+        
+    
+            var icon_bf22e1699cedc3aeafa215dc6fa3047c = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "cutlery",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_505c57d757e49b98f8fac37e3dfd702c = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_3d03b310ce6052199891f91fffb62400 = $(`<div id="html_3d03b310ce6052199891f91fffb62400" style="width: 100.0%; height: 100.0%;">         <b>Оджахури</b><br>         <b>Rating:</b> 5.0/5<br>         <b>Average Price:</b> 1300.0<br>         <b>Address:</b> ул. Усачёва, 26<br>         </div>`)[0];
+                popup_505c57d757e49b98f8fac37e3dfd702c.setContent(html_3d03b310ce6052199891f91fffb62400);
+            
+        
+
+        marker_ca1310e91a9c06c215b3641ffa52224b.bindPopup(popup_505c57d757e49b98f8fac37e3dfd702c)
+        ;
+
+        
+    
+    
+            marker_ca1310e91a9c06c215b3641ffa52224b.bindTooltip(
+                `<div>
+                     Оджахури
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_ca1310e91a9c06c215b3641ffa52224b.setIcon(icon_bf22e1699cedc3aeafa215dc6fa3047c);
+            
+    
+            var marker_856026af116738eb15c5dbac7d44728f = L.marker(
+                [55.739098, 37.596216],
+                {
+}
+            ).addTo(map_ecb33fa3bab448f2e4c9e10b54f2a488);
+        
+    
+            var icon_838b7dbd3e85b07ef1ccf5cf332774e7 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "cutlery",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_e016d8ddd4c33a1bdead79238f327f35 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_4bd8cbd48aabab818e33d5662150ddbd = $(`<div id="html_4bd8cbd48aabab818e33d5662150ddbd" style="width: 100.0%; height: 100.0%;">         <b>Lin Bistro</b><br>         <b>Rating:</b> 4.8/5<br>         <b>Average Price:</b> 2500.0<br>         <b>Address:</b> Ostozhenka, 27/1<br>         </div>`)[0];
+                popup_e016d8ddd4c33a1bdead79238f327f35.setContent(html_4bd8cbd48aabab818e33d5662150ddbd);
+            
+        
+
+        marker_856026af116738eb15c5dbac7d44728f.bindPopup(popup_e016d8ddd4c33a1bdead79238f327f35)
+        ;
+
+        
+    
+    
+            marker_856026af116738eb15c5dbac7d44728f.bindTooltip(
+                `<div>
+                     Lin Bistro
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_856026af116738eb15c5dbac7d44728f.setIcon(icon_838b7dbd3e85b07ef1ccf5cf332774e7);
+            
+    
+            var marker_e5b3ed7f259ea90c0ad0f0b4aa9edf59 = L.marker(
+                [55.75910827821725, 37.77417000323287],
+                {
+}
+            ).addTo(map_ecb33fa3bab448f2e4c9e10b54f2a488);
+        
+    
+            var icon_632410399986d45d6a59c0957c5a60a5 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "cutlery",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_6685c3c68ff348b00fd5845efbe689e0 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_f7c6becd76217139f8a118312f7e3e86 = $(`<div id="html_f7c6becd76217139f8a118312f7e3e86" style="width: 100.0%; height: 100.0%;">         <b>Гамбринус</b><br>         <b>Rating:</b> 5.0/5<br>         <b>Average Price:</b> 2500.0<br>         <b>Address:</b> 1-я владимирская  д. 9<br>         </div>`)[0];
+                popup_6685c3c68ff348b00fd5845efbe689e0.setContent(html_f7c6becd76217139f8a118312f7e3e86);
+            
+        
+
+        marker_e5b3ed7f259ea90c0ad0f0b4aa9edf59.bindPopup(popup_6685c3c68ff348b00fd5845efbe689e0)
+        ;
+
+        
+    
+    
+            marker_e5b3ed7f259ea90c0ad0f0b4aa9edf59.bindTooltip(
+                `<div>
+                     Гамбринус
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_e5b3ed7f259ea90c0ad0f0b4aa9edf59.setIcon(icon_632410399986d45d6a59c0957c5a60a5);
+            
+    
+            var marker_b8a3435bb453b995261ac99486d8773e = L.marker(
+                [55.762398183892735, 37.594068199396126],
+                {
+}
+            ).addTo(map_ecb33fa3bab448f2e4c9e10b54f2a488);
+        
+    
+            var icon_dbe8ebf11e8b8adf577fca172b910172 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "cutlery",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_0aac788415b0837df916da976e501507 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_a5b9e3dc9078c32c9402a09b0f7dbeb1 = $(`<div id="html_a5b9e3dc9078c32c9402a09b0f7dbeb1" style="width: 100.0%; height: 100.0%;">         <b>Louis the Claw</b><br>         <b>Rating:</b> 4.8/5<br>         <b>Average Price:</b> 3000.0<br>         <b>Address:</b> Спиридоньевский пер., 9, стр. 1<br>         </div>`)[0];
+                popup_0aac788415b0837df916da976e501507.setContent(html_a5b9e3dc9078c32c9402a09b0f7dbeb1);
+            
+        
+
+        marker_b8a3435bb453b995261ac99486d8773e.bindPopup(popup_0aac788415b0837df916da976e501507)
+        ;
+
+        
+    
+    
+            marker_b8a3435bb453b995261ac99486d8773e.bindTooltip(
+                `<div>
+                     Louis the Claw
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_b8a3435bb453b995261ac99486d8773e.setIcon(icon_dbe8ebf11e8b8adf577fca172b910172);
+            
+    
+            var marker_6f9d456314f8fbeb9ea3ca9b2c15ea69 = L.marker(
+                [55.69171031099299, 37.528790697611775],
+                {
+}
+            ).addTo(map_ecb33fa3bab448f2e4c9e10b54f2a488);
+        
+    
+            var icon_ae6c8694c848a1720c677c653f0b5404 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "cutlery",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_48fa294a699d072ff667041d6512b1f0 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_86d280f21356e1155ec3efa5e0c21493 = $(`<div id="html_86d280f21356e1155ec3efa5e0c21493" style="width: 100.0%; height: 100.0%;">         <b>Osteria Mario</b><br>         <b>Rating:</b> 4.6/5<br>         <b>Average Price:</b> 2500.0<br>         <b>Address:</b> просп. Вернадского, 6<br>         </div>`)[0];
+                popup_48fa294a699d072ff667041d6512b1f0.setContent(html_86d280f21356e1155ec3efa5e0c21493);
+            
+        
+
+        marker_6f9d456314f8fbeb9ea3ca9b2c15ea69.bindPopup(popup_48fa294a699d072ff667041d6512b1f0)
+        ;
+
+        
+    
+    
+            marker_6f9d456314f8fbeb9ea3ca9b2c15ea69.bindTooltip(
+                `<div>
+                     Osteria Mario
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_6f9d456314f8fbeb9ea3ca9b2c15ea69.setIcon(icon_ae6c8694c848a1720c677c653f0b5404);
+            
+    
+            var marker_136848e072008f9af2306ebf6f5cef2a = L.marker(
+                [55.7043138232103, 37.51103639602661],
+                {
+}
+            ).addTo(map_ecb33fa3bab448f2e4c9e10b54f2a488);
+        
+    
+            var icon_e35903dfef10f483039e877f58241b20 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "cutlery",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_b1e8911da1e7c044a65efe477be43454 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_5221f266d83cd7b4269901e1c5e0bccc = $(`<div id="html_5221f266d83cd7b4269901e1c5e0bccc" style="width: 100.0%; height: 100.0%;">         <b>Бутчер</b><br>         <b>Rating:</b> 5.0/5<br>         <b>Average Price:</b> 6000.0<br>         <b>Address:</b> Мичуринский просп., 8, стр. 2<br>         </div>`)[0];
+                popup_b1e8911da1e7c044a65efe477be43454.setContent(html_5221f266d83cd7b4269901e1c5e0bccc);
+            
+        
+
+        marker_136848e072008f9af2306ebf6f5cef2a.bindPopup(popup_b1e8911da1e7c044a65efe477be43454)
+        ;
+
+        
+    
+    
+            marker_136848e072008f9af2306ebf6f5cef2a.bindTooltip(
+                `<div>
+                     Бутчер
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_136848e072008f9af2306ebf6f5cef2a.setIcon(icon_e35903dfef10f483039e877f58241b20);
+            
+    
+            var marker_72c26fc5240d3ae838c5bdf1f6e39289 = L.marker(
+                [55.71258293399021, 37.50187933444977],
+                {
+}
+            ).addTo(map_ecb33fa3bab448f2e4c9e10b54f2a488);
+        
+    
+            var icon_de57b2149d5f7e52cf6181ca5810a799 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "cutlery",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_0d109f841229c16f437f3c8b83ee38f2 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_b1223d15bb72a51a8564c5ea67f7ff29 = $(`<div id="html_b1223d15bb72a51a8564c5ea67f7ff29" style="width: 100.0%; height: 100.0%;">         <b>Вино и Море</b><br>         <b>Rating:</b> 4.7/5<br>         <b>Average Price:</b> 2500.0<br>         <b>Address:</b> Москва ул. Минская 1 г 1 корпус<br>         </div>`)[0];
+                popup_0d109f841229c16f437f3c8b83ee38f2.setContent(html_b1223d15bb72a51a8564c5ea67f7ff29);
+            
+        
+
+        marker_72c26fc5240d3ae838c5bdf1f6e39289.bindPopup(popup_0d109f841229c16f437f3c8b83ee38f2)
+        ;
+
+        
+    
+    
+            marker_72c26fc5240d3ae838c5bdf1f6e39289.bindTooltip(
+                `<div>
+                     Вино и Море
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_72c26fc5240d3ae838c5bdf1f6e39289.setIcon(icon_de57b2149d5f7e52cf6181ca5810a799);
+            
+    
+            var marker_bc0042b3e95456f7a833693b3f6d1f24 = L.marker(
+                [55.74957603523113, 37.53386735916138],
+                {
+}
+            ).addTo(map_ecb33fa3bab448f2e4c9e10b54f2a488);
+        
+    
+            var icon_3fad5996e4bdaa78630993a7fee7506d = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "cutlery",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_cd3b8d45c50ddc34c311b8800c410207 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_8711b57763491fe0985137a1eaab6dcf = $(`<div id="html_8711b57763491fe0985137a1eaab6dcf" style="width: 100.0%; height: 100.0%;">         <b>City Voice. Six Floor</b><br>         <b>Rating:</b> 4.8/5<br>         <b>Average Price:</b> 4000.0<br>         <b>Address:</b> 1-й Красногвардейский пр-д 21, стр.2<br>         </div>`)[0];
+                popup_cd3b8d45c50ddc34c311b8800c410207.setContent(html_8711b57763491fe0985137a1eaab6dcf);
+            
+        
+
+        marker_bc0042b3e95456f7a833693b3f6d1f24.bindPopup(popup_cd3b8d45c50ddc34c311b8800c410207)
+        ;
+
+        
+    
+    
+            marker_bc0042b3e95456f7a833693b3f6d1f24.bindTooltip(
+                `<div>
+                     City Voice. Six Floor
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_bc0042b3e95456f7a833693b3f6d1f24.setIcon(icon_3fad5996e4bdaa78630993a7fee7506d);
+            
+    
+            var marker_132fe919438bf09165ac4ab6f0bece7f = L.marker(
+                [55.75753069413687, 37.60389447212219],
+                {
+}
+            ).addTo(map_ecb33fa3bab448f2e4c9e10b54f2a488);
+        
+    
+            var icon_8c3cf4996ada46f602bc4188cfca12ec = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "cutlery",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_3ba9d04b708778a9b9cbe82f4f82cef0 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_112b23b6601a2e858d06eb2f90154b8c = $(`<div id="html_112b23b6601a2e858d06eb2f90154b8c" style="width: 100.0%; height: 100.0%;">         <b>Share</b><br>         <b>Rating:</b> 4.8/5<br>         <b>Average Price:</b> 3000.0<br>         <b>Address:</b> Вознесенский пер., 5, стр. 1<br>         </div>`)[0];
+                popup_3ba9d04b708778a9b9cbe82f4f82cef0.setContent(html_112b23b6601a2e858d06eb2f90154b8c);
+            
+        
+
+        marker_132fe919438bf09165ac4ab6f0bece7f.bindPopup(popup_3ba9d04b708778a9b9cbe82f4f82cef0)
+        ;
+
+        
+    
+    
+            marker_132fe919438bf09165ac4ab6f0bece7f.bindTooltip(
+                `<div>
+                     Share
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_132fe919438bf09165ac4ab6f0bece7f.setIcon(icon_8c3cf4996ada46f602bc4188cfca12ec);
+            
+    
+            var marker_265fdb795b2b4821815b2abc0f4646f3 = L.marker(
+                [55.76782594594634, 37.5587111780025],
+                {
+}
+            ).addTo(map_ecb33fa3bab448f2e4c9e10b54f2a488);
+        
+    
+            var icon_2f55517e505183a9ca3ae2666f17b92f = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "cutlery",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_8a4d8b22cd22debbbfeb4c7bce270245 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_88f83d7478b1ba9e09afc1737af4eb72 = $(`<div id="html_88f83d7478b1ba9e09afc1737af4eb72" style="width: 100.0%; height: 100.0%;">         <b>Сабор де ла Вида</b><br>         <b>Rating:</b> 4.9/5<br>         <b>Average Price:</b> 3500.0<br>         <b>Address:</b> ул. 1905 года, 10, стр. 1<br>         </div>`)[0];
+                popup_8a4d8b22cd22debbbfeb4c7bce270245.setContent(html_88f83d7478b1ba9e09afc1737af4eb72);
+            
+        
+
+        marker_265fdb795b2b4821815b2abc0f4646f3.bindPopup(popup_8a4d8b22cd22debbbfeb4c7bce270245)
+        ;
+
+        
+    
+    
+            marker_265fdb795b2b4821815b2abc0f4646f3.bindTooltip(
+                `<div>
+                     Сабор де ла Вида
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_265fdb795b2b4821815b2abc0f4646f3.setIcon(icon_2f55517e505183a9ca3ae2666f17b92f);
+            
+    
+            var marker_fd0ed400ed02ed5d5acd6c0d07bc4a89 = L.marker(
+                [55.67777207493134, 37.57411388674932],
+                {
+}
+            ).addTo(map_ecb33fa3bab448f2e4c9e10b54f2a488);
+        
+    
+            var icon_4426483e45cfcc6641c0dc3c87bc57af = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "cutlery",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_702bafcab293cc4004ad752a86094289 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_8dac2a79071b3c3ec3097145ec32387c = $(`<div id="html_8dac2a79071b3c3ec3097145ec32387c" style="width: 100.0%; height: 100.0%;">         <b>Батони</b><br>         <b>Rating:</b> 4.4/5<br>         <b>Average Price:</b> 1200.0<br>         <b>Address:</b> ул. Кржижановского, 22с1<br>         </div>`)[0];
+                popup_702bafcab293cc4004ad752a86094289.setContent(html_8dac2a79071b3c3ec3097145ec32387c);
+            
+        
+
+        marker_fd0ed400ed02ed5d5acd6c0d07bc4a89.bindPopup(popup_702bafcab293cc4004ad752a86094289)
+        ;
+
+        
+    
+    
+            marker_fd0ed400ed02ed5d5acd6c0d07bc4a89.bindTooltip(
+                `<div>
+                     Батони
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_fd0ed400ed02ed5d5acd6c0d07bc4a89.setIcon(icon_4426483e45cfcc6641c0dc3c87bc57af);
+            
+    
+            var marker_5c0ee49155b9da2801e4b2355de03b94 = L.marker(
+                [55.77470720273087, 37.58225440979003],
+                {
+}
+            ).addTo(map_ecb33fa3bab448f2e4c9e10b54f2a488);
+        
+    
+            var icon_f0951115a0a7675980a2c8044a8bb82c = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "cutlery",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_f7af73eec49f99ee304f06311d4711b9 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_989443ae47dc7cda8f5c0205a3397214 = $(`<div id="html_989443ae47dc7cda8f5c0205a3397214" style="width: 100.0%; height: 100.0%;">         <b>FARШ</b><br>         <b>Rating:</b> 4.7/5<br>         <b>Average Price:</b> 700.0<br>         <b>Address:</b> ул. Грузинский Вал, 26, стр. 1<br>         </div>`)[0];
+                popup_f7af73eec49f99ee304f06311d4711b9.setContent(html_989443ae47dc7cda8f5c0205a3397214);
+            
+        
+
+        marker_5c0ee49155b9da2801e4b2355de03b94.bindPopup(popup_f7af73eec49f99ee304f06311d4711b9)
+        ;
+
+        
+    
+    
+            marker_5c0ee49155b9da2801e4b2355de03b94.bindTooltip(
+                `<div>
+                     FARШ
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_5c0ee49155b9da2801e4b2355de03b94.setIcon(icon_f0951115a0a7675980a2c8044a8bb82c);
+            
+    
+            var marker_b75daeecfd566c960f4a9c3dabbd1793 = L.marker(
+                [55.764272, 37.568249],
+                {
+}
+            ).addTo(map_ecb33fa3bab448f2e4c9e10b54f2a488);
+        
+    
+            var icon_f9f2962a52ec5a4c32014b4fb9ca9111 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "cutlery",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_04b00b04882687477b11062d72634cac = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_b2ef01497462d9567885d85094e96821 = $(`<div id="html_b2ef01497462d9567885d85094e96821" style="width: 100.0%; height: 100.0%;">         <b>Alma</b><br>         <b>Rating:</b> 4.8/5<br>         <b>Average Price:</b> 1500.0<br>         <b>Address:</b> Столярный пер., 3, корп. 13<br>         </div>`)[0];
+                popup_04b00b04882687477b11062d72634cac.setContent(html_b2ef01497462d9567885d85094e96821);
+            
+        
+
+        marker_b75daeecfd566c960f4a9c3dabbd1793.bindPopup(popup_04b00b04882687477b11062d72634cac)
+        ;
+
+        
+    
+    
+            marker_b75daeecfd566c960f4a9c3dabbd1793.bindTooltip(
+                `<div>
+                     Alma
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_b75daeecfd566c960f4a9c3dabbd1793.setIcon(icon_f9f2962a52ec5a4c32014b4fb9ca9111);
+            
+    
+            var marker_984e6da240e15703eb4015869671ac29 = L.marker(
+                [55.77434, 37.587033],
+                {
+}
+            ).addTo(map_ecb33fa3bab448f2e4c9e10b54f2a488);
+        
+    
+            var icon_88c4cf05fe756fa98addfb3b3b3f2869 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "cutlery",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_ff5c14cd168a88ab5f15baac5a25ab89 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_a1ef04debaba82b6ad15737944c6987e = $(`<div id="html_a1ef04debaba82b6ad15737944c6987e" style="width: 100.0%; height: 100.0%;">         <b>Sage</b><br>         <b>Rating:</b> 4.9/5<br>         <b>Average Price:</b> 1500.0<br>         <b>Address:</b> 1-я Тверская-Ямская ул., 21<br>         </div>`)[0];
+                popup_ff5c14cd168a88ab5f15baac5a25ab89.setContent(html_a1ef04debaba82b6ad15737944c6987e);
+            
+        
+
+        marker_984e6da240e15703eb4015869671ac29.bindPopup(popup_ff5c14cd168a88ab5f15baac5a25ab89)
+        ;
+
+        
+    
+    
+            marker_984e6da240e15703eb4015869671ac29.bindTooltip(
+                `<div>
+                     Sage
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_984e6da240e15703eb4015869671ac29.setIcon(icon_88c4cf05fe756fa98addfb3b3b3f2869);
+            
+    
+            var marker_3825919fece7f5dc7ef8c9534222eac0 = L.marker(
+                [55.75218348392752, 37.58692144165274],
+                {
+}
+            ).addTo(map_ecb33fa3bab448f2e4c9e10b54f2a488);
+        
+    
+            var icon_846752baa109c5bdb17730873bc13ade = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "cutlery",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_a2df476415224a60866d46966ba03c3b = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_6ae45f176a17c051fd147db92d7fbc17 = $(`<div id="html_6ae45f176a17c051fd147db92d7fbc17" style="width: 100.0%; height: 100.0%;">         <b>Steak It Easy</b><br>         <b>Rating:</b> 4.8/5<br>         <b>Average Price:</b> 3000.0<br>         <b>Address:</b> Новый Арбат, 21<br>         </div>`)[0];
+                popup_a2df476415224a60866d46966ba03c3b.setContent(html_6ae45f176a17c051fd147db92d7fbc17);
+            
+        
+
+        marker_3825919fece7f5dc7ef8c9534222eac0.bindPopup(popup_a2df476415224a60866d46966ba03c3b)
+        ;
+
+        
+    
+    
+            marker_3825919fece7f5dc7ef8c9534222eac0.bindTooltip(
+                `<div>
+                     Steak It Easy
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_3825919fece7f5dc7ef8c9534222eac0.setIcon(icon_846752baa109c5bdb17730873bc13ade);
+            
+    
+            var marker_62d2d5af97fe5291f0713a70aa4deeb3 = L.marker(
+                [55.750165, 37.58058],
+                {
+}
+            ).addTo(map_ecb33fa3bab448f2e4c9e10b54f2a488);
+        
+    
+            var icon_36285d4331fce8e85e9464a3fa836c1a = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "cutlery",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_42858827744c27f670dd5a7837e88647 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_67d81ce80145b8aef33c233498207d59 = $(`<div id="html_67d81ce80145b8aef33c233498207d59" style="width: 100.0%; height: 100.0%;">         <b>La Marée</b><br>         <b>Rating:</b> 4.8/5<br>         <b>Average Price:</b> 15000.0<br>         <b>Address:</b> Проточный пер., 7<br>         </div>`)[0];
+                popup_42858827744c27f670dd5a7837e88647.setContent(html_67d81ce80145b8aef33c233498207d59);
+            
+        
+
+        marker_62d2d5af97fe5291f0713a70aa4deeb3.bindPopup(popup_42858827744c27f670dd5a7837e88647)
+        ;
+
+        
+    
+    
+            marker_62d2d5af97fe5291f0713a70aa4deeb3.bindTooltip(
+                `<div>
+                     La Marée
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_62d2d5af97fe5291f0713a70aa4deeb3.setIcon(icon_36285d4331fce8e85e9464a3fa836c1a);
+            
+    
+            var marker_d473652cac79367e86e54f900db7e7bf = L.marker(
+                [55.700875, 37.764546],
+                {
+}
+            ).addTo(map_ecb33fa3bab448f2e4c9e10b54f2a488);
+        
+    
+            var icon_051c70e417a16bb2b077c572028371e6 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "cutlery",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_4c8ae6b5d902e24d2b47d01890f9f965 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_2b924f46454091b65ed06f10be4dcbf0 = $(`<div id="html_2b924f46454091b65ed06f10be4dcbf0" style="width: 100.0%; height: 100.0%;">         <b>Грузинские каникулы</b><br>         <b>Rating:</b> 5.0/5<br>         <b>Average Price:</b> 1500.0<br>         <b>Address:</b> Зеленодольская, 42<br>         </div>`)[0];
+                popup_4c8ae6b5d902e24d2b47d01890f9f965.setContent(html_2b924f46454091b65ed06f10be4dcbf0);
+            
+        
+
+        marker_d473652cac79367e86e54f900db7e7bf.bindPopup(popup_4c8ae6b5d902e24d2b47d01890f9f965)
+        ;
+
+        
+    
+    
+            marker_d473652cac79367e86e54f900db7e7bf.bindTooltip(
+                `<div>
+                     Грузинские каникулы
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_d473652cac79367e86e54f900db7e7bf.setIcon(icon_051c70e417a16bb2b077c572028371e6);
+            
+    
+            var marker_0af295677fbbf0bf2a6363bcdfaef37d = L.marker(
+                [55.75228138238051, 37.56805493090579],
+                {
+}
+            ).addTo(map_ecb33fa3bab448f2e4c9e10b54f2a488);
+        
+    
+            var icon_b6404a376d1329751c69ce47c6394e53 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "cutlery",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_b9a99790b6ed0e7183f031464362b587 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_1d3244a1d56342a34664af66770dbfe9 = $(`<div id="html_1d3244a1d56342a34664af66770dbfe9" style="width: 100.0%; height: 100.0%;">         <b>Chef</b><br>         <b>Rating:</b> 4.8/5<br>         <b>Average Price:</b> 4000.0<br>         <b>Address:</b> Кутузовский просп., 2/1, стр. 6<br>         </div>`)[0];
+                popup_b9a99790b6ed0e7183f031464362b587.setContent(html_1d3244a1d56342a34664af66770dbfe9);
+            
+        
+
+        marker_0af295677fbbf0bf2a6363bcdfaef37d.bindPopup(popup_b9a99790b6ed0e7183f031464362b587)
+        ;
+
+        
+    
+    
+            marker_0af295677fbbf0bf2a6363bcdfaef37d.bindTooltip(
+                `<div>
+                     Chef
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_0af295677fbbf0bf2a6363bcdfaef37d.setIcon(icon_b6404a376d1329751c69ce47c6394e53);
+            
+    
+            var marker_5c35b5f190a43c4612a2793806c64001 = L.marker(
+                [55.752130857673336, 37.568715003397664],
+                {
+}
+            ).addTo(map_ecb33fa3bab448f2e4c9e10b54f2a488);
+        
+    
+            var icon_51889b2eb1e28f04b5759e95bfb6e172 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "cutlery",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_2cb9c865a4a7c1b0f2de367f87733919 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_2663381185a75f55319fe8cde67f7650 = $(`<div id="html_2663381185a75f55319fe8cde67f7650" style="width: 100.0%; height: 100.0%;">         <b>Erwin. РекаМореОкеан</b><br>         <b>Rating:</b> 5.0/5<br>         <b>Average Price:</b> 2500.0<br>         <b>Address:</b> Кутузовский просп., 2/1, стр. 6<br>         </div>`)[0];
+                popup_2cb9c865a4a7c1b0f2de367f87733919.setContent(html_2663381185a75f55319fe8cde67f7650);
+            
+        
+
+        marker_5c35b5f190a43c4612a2793806c64001.bindPopup(popup_2cb9c865a4a7c1b0f2de367f87733919)
+        ;
+
+        
+    
+    
+            marker_5c35b5f190a43c4612a2793806c64001.bindTooltip(
+                `<div>
+                     Erwin. РекаМореОкеан
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_5c35b5f190a43c4612a2793806c64001.setIcon(icon_51889b2eb1e28f04b5759e95bfb6e172);
+            
+    
+            var marker_00c2d7345c05a0e4b0a2b96927ee8979 = L.marker(
+                [55.771156, 37.62039],
+                {
+}
+            ).addTo(map_ecb33fa3bab448f2e4c9e10b54f2a488);
+        
+    
+            var icon_7401f20b8768b2dcc47b01fcbf162292 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "cutlery",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_11d9f4f791fb426ba3108e1aa1ff93af = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_bce3d8ed17e46246e18657ac291fdd85 = $(`<div id="html_bce3d8ed17e46246e18657ac291fdd85" style="width: 100.0%; height: 100.0%;">         <b>Чихо</b><br>         <b>Rating:</b> 4.5/5<br>         <b>Average Price:</b> 1500.0<br>         <b>Address:</b> Цветной б-р, д.15, стр.1<br>         </div>`)[0];
+                popup_11d9f4f791fb426ba3108e1aa1ff93af.setContent(html_bce3d8ed17e46246e18657ac291fdd85);
+            
+        
+
+        marker_00c2d7345c05a0e4b0a2b96927ee8979.bindPopup(popup_11d9f4f791fb426ba3108e1aa1ff93af)
+        ;
+
+        
+    
+    
+            marker_00c2d7345c05a0e4b0a2b96927ee8979.bindTooltip(
+                `<div>
+                     Чихо
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_00c2d7345c05a0e4b0a2b96927ee8979.setIcon(icon_7401f20b8768b2dcc47b01fcbf162292);
+            
+    
+            var marker_3c8a65bd97b2a833307c35a426040e38 = L.marker(
+                [55.772169, 37.619585],
+                {
+}
+            ).addTo(map_ecb33fa3bab448f2e4c9e10b54f2a488);
+        
+    
+            var icon_d9a8a2b198d97beb288eb8496c189400 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "cutlery",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_7d168cf83d8abdfbb99de04637ad4999 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_9bed762de540e98faee13afc486bfada = $(`<div id="html_9bed762de540e98faee13afc486bfada" style="width: 100.0%; height: 100.0%;">         <b>RA'MEN</b><br>         <b>Rating:</b> 4.9/5<br>         <b>Average Price:</b> 1500.0<br>         <b>Address:</b> Цветной бул., 21, стр. 7<br>         </div>`)[0];
+                popup_7d168cf83d8abdfbb99de04637ad4999.setContent(html_9bed762de540e98faee13afc486bfada);
+            
+        
+
+        marker_3c8a65bd97b2a833307c35a426040e38.bindPopup(popup_7d168cf83d8abdfbb99de04637ad4999)
+        ;
+
+        
+    
+    
+            marker_3c8a65bd97b2a833307c35a426040e38.bindTooltip(
+                `<div>
+                     RA'MEN
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_3c8a65bd97b2a833307c35a426040e38.setIcon(icon_d9a8a2b198d97beb288eb8496c189400);
+            
+    
+            var marker_7e558167af1ce4a4cbd421f27997c386 = L.marker(
+                [55.75041233184548, 37.62845277786254],
+                {
+}
+            ).addTo(map_ecb33fa3bab448f2e4c9e10b54f2a488);
+        
+    
+            var icon_462fffdf17b2132c4ba91d6eb7aa9385 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "cutlery",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_fcab30c20d2473495073044be2886fb2 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_2d5c2426e49dbd4ea45d99e9cf2a1565 = $(`<div id="html_2d5c2426e49dbd4ea45d99e9cf2a1565" style="width: 100.0%; height: 100.0%;">         <b>Устричная и Шампанский бар</b><br>         <b>Rating:</b> 4.9/5<br>         <b>Average Price:</b> 3000.0<br>         <b>Address:</b> ул. Варварка 6 ст3<br>         </div>`)[0];
+                popup_fcab30c20d2473495073044be2886fb2.setContent(html_2d5c2426e49dbd4ea45d99e9cf2a1565);
+            
+        
+
+        marker_7e558167af1ce4a4cbd421f27997c386.bindPopup(popup_fcab30c20d2473495073044be2886fb2)
+        ;
+
+        
+    
+    
+            marker_7e558167af1ce4a4cbd421f27997c386.bindTooltip(
+                `<div>
+                     Устричная и Шампанский бар
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_7e558167af1ce4a4cbd421f27997c386.setIcon(icon_462fffdf17b2132c4ba91d6eb7aa9385);
+            
+    
+            var marker_8f6854d42611c477082b4b30e5b99186 = L.marker(
+                [55.754604, 37.63753],
+                {
+}
+            ).addTo(map_ecb33fa3bab448f2e4c9e10b54f2a488);
+        
+    
+            var icon_3097fd30461784cbb7911d584cdc0227 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "cutlery",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_e68cf575a83804244a00b13dc66398ad = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_8a58ff4fcfb3dff6bb83c38de64dd500 = $(`<div id="html_8a58ff4fcfb3dff6bb83c38de64dd500" style="width: 100.0%; height: 100.0%;">         <b>Хинкали Point</b><br>         <b>Rating:</b> 4.7/5<br>         <b>Average Price:</b> 700.0<br>         <b>Address:</b> ул. Забелина, 1<br>         </div>`)[0];
+                popup_e68cf575a83804244a00b13dc66398ad.setContent(html_8a58ff4fcfb3dff6bb83c38de64dd500);
+            
+        
+
+        marker_8f6854d42611c477082b4b30e5b99186.bindPopup(popup_e68cf575a83804244a00b13dc66398ad)
+        ;
+
+        
+    
+    
+            marker_8f6854d42611c477082b4b30e5b99186.bindTooltip(
+                `<div>
+                     Хинкали Point
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_8f6854d42611c477082b4b30e5b99186.setIcon(icon_3097fd30461784cbb7911d584cdc0227);
+            
+    
+            var marker_8cdcb5684de168dabb2e6f45a6dea025 = L.marker(
+                [55.743286, 37.652405],
+                {
+}
+            ).addTo(map_ecb33fa3bab448f2e4c9e10b54f2a488);
+        
+    
+            var icon_d4f1ee1d77e01ad0cb34c1bcd38164b5 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "cutlery",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_3930061c0096d5b14b7be6a0c9e851fb = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_cfd60a6ff17b92d0a93644f045205485 = $(`<div id="html_cfd60a6ff17b92d0a93644f045205485" style="width: 100.0%; height: 100.0%;">         <b>Джон Донн</b><br>         <b>Rating:</b> 4.6/5<br>         <b>Average Price:</b> 1000.0<br>         <b>Address:</b> Верхняя Радищевская ул., 15, стр. 2<br>         </div>`)[0];
+                popup_3930061c0096d5b14b7be6a0c9e851fb.setContent(html_cfd60a6ff17b92d0a93644f045205485);
+            
+        
+
+        marker_8cdcb5684de168dabb2e6f45a6dea025.bindPopup(popup_3930061c0096d5b14b7be6a0c9e851fb)
+        ;
+
+        
+    
+    
+            marker_8cdcb5684de168dabb2e6f45a6dea025.bindTooltip(
+                `<div>
+                     Джон Донн
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_8cdcb5684de168dabb2e6f45a6dea025.setIcon(icon_d4f1ee1d77e01ad0cb34c1bcd38164b5);
+            
+    
+            var marker_4a5487db619ece78e4e1ecd65e72d1a8 = L.marker(
+                [55.75848, 37.640755],
+                {
+}
+            ).addTo(map_ecb33fa3bab448f2e4c9e10b54f2a488);
+        
+    
+            var icon_61f15e58d98b556dea146d29a7aa2e91 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "cutlery",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_527f5c7c842c5d28f0b5489b211ec522 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_6f973fd76b5523d76d0acf0abb43dd42 = $(`<div id="html_6f973fd76b5523d76d0acf0abb43dd42" style="width: 100.0%; height: 100.0%;">         <b>Ramen-Ten</b><br>         <b>Rating:</b> 5.0/5<br>         <b>Average Price:</b> 2000.0<br>         <b>Address:</b> Покровка, 4<br>         </div>`)[0];
+                popup_527f5c7c842c5d28f0b5489b211ec522.setContent(html_6f973fd76b5523d76d0acf0abb43dd42);
+            
+        
+
+        marker_4a5487db619ece78e4e1ecd65e72d1a8.bindPopup(popup_527f5c7c842c5d28f0b5489b211ec522)
+        ;
+
+        
+    
+    
+            marker_4a5487db619ece78e4e1ecd65e72d1a8.bindTooltip(
+                `<div>
+                     Ramen-Ten
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_4a5487db619ece78e4e1ecd65e72d1a8.setIcon(icon_61f15e58d98b556dea146d29a7aa2e91);
+            
+    
+            var marker_e9b3995c912a19675ab7ff222b301d6b = L.marker(
+                [55.75818459298133, 37.6390275291044],
+                {
+}
+            ).addTo(map_ecb33fa3bab448f2e4c9e10b54f2a488);
+        
+    
+            var icon_020f6473233a581c1e84ec3f28c1fbd7 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "cutlery",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_d4d6c9a58b13391351a5983a4a21d20b = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_8fbdc39afbc3b28cabeb29926b3942e3 = $(`<div id="html_8fbdc39afbc3b28cabeb29926b3942e3" style="width: 100.0%; height: 100.0%;">         <b>Pauwel Kwak Pub</b><br>         <b>Rating:</b> 4.9/5<br>         <b>Average Price:</b> 3000.0<br>         <b>Address:</b> Покровка, д. 2/1, стр. 1<br>         </div>`)[0];
+                popup_d4d6c9a58b13391351a5983a4a21d20b.setContent(html_8fbdc39afbc3b28cabeb29926b3942e3);
+            
+        
+
+        marker_e9b3995c912a19675ab7ff222b301d6b.bindPopup(popup_d4d6c9a58b13391351a5983a4a21d20b)
+        ;
+
+        
+    
+    
+            marker_e9b3995c912a19675ab7ff222b301d6b.bindTooltip(
+                `<div>
+                     Pauwel Kwak Pub
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_e9b3995c912a19675ab7ff222b301d6b.setIcon(icon_020f6473233a581c1e84ec3f28c1fbd7);
+            
+    
+            var marker_23243a4628240f6cfc32bc9371609b4f = L.marker(
+                [55.76847046466019, 37.68445595111286],
+                {
+}
+            ).addTo(map_ecb33fa3bab448f2e4c9e10b54f2a488);
+        
+    
+            var icon_27b4a9909991a4bb1b6818e8ade398db = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "cutlery",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_efa1a68679573089bfa0bb876815d755 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_d47effc6803eec6dd2de7847b56f6fb2 = $(`<div id="html_d47effc6803eec6dd2de7847b56f6fb2" style="width: 100.0%; height: 100.0%;">         <b>Nagoya</b><br>         <b>Rating:</b> 4.8/5<br>         <b>Average Price:</b> 700.0<br>         <b>Address:</b> Старокирочный пер., 16/2, стр. 1<br>         </div>`)[0];
+                popup_efa1a68679573089bfa0bb876815d755.setContent(html_d47effc6803eec6dd2de7847b56f6fb2);
+            
+        
+
+        marker_23243a4628240f6cfc32bc9371609b4f.bindPopup(popup_efa1a68679573089bfa0bb876815d755)
+        ;
+
+        
+    
+    
+            marker_23243a4628240f6cfc32bc9371609b4f.bindTooltip(
+                `<div>
+                     Nagoya
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_23243a4628240f6cfc32bc9371609b4f.setIcon(icon_27b4a9909991a4bb1b6818e8ade398db);
+            
+    
+            var marker_44eed3de8875480fcdaef95df7d94fb2 = L.marker(
+                [55.80684684231184, 37.583570903544405],
+                {
+}
+            ).addTo(map_ecb33fa3bab448f2e4c9e10b54f2a488);
+        
+    
+            var icon_0327338cde4d50b354c81ded06119d37 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "cutlery",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_5737c593576ee917539b6ea33d878d27 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_bf9fc601b3c105ce4e2352f0e1da7998 = $(`<div id="html_bf9fc601b3c105ce4e2352f0e1da7998" style="width: 100.0%; height: 100.0%;">         <b>Melt Me</b><br>         <b>Rating:</b> 5.0/5<br>         <b>Average Price:</b> 2000.0<br>         <b>Address:</b> Пространство «Хлебозавод № 9»<br>         </div>`)[0];
+                popup_5737c593576ee917539b6ea33d878d27.setContent(html_bf9fc601b3c105ce4e2352f0e1da7998);
+            
+        
+
+        marker_44eed3de8875480fcdaef95df7d94fb2.bindPopup(popup_5737c593576ee917539b6ea33d878d27)
+        ;
+
+        
+    
+    
+            marker_44eed3de8875480fcdaef95df7d94fb2.bindTooltip(
+                `<div>
+                     Melt Me
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_44eed3de8875480fcdaef95df7d94fb2.setIcon(icon_0327338cde4d50b354c81ded06119d37);
+            
+    
+            var marker_15b2b831946c0877061a4ae3524c3b71 = L.marker(
+                [55.736298, 37.640681],
+                {
+}
+            ).addTo(map_ecb33fa3bab448f2e4c9e10b54f2a488);
+        
+    
+            var icon_d4905eb35062faced187f65d36138392 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "cutlery",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_c861c987ea78594448ade03519698f95 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_51bfd797f659d7751c5c28e807261831 = $(`<div id="html_51bfd797f659d7751c5c28e807261831" style="width: 100.0%; height: 100.0%;">         <b>Бутчер</b><br>         <b>Rating:</b> 5.0/5<br>         <b>Average Price:</b> 6000.0<br>         <b>Address:</b> Садовническая набережная, дом 75<br>         </div>`)[0];
+                popup_c861c987ea78594448ade03519698f95.setContent(html_51bfd797f659d7751c5c28e807261831);
+            
+        
+
+        marker_15b2b831946c0877061a4ae3524c3b71.bindPopup(popup_c861c987ea78594448ade03519698f95)
+        ;
+
+        
+    
+    
+            marker_15b2b831946c0877061a4ae3524c3b71.bindTooltip(
+                `<div>
+                     Бутчер
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_15b2b831946c0877061a4ae3524c3b71.setIcon(icon_d4905eb35062faced187f65d36138392);
+            
+    
+            var marker_e1ae887281cb358fbcef0306c1590301 = L.marker(
+                [55.7571734966654, 37.65849438084174],
+                {
+}
+            ).addTo(map_ecb33fa3bab448f2e4c9e10b54f2a488);
+        
+    
+            var icon_b559c8d63d3794118839886c7b8f6e76 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "cutlery",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_305eea0f880aaa986fe2344c910899d2 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_4117f67c2fef8504fcc33b8cba8ec319 = $(`<div id="html_4117f67c2fef8504fcc33b8cba8ec319" style="width: 100.0%; height: 100.0%;">         <b>Tehnikum</b><br>         <b>Rating:</b> 4.4/5<br>         <b>Average Price:</b> 1000.0<br>         <b>Address:</b> ул. Земляной Вал, 33<br>         </div>`)[0];
+                popup_305eea0f880aaa986fe2344c910899d2.setContent(html_4117f67c2fef8504fcc33b8cba8ec319);
+            
+        
+
+        marker_e1ae887281cb358fbcef0306c1590301.bindPopup(popup_305eea0f880aaa986fe2344c910899d2)
+        ;
+
+        
+    
+    
+            marker_e1ae887281cb358fbcef0306c1590301.bindTooltip(
+                `<div>
+                     Tehnikum
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_e1ae887281cb358fbcef0306c1590301.setIcon(icon_b559c8d63d3794118839886c7b8f6e76);
+            
+    
+            var marker_6e28a5b8abbb19505f0853b550fdc33d = L.marker(
+                [55.82768284269375, 37.63115632513559],
+                {
+}
+            ).addTo(map_ecb33fa3bab448f2e4c9e10b54f2a488);
+        
+    
+            var icon_6bfeef1e802d67d2003670fdb0b88a7e = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "cutlery",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_8cb7a4eee427540b7b24f558db9fb810 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_da67b25dc8a8e97b6e7f301c37f25b71 = $(`<div id="html_da67b25dc8a8e97b6e7f301c37f25b71" style="width: 100.0%; height: 100.0%;">         <b>Вареничная № 1</b><br>         <b>Rating:</b> 4.6/5<br>         <b>Average Price:</b> 1200.0<br>         <b>Address:</b> ВДНХ<br>         </div>`)[0];
+                popup_8cb7a4eee427540b7b24f558db9fb810.setContent(html_da67b25dc8a8e97b6e7f301c37f25b71);
+            
+        
+
+        marker_6e28a5b8abbb19505f0853b550fdc33d.bindPopup(popup_8cb7a4eee427540b7b24f558db9fb810)
+        ;
+
+        
+    
+    
+            marker_6e28a5b8abbb19505f0853b550fdc33d.bindTooltip(
+                `<div>
+                     Вареничная № 1
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_6e28a5b8abbb19505f0853b550fdc33d.setIcon(icon_6bfeef1e802d67d2003670fdb0b88a7e);
+            
+    
+            var marker_b0458f67b1c409d12425900a77c47982 = L.marker(
+                [55.76479744057354, 37.65794918739165],
+                {
+}
+            ).addTo(map_ecb33fa3bab448f2e4c9e10b54f2a488);
+        
+    
+            var icon_f7a750d7e75241caf58e2e95b6231e34 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "cutlery",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_370839976b36302a7c25c9039c24e5eb = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_471161a4a429bffd19c5cf6952323f31 = $(`<div id="html_471161a4a429bffd19c5cf6952323f31" style="width: 100.0%; height: 100.0%;">         <b>Florentini City Cafe</b><br>         <b>Rating:</b> 4.8/5<br>         <b>Average Price:</b> 3000.0<br>         <b>Address:</b> Старая Басманная ул., 9, корп. 1<br>         </div>`)[0];
+                popup_370839976b36302a7c25c9039c24e5eb.setContent(html_471161a4a429bffd19c5cf6952323f31);
+            
+        
+
+        marker_b0458f67b1c409d12425900a77c47982.bindPopup(popup_370839976b36302a7c25c9039c24e5eb)
+        ;
+
+        
+    
+    
+            marker_b0458f67b1c409d12425900a77c47982.bindTooltip(
+                `<div>
+                     Florentini City Cafe
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_b0458f67b1c409d12425900a77c47982.setIcon(icon_f7a750d7e75241caf58e2e95b6231e34);
+            
+    
+            var marker_6c76e5a9015d722198a4369a11c5a523 = L.marker(
+                [55.73978255854537, 37.65402160584927],
+                {
+}
+            ).addTo(map_ecb33fa3bab448f2e4c9e10b54f2a488);
+        
+    
+            var icon_02fa0b0e6faeedad6938ff9e46edaf6b = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "cutlery",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_c5b9fdc8ca0f092c8e62e68ec7261840 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_292921f936a08dc07babda6b7577493f = $(`<div id="html_292921f936a08dc07babda6b7577493f" style="width: 100.0%; height: 100.0%;">         <b>Ресторан Мегрелия</b><br>         <b>Rating:</b> 4.5/5<br>         <b>Average Price:</b> 2000.0<br>         <b>Address:</b> улица Большие Каменщики, дом 1<br>         </div>`)[0];
+                popup_c5b9fdc8ca0f092c8e62e68ec7261840.setContent(html_292921f936a08dc07babda6b7577493f);
+            
+        
+
+        marker_6c76e5a9015d722198a4369a11c5a523.bindPopup(popup_c5b9fdc8ca0f092c8e62e68ec7261840)
+        ;
+
+        
+    
+    
+            marker_6c76e5a9015d722198a4369a11c5a523.bindTooltip(
+                `<div>
+                     Ресторан Мегрелия
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_6c76e5a9015d722198a4369a11c5a523.setIcon(icon_02fa0b0e6faeedad6938ff9e46edaf6b);
+            
+    
+            var marker_022fc141f7c4228b7d7a9a44f1b81d9b = L.marker(
+                [55.741429, 37.656585],
+                {
+}
+            ).addTo(map_ecb33fa3bab448f2e4c9e10b54f2a488);
+        
+    
+            var icon_e579a4a13ba4a6329e78bed26fe1aba4 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "cutlery",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_8f6aea97c9969908a015d2219d20c744 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_a5dd4955e9990ab863ab1c5a3d7d47ab = $(`<div id="html_a5dd4955e9990ab863ab1c5a3d7d47ab" style="width: 100.0%; height: 100.0%;">         <b>Хинкали & Vino</b><br>         <b>Rating:</b> 4.8/5<br>         <b>Average Price:</b> 700.0<br>         <b>Address:</b> Таганская ул., 1<br>         </div>`)[0];
+                popup_8f6aea97c9969908a015d2219d20c744.setContent(html_a5dd4955e9990ab863ab1c5a3d7d47ab);
+            
+        
+
+        marker_022fc141f7c4228b7d7a9a44f1b81d9b.bindPopup(popup_8f6aea97c9969908a015d2219d20c744)
+        ;
+
+        
+    
+    
+            marker_022fc141f7c4228b7d7a9a44f1b81d9b.bindTooltip(
+                `<div>
+                     Хинкали & Vino
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_022fc141f7c4228b7d7a9a44f1b81d9b.setIcon(icon_e579a4a13ba4a6329e78bed26fe1aba4);
+            
+    
+            var marker_2481be5f1197902cc42f96cc8e9e05b4 = L.marker(
+                [55.73052, 37.625627],
+                {
+}
+            ).addTo(map_ecb33fa3bab448f2e4c9e10b54f2a488);
+        
+    
+            var icon_31a093c2536ce70814c81cf500890f01 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "cutlery",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_f1626ecc948746b08eb58a8b1bc833dd = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_de0dab8b7c55571814d7bcfdff4a99e5 = $(`<div id="html_de0dab8b7c55571814d7bcfdff4a99e5" style="width: 100.0%; height: 100.0%;">         <b>Frankie</b><br>         <b>Rating:</b> 4.7/5<br>         <b>Average Price:</b> 1200.0<br>         <b>Address:</b> Пятницкая ул., 82/34, стр. 1<br>         </div>`)[0];
+                popup_f1626ecc948746b08eb58a8b1bc833dd.setContent(html_de0dab8b7c55571814d7bcfdff4a99e5);
+            
+        
+
+        marker_2481be5f1197902cc42f96cc8e9e05b4.bindPopup(popup_f1626ecc948746b08eb58a8b1bc833dd)
+        ;
+
+        
+    
+    
+            marker_2481be5f1197902cc42f96cc8e9e05b4.bindTooltip(
+                `<div>
+                     Frankie
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_2481be5f1197902cc42f96cc8e9e05b4.setIcon(icon_31a093c2536ce70814c81cf500890f01);
+            
+    
+            var marker_342cad8abd1859b7c3c80d76f304d8ce = L.marker(
+                [55.70869339802153, 37.6556237559999],
+                {
+}
+            ).addTo(map_ecb33fa3bab448f2e4c9e10b54f2a488);
+        
+    
+            var icon_b54159aa503016cf9700d8d1195abd5a = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "cutlery",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_78991e21be6d3f37c813c21227d3b644 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_7ed69c5c67c9d0d21e77b44840e33381 = $(`<div id="html_7ed69c5c67c9d0d21e77b44840e33381" style="width: 100.0%; height: 100.0%;">         <b>ВЕНАХИ</b><br>         <b>Rating:</b> 4.4/5<br>         <b>Average Price:</b> 1200.0<br>         <b>Address:</b> 3-й Автозаводский 19/1<br>         </div>`)[0];
+                popup_78991e21be6d3f37c813c21227d3b644.setContent(html_7ed69c5c67c9d0d21e77b44840e33381);
+            
+        
+
+        marker_342cad8abd1859b7c3c80d76f304d8ce.bindPopup(popup_78991e21be6d3f37c813c21227d3b644)
+        ;
+
+        
+    
+    
+            marker_342cad8abd1859b7c3c80d76f304d8ce.bindTooltip(
+                `<div>
+                     ВЕНАХИ
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_342cad8abd1859b7c3c80d76f304d8ce.setIcon(icon_b54159aa503016cf9700d8d1195abd5a);
+            
+    
+            var marker_3d8cbac55ac4fdaf9675ce3dc5a9bd5a = L.marker(
+                [55.896259, 37.397059],
+                {
+}
+            ).addTo(map_ecb33fa3bab448f2e4c9e10b54f2a488);
+        
+    
+            var icon_bbd2e197865ef0313614c5ae71d04a09 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "cutlery",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_b930073b6ff901a078653c8d1d9ae863 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_2fe7336eeeef6906bfa81242b0c1ae65 = $(`<div id="html_2fe7336eeeef6906bfa81242b0c1ae65" style="width: 100.0%; height: 100.0%;">         <b>БарБошко Loft 11</b><br>         <b>Rating:</b> 4.8/5<br>         <b>Average Price:</b> 3000.0<br>         <b>Address:</b> ул. Соловьиная Роща, 11<br>         </div>`)[0];
+                popup_b930073b6ff901a078653c8d1d9ae863.setContent(html_2fe7336eeeef6906bfa81242b0c1ae65);
+            
+        
+
+        marker_3d8cbac55ac4fdaf9675ce3dc5a9bd5a.bindPopup(popup_b930073b6ff901a078653c8d1d9ae863)
+        ;
+
+        
+    
+    
+            marker_3d8cbac55ac4fdaf9675ce3dc5a9bd5a.bindTooltip(
+                `<div>
+                     БарБошко Loft 11
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_3d8cbac55ac4fdaf9675ce3dc5a9bd5a.setIcon(icon_bbd2e197865ef0313614c5ae71d04a09);
+            
+    
+            var marker_aff63bc9ee9de1040106fe3be4b5d9cc = L.marker(
+                [55.700021, 37.634009],
+                {
+}
+            ).addTo(map_ecb33fa3bab448f2e4c9e10b54f2a488);
+        
+    
+            var icon_742cf795b6f9ca92affa1f304678ffa5 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "cutlery",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_fa8d0a7eab435f685794d25877b78ae1 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_69167e85d21e9a5eadbec5218d8db3c7 = $(`<div id="html_69167e85d21e9a5eadbec5218d8db3c7" style="width: 100.0%; height: 100.0%;">         <b>Eastoria</b><br>         <b>Rating:</b> 4.5/5<br>         <b>Average Price:</b> 2000.0<br>         <b>Address:</b> Архитектора Щусева 2к3<br>         </div>`)[0];
+                popup_fa8d0a7eab435f685794d25877b78ae1.setContent(html_69167e85d21e9a5eadbec5218d8db3c7);
+            
+        
+
+        marker_aff63bc9ee9de1040106fe3be4b5d9cc.bindPopup(popup_fa8d0a7eab435f685794d25877b78ae1)
+        ;
+
+        
+    
+    
+            marker_aff63bc9ee9de1040106fe3be4b5d9cc.bindTooltip(
+                `<div>
+                     Eastoria
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_aff63bc9ee9de1040106fe3be4b5d9cc.setIcon(icon_742cf795b6f9ca92affa1f304678ffa5);
+            
+    
+            var marker_741f7063c5cef16cc3212fdb07b94126 = L.marker(
+                [55.72686297992328, 37.62594461354671],
+                {
+}
+            ).addTo(map_ecb33fa3bab448f2e4c9e10b54f2a488);
+        
+    
+            var icon_9ae5e024bd97394d2b250934b0c45ff7 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "cutlery",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_73f8ea7e82ebfc74bb941653bc6021e9 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_da3d4ffa5290f7adc59431da1d4fa461 = $(`<div id="html_da3d4ffa5290f7adc59431da1d4fa461" style="width: 100.0%; height: 100.0%;">         <b>FARШ</b><br>         <b>Rating:</b> 4.5/5<br>         <b>Average Price:</b> 700.0<br>         <b>Address:</b> Большая Серпуховская ул., 17, стр. 1<br>         </div>`)[0];
+                popup_73f8ea7e82ebfc74bb941653bc6021e9.setContent(html_da3d4ffa5290f7adc59431da1d4fa461);
+            
+        
+
+        marker_741f7063c5cef16cc3212fdb07b94126.bindPopup(popup_73f8ea7e82ebfc74bb941653bc6021e9)
+        ;
+
+        
+    
+    
+            marker_741f7063c5cef16cc3212fdb07b94126.bindTooltip(
+                `<div>
+                     FARШ
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_741f7063c5cef16cc3212fdb07b94126.setIcon(icon_9ae5e024bd97394d2b250934b0c45ff7);
+            
+    
+            var marker_ff1c45b9ddcf7282dca16b35708639fc = L.marker(
+                [55.60332363149266, 37.49133825302124],
+                {
+}
+            ).addTo(map_ecb33fa3bab448f2e4c9e10b54f2a488);
+        
+    
+            var icon_55cd77226073d86888c680c7802d8d44 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "cutlery",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_d11420d6b6bfb7e16c1d0aa317e29cd3 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_ab27328fa918368dcca900846b7b3e95 = $(`<div id="html_ab27328fa918368dcca900846b7b3e95" style="width: 100.0%; height: 100.0%;">         <b>Мясо&Рыба</b><br>         <b>Rating:</b> 4.8/5<br>         <b>Average Price:</b> 3000.0<br>         <b>Address:</b> 21-й км Калужского ш.<br>         </div>`)[0];
+                popup_d11420d6b6bfb7e16c1d0aa317e29cd3.setContent(html_ab27328fa918368dcca900846b7b3e95);
+            
+        
+
+        marker_ff1c45b9ddcf7282dca16b35708639fc.bindPopup(popup_d11420d6b6bfb7e16c1d0aa317e29cd3)
+        ;
+
+        
+    
+    
+            marker_ff1c45b9ddcf7282dca16b35708639fc.bindTooltip(
+                `<div>
+                     Мясо&Рыба
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_ff1c45b9ddcf7282dca16b35708639fc.setIcon(icon_55cd77226073d86888c680c7802d8d44);
+            
+    
+            var marker_a8b70d3db069edaedc0ba7e569c1a346 = L.marker(
+                [55.796321, 37.58153],
+                {
+}
+            ).addTo(map_ecb33fa3bab448f2e4c9e10b54f2a488);
+        
+    
+            var icon_41c718ea0224b826e38808165f338ec5 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "cutlery",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_bbc5b58159ffc9e30fa17ed7e309d475 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_f422ac2e3beea62a6c685911f5c67ba3 = $(`<div id="html_f422ac2e3beea62a6c685911f5c67ba3" style="width: 100.0%; height: 100.0%;">         <b>Slava Restaurant</b><br>         <b>Rating:</b> 4.6/5<br>         <b>Average Price:</b> 1200.0<br>         <b>Address:</b> Вятская, 27с7<br>         </div>`)[0];
+                popup_bbc5b58159ffc9e30fa17ed7e309d475.setContent(html_f422ac2e3beea62a6c685911f5c67ba3);
+            
+        
+
+        marker_a8b70d3db069edaedc0ba7e569c1a346.bindPopup(popup_bbc5b58159ffc9e30fa17ed7e309d475)
+        ;
+
+        
+    
+    
+            marker_a8b70d3db069edaedc0ba7e569c1a346.bindTooltip(
+                `<div>
+                     Slava Restaurant
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_a8b70d3db069edaedc0ba7e569c1a346.setIcon(icon_41c718ea0224b826e38808165f338ec5);
+            
+    
+            var marker_0f7c101ef0234b2df442c0f2187a6301 = L.marker(
+                [55.73843074720799, 37.40971326828003],
+                {
+}
+            ).addTo(map_ecb33fa3bab448f2e4c9e10b54f2a488);
+        
+    
+            var icon_1b7fff115f149a2d3ddfbb9e9bfe618a = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "cutlery",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_213f490be42ed6a519a5576c78ac9612 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_c3eedaf263f43ea54abd47af77bbc277 = $(`<div id="html_c3eedaf263f43ea54abd47af77bbc277" style="width: 100.0%; height: 100.0%;">         <b>Мясо & Рыба</b><br>         <b>Rating:</b> 4.8/5<br>         <b>Average Price:</b> 2200.0<br>         <b>Address:</b> Ярцевская ул., 19<br>         </div>`)[0];
+                popup_213f490be42ed6a519a5576c78ac9612.setContent(html_c3eedaf263f43ea54abd47af77bbc277);
+            
+        
+
+        marker_0f7c101ef0234b2df442c0f2187a6301.bindPopup(popup_213f490be42ed6a519a5576c78ac9612)
+        ;
+
+        
+    
+    
+            marker_0f7c101ef0234b2df442c0f2187a6301.bindTooltip(
+                `<div>
+                     Мясо & Рыба
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_0f7c101ef0234b2df442c0f2187a6301.setIcon(icon_1b7fff115f149a2d3ddfbb9e9bfe618a);
+            
+    
+            var marker_02f3e82e871dc50470ea922c5acb04e9 = L.marker(
+                [55.7967436300964, 37.58195224061989],
+                {
+}
+            ).addTo(map_ecb33fa3bab448f2e4c9e10b54f2a488);
+        
+    
+            var icon_936e76e60454e19a33b64a6e68bfcb21 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "cutlery",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_92ea6ba2b7d46acece9c405e28893c5c = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_d3cb85ceeedf587285f0b1db809ab474 = $(`<div id="html_d3cb85ceeedf587285f0b1db809ab474" style="width: 100.0%; height: 100.0%;">         <b>Ma Mi</b><br>         <b>Rating:</b> 4.9/5<br>         <b>Average Price:</b> 800.0<br>         <b>Address:</b> Вятская ул., 27с2<br>         </div>`)[0];
+                popup_92ea6ba2b7d46acece9c405e28893c5c.setContent(html_d3cb85ceeedf587285f0b1db809ab474);
+            
+        
+
+        marker_02f3e82e871dc50470ea922c5acb04e9.bindPopup(popup_92ea6ba2b7d46acece9c405e28893c5c)
+        ;
+
+        
+    
+    
+            marker_02f3e82e871dc50470ea922c5acb04e9.bindTooltip(
+                `<div>
+                     Ma Mi
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_02f3e82e871dc50470ea922c5acb04e9.setIcon(icon_936e76e60454e19a33b64a6e68bfcb21);
+            
+    
+            var marker_73ea3418646a9d462e9dc0718885446f = L.marker(
+                [55.661979, 37.418481],
+                {
+}
+            ).addTo(map_ecb33fa3bab448f2e4c9e10b54f2a488);
+        
+    
+            var icon_e0387ee4a6ea24d9b850c93e97103d46 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "cutlery",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_fd806cea33f0e350447904089cce4dfc = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_7ac405e35c8bf9f3defa2ea1769894e1 = $(`<div id="html_7ac405e35c8bf9f3defa2ea1769894e1" style="width: 100.0%; height: 100.0%;">         <b>Seemorrow</b><br>         <b>Rating:</b> 4.6/5<br>         <b>Average Price:</b> 2000.0<br>         <b>Address:</b> Боровское ш., 2, корп. 5<br>         </div>`)[0];
+                popup_fd806cea33f0e350447904089cce4dfc.setContent(html_7ac405e35c8bf9f3defa2ea1769894e1);
+            
+        
+
+        marker_73ea3418646a9d462e9dc0718885446f.bindPopup(popup_fd806cea33f0e350447904089cce4dfc)
+        ;
+
+        
+    
+    
+            marker_73ea3418646a9d462e9dc0718885446f.bindTooltip(
+                `<div>
+                     Seemorrow
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_73ea3418646a9d462e9dc0718885446f.setIcon(icon_e0387ee4a6ea24d9b850c93e97103d46);
+            
+    
+            var marker_0732acb0d651f9353c82fa2eb645fef0 = L.marker(
+                [55.804875, 37.525428],
+                {
+}
+            ).addTo(map_ecb33fa3bab448f2e4c9e10b54f2a488);
+        
+    
+            var icon_89917a353dd2cc2af01fed490bd33eb7 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "cutlery",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_47f249cf310777becd28ff4a31e1b0a0 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_66c494b1bda97e9499f5b0956799ff68 = $(`<div id="html_66c494b1bda97e9499f5b0956799ff68" style="width: 100.0%; height: 100.0%;">         <b>ChiliChukin</b><br>         <b>Rating:</b> 5.0/5<br>         <b>Average Price:</b> 1500.0<br>         <b>Address:</b> ул. Лизы Чайкиной, 5<br>         </div>`)[0];
+                popup_47f249cf310777becd28ff4a31e1b0a0.setContent(html_66c494b1bda97e9499f5b0956799ff68);
+            
+        
+
+        marker_0732acb0d651f9353c82fa2eb645fef0.bindPopup(popup_47f249cf310777becd28ff4a31e1b0a0)
+        ;
+
+        
+    
+    
+            marker_0732acb0d651f9353c82fa2eb645fef0.bindTooltip(
+                `<div>
+                     ChiliChukin
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_0732acb0d651f9353c82fa2eb645fef0.setIcon(icon_89917a353dd2cc2af01fed490bd33eb7);
+            
+    
+            var marker_82e4c12dd4fdce78cd47b4aa8a50e57d = L.marker(
+                [55.78848456274158, 37.61805884385303],
+                {
+}
+            ).addTo(map_ecb33fa3bab448f2e4c9e10b54f2a488);
+        
+    
+            var icon_4c091b291f1a857af9dc9c66ced8c111 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "cutlery",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_a768eb0f024602bb939c152180271615 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_560914189533454ec417fd26a03df057 = $(`<div id="html_560914189533454ec417fd26a03df057" style="width: 100.0%; height: 100.0%;">         <b>Oxus</b><br>         <b>Rating:</b> 4.8/5<br>         <b>Average Price:</b> 2200.0<br>         <b>Address:</b> Трифоновская Ул., д. 24<br>         </div>`)[0];
+                popup_a768eb0f024602bb939c152180271615.setContent(html_560914189533454ec417fd26a03df057);
+            
+        
+
+        marker_82e4c12dd4fdce78cd47b4aa8a50e57d.bindPopup(popup_a768eb0f024602bb939c152180271615)
+        ;
+
+        
+    
+    
+            marker_82e4c12dd4fdce78cd47b4aa8a50e57d.bindTooltip(
+                `<div>
+                     Oxus
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_82e4c12dd4fdce78cd47b4aa8a50e57d.setIcon(icon_4c091b291f1a857af9dc9c66ced8c111);
+            
+    
+            var marker_e62efc3d0314c4f448ef48e9a3f1abed = L.marker(
+                [55.755684, 37.600348],
+                {
+}
+            ).addTo(map_ecb33fa3bab448f2e4c9e10b54f2a488);
+        
+    
+            var icon_073856798287ce5791d316e057c82cb4 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "cutlery",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_3f2d1f902ad21c776899465d3d635c25 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_433630887c9e1e6735fdc087c03239d0 = $(`<div id="html_433630887c9e1e6735fdc087c03239d0" style="width: 100.0%; height: 100.0%;">         <b>Винный базар</b><br>         <b>Rating:</b> 4.8/5<br>         <b>Average Price:</b> 1500.0<br>         <b>Address:</b> Никитский бул., 12<br>         </div>`)[0];
+                popup_3f2d1f902ad21c776899465d3d635c25.setContent(html_433630887c9e1e6735fdc087c03239d0);
+            
+        
+
+        marker_e62efc3d0314c4f448ef48e9a3f1abed.bindPopup(popup_3f2d1f902ad21c776899465d3d635c25)
+        ;
+
+        
+    
+    
+            marker_e62efc3d0314c4f448ef48e9a3f1abed.bindTooltip(
+                `<div>
+                     Винный базар
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_e62efc3d0314c4f448ef48e9a3f1abed.setIcon(icon_073856798287ce5791d316e057c82cb4);
+            
+    
+            var marker_2fb441efa99a92584ddbe6061b508324 = L.marker(
+                [55.76267811034507, 37.60672941934884],
+                {
+}
+            ).addTo(map_ecb33fa3bab448f2e4c9e10b54f2a488);
+        
+    
+            var icon_0ad6604dc958fd1e15a787acbd1d70cf = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "cutlery",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_7350c3b4796ee4be15f020433fc2665b = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_4126dedc0ed63804cd02c6379f684421 = $(`<div id="html_4126dedc0ed63804cd02c6379f684421" style="width: 100.0%; height: 100.0%;">         <b>Все твои друзья</b><br>         <b>Rating:</b> 4.7/5<br>         <b>Average Price:</b> 700.0<br>         <b>Address:</b> Малый Гнездниковский пер., 12/27<br>         </div>`)[0];
+                popup_7350c3b4796ee4be15f020433fc2665b.setContent(html_4126dedc0ed63804cd02c6379f684421);
+            
+        
+
+        marker_2fb441efa99a92584ddbe6061b508324.bindPopup(popup_7350c3b4796ee4be15f020433fc2665b)
+        ;
+
+        
+    
+    
+            marker_2fb441efa99a92584ddbe6061b508324.bindTooltip(
+                `<div>
+                     Все твои друзья
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_2fb441efa99a92584ddbe6061b508324.setIcon(icon_0ad6604dc958fd1e15a787acbd1d70cf);
+            
+    
+            var marker_a53a5637e761e2f6c5550a66a9f85247 = L.marker(
+                [55.65337, 37.422066],
+                {
+}
+            ).addTo(map_ecb33fa3bab448f2e4c9e10b54f2a488);
+        
+    
+            var icon_72b2291bc5ae94a8e864ecac0747bcd7 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "cutlery",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_409a62503a4c690d70afefb3ff4ebe1d = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_34b517b869f87b9b8ca176c1abab313b = $(`<div id="html_34b517b869f87b9b8ca176c1abab313b" style="width: 100.0%; height: 100.0%;">         <b>Q Lounge</b><br>         <b>Rating:</b> 5.0/5<br>         <b>Average Price:</b> 2200.0<br>         <b>Address:</b> ул. Зеленая горка, 1а<br>         </div>`)[0];
+                popup_409a62503a4c690d70afefb3ff4ebe1d.setContent(html_34b517b869f87b9b8ca176c1abab313b);
+            
+        
+
+        marker_a53a5637e761e2f6c5550a66a9f85247.bindPopup(popup_409a62503a4c690d70afefb3ff4ebe1d)
+        ;
+
+        
+    
+    
+            marker_a53a5637e761e2f6c5550a66a9f85247.bindTooltip(
+                `<div>
+                     Q Lounge
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_a53a5637e761e2f6c5550a66a9f85247.setIcon(icon_72b2291bc5ae94a8e864ecac0747bcd7);
+            
+    
+            var marker_d029bdeccd1bc9b8ae551b5ed3ee1896 = L.marker(
+                [55.75817694127272, 37.6248385574403],
+                {
+}
+            ).addTo(map_ecb33fa3bab448f2e4c9e10b54f2a488);
+        
+    
+            var icon_ce26d0d0fb1141c0e7ee56352f39a8a6 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "cutlery",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_fcbbd572707ee72e86fbae8cb6c643fd = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_c776152f5a5225c6af68600c19f8189d = $(`<div id="html_c776152f5a5225c6af68600c19f8189d" style="width: 100.0%; height: 100.0%;">         <b>Papa's Bar & Grill</b><br>         <b>Rating:</b> 4.6/5<br>         <b>Average Price:</b> 0.0<br>         <b>Address:</b> Никольская ул., 10<br>         </div>`)[0];
+                popup_fcbbd572707ee72e86fbae8cb6c643fd.setContent(html_c776152f5a5225c6af68600c19f8189d);
+            
+        
+
+        marker_d029bdeccd1bc9b8ae551b5ed3ee1896.bindPopup(popup_fcbbd572707ee72e86fbae8cb6c643fd)
+        ;
+
+        
+    
+    
+            marker_d029bdeccd1bc9b8ae551b5ed3ee1896.bindTooltip(
+                `<div>
+                     Papa's Bar & Grill
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_d029bdeccd1bc9b8ae551b5ed3ee1896.setIcon(icon_ce26d0d0fb1141c0e7ee56352f39a8a6);
+            
+    
+            var marker_802b22ca9c3c0f170eb40eebbc9b96c2 = L.marker(
+                [55.83563944485804, 37.49015074555114],
+                {
+}
+            ).addTo(map_ecb33fa3bab448f2e4c9e10b54f2a488);
+        
+    
+            var icon_1e9cfa4f2b58107b179f31af30a98975 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "cutlery",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_af59dce49cf45cdf33ad96a33f561b17 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_e722dfbb964eeacb413e0c2393283545 = $(`<div id="html_e722dfbb964eeacb413e0c2393283545" style="width: 100.0%; height: 100.0%;">         <b>Beertep</b><br>         <b>Rating:</b> 4.7/5<br>         <b>Average Price:</b> 700.0<br>         <b>Address:</b> ул. Адмирала Макарова, 6, стр. 13<br>         </div>`)[0];
+                popup_af59dce49cf45cdf33ad96a33f561b17.setContent(html_e722dfbb964eeacb413e0c2393283545);
+            
+        
+
+        marker_802b22ca9c3c0f170eb40eebbc9b96c2.bindPopup(popup_af59dce49cf45cdf33ad96a33f561b17)
+        ;
+
+        
+    
+    
+            marker_802b22ca9c3c0f170eb40eebbc9b96c2.bindTooltip(
+                `<div>
+                     Beertep
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_802b22ca9c3c0f170eb40eebbc9b96c2.setIcon(icon_1e9cfa4f2b58107b179f31af30a98975);
+            
+    
+            var marker_292493a80b4d64f11c28983287a94cc3 = L.marker(
+                [55.760419976696255, 37.64629658936778],
+                {
+}
+            ).addTo(map_ecb33fa3bab448f2e4c9e10b54f2a488);
+        
+    
+            var icon_c77516d801d0733853034b7c22f5c899 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "cutlery",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_2c2574babc9476707c74b26eb8e1f972 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_e0bc1579ed8f81e23d2c938970ff6be0 = $(`<div id="html_e0bc1579ed8f81e23d2c938970ff6be0" style="width: 100.0%; height: 100.0%;">         <b>Beer Mood</b><br>         <b>Rating:</b> 4.7/5<br>         <b>Average Price:</b> 700.0<br>         <b>Address:</b> Чистопрудный бул., 21<br>         </div>`)[0];
+                popup_2c2574babc9476707c74b26eb8e1f972.setContent(html_e0bc1579ed8f81e23d2c938970ff6be0);
+            
+        
+
+        marker_292493a80b4d64f11c28983287a94cc3.bindPopup(popup_2c2574babc9476707c74b26eb8e1f972)
+        ;
+
+        
+    
+    
+            marker_292493a80b4d64f11c28983287a94cc3.bindTooltip(
+                `<div>
+                     Beer Mood
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_292493a80b4d64f11c28983287a94cc3.setIcon(icon_c77516d801d0733853034b7c22f5c899);
+            
+    
+            var marker_2f46604ee1f1a7c40ace6c8adc4a3db7 = L.marker(
+                [55.771825, 37.619425],
+                {
+}
+            ).addTo(map_ecb33fa3bab448f2e4c9e10b54f2a488);
+        
+    
+            var icon_4ecbd29b0ab7b4b78143b2e494b2786a = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "cutlery",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_b3f7945be196e228835599d8b80f5027 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_cc56ec58aa3d31ab02afa6679bef7c43 = $(`<div id="html_cc56ec58aa3d31ab02afa6679bef7c43" style="width: 100.0%; height: 100.0%;">         <b>На кранах</b><br>         <b>Rating:</b> 4.9/5<br>         <b>Average Price:</b> 500.0<br>         <b>Address:</b> Цветной бул., 19, корп. 5<br>         </div>`)[0];
+                popup_b3f7945be196e228835599d8b80f5027.setContent(html_cc56ec58aa3d31ab02afa6679bef7c43);
+            
+        
+
+        marker_2f46604ee1f1a7c40ace6c8adc4a3db7.bindPopup(popup_b3f7945be196e228835599d8b80f5027)
+        ;
+
+        
+    
+    
+            marker_2f46604ee1f1a7c40ace6c8adc4a3db7.bindTooltip(
+                `<div>
+                     На кранах
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_2f46604ee1f1a7c40ace6c8adc4a3db7.setIcon(icon_4ecbd29b0ab7b4b78143b2e494b2786a);
+            
+    
+            var marker_0bb958f89f538bc498c8574dc5d63c97 = L.marker(
+                [55.727379747870735, 37.6096072632346],
+                {
+}
+            ).addTo(map_ecb33fa3bab448f2e4c9e10b54f2a488);
+        
+    
+            var icon_450c24365cbf591df88d585910992ced = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "cutlery",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_c1041908ba4d21c94a1b517afa3cb29b = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_fb5fc4d9374258c67be28d587fddd5ab = $(`<div id="html_fb5fc4d9374258c67be28d587fddd5ab" style="width: 100.0%; height: 100.0%;">         <b>Джон Донн</b><br>         <b>Rating:</b> 4.6/5<br>         <b>Average Price:</b> 700.0<br>         <b>Address:</b> Ленинский просп., 4<br>         </div>`)[0];
+                popup_c1041908ba4d21c94a1b517afa3cb29b.setContent(html_fb5fc4d9374258c67be28d587fddd5ab);
+            
+        
+
+        marker_0bb958f89f538bc498c8574dc5d63c97.bindPopup(popup_c1041908ba4d21c94a1b517afa3cb29b)
+        ;
+
+        
+    
+    
+            marker_0bb958f89f538bc498c8574dc5d63c97.bindTooltip(
+                `<div>
+                     Джон Донн
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_0bb958f89f538bc498c8574dc5d63c97.setIcon(icon_450c24365cbf591df88d585910992ced);
+            
+    
+            var marker_f858c1fb00541c84cf1f2e4d92012546 = L.marker(
+                [55.7604951654051, 37.66243334162367],
+                {
+}
+            ).addTo(map_ecb33fa3bab448f2e4c9e10b54f2a488);
+        
+    
+            var icon_5294f13ccfba13c9ff394e2eb18fbecf = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "cutlery",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_afc032d4e5d31ed6c759044b02d9582c = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_1768d760e1ff0f78b28505ac7a5d3864 = $(`<div id="html_1768d760e1ff0f78b28505ac7a5d3864" style="width: 100.0%; height: 100.0%;">         <b>Drunk Punk</b><br>         <b>Rating:</b> 4.7/5<br>         <b>Average Price:</b> 700.0<br>         <b>Address:</b> Нижний Сусальный пер., 5, стр. 2<br>         </div>`)[0];
+                popup_afc032d4e5d31ed6c759044b02d9582c.setContent(html_1768d760e1ff0f78b28505ac7a5d3864);
+            
+        
+
+        marker_f858c1fb00541c84cf1f2e4d92012546.bindPopup(popup_afc032d4e5d31ed6c759044b02d9582c)
+        ;
+
+        
+    
+    
+            marker_f858c1fb00541c84cf1f2e4d92012546.bindTooltip(
+                `<div>
+                     Drunk Punk
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_f858c1fb00541c84cf1f2e4d92012546.setIcon(icon_5294f13ccfba13c9ff394e2eb18fbecf);
+            
+    
+            var marker_29d49671684fa832994f476d5591f20b = L.marker(
+                [55.758043, 37.636388],
+                {
+}
+            ).addTo(map_ecb33fa3bab448f2e4c9e10b54f2a488);
+        
+    
+            var icon_1f3fbc97d9c7f95316b17e9d0564082f = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "cutlery",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_739e11e68be7223a41b0e01540f6d3ec = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_4dc154e716ae16139baf480173c0e59a = $(`<div id="html_4dc154e716ae16139baf480173c0e59a" style="width: 100.0%; height: 100.0%;">         <b>Дело не в вине</b><br>         <b>Rating:</b> 4.8/5<br>         <b>Average Price:</b> 2000.0<br>         <b>Address:</b> 13 с1 Maroseyka Street<br>         </div>`)[0];
+                popup_739e11e68be7223a41b0e01540f6d3ec.setContent(html_4dc154e716ae16139baf480173c0e59a);
+            
+        
+
+        marker_29d49671684fa832994f476d5591f20b.bindPopup(popup_739e11e68be7223a41b0e01540f6d3ec)
+        ;
+
+        
+    
+    
+            marker_29d49671684fa832994f476d5591f20b.bindTooltip(
+                `<div>
+                     Дело не в вине
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_29d49671684fa832994f476d5591f20b.setIcon(icon_1f3fbc97d9c7f95316b17e9d0564082f);
+            
+    
+            var marker_6bad5f6b8b89b73bafac156b5ac39633 = L.marker(
+                [55.71617443248329, 37.608787935141656],
+                {
+}
+            ).addTo(map_ecb33fa3bab448f2e4c9e10b54f2a488);
+        
+    
+            var icon_2f3c8d0f58456cb66067bf9739310474 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "cutlery",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_c67c4676c112846dd06924ce00e84eb5 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_74f53353da30ca243f0f44d07a83d719 = $(`<div id="html_74f53353da30ca243f0f44d07a83d719" style="width: 100.0%; height: 100.0%;">         <b>F-lounge</b><br>         <b>Rating:</b> 4.8/5<br>         <b>Average Price:</b> 1500.0<br>         <b>Address:</b> ул. Шухова, 21<br>         </div>`)[0];
+                popup_c67c4676c112846dd06924ce00e84eb5.setContent(html_74f53353da30ca243f0f44d07a83d719);
+            
+        
+
+        marker_6bad5f6b8b89b73bafac156b5ac39633.bindPopup(popup_c67c4676c112846dd06924ce00e84eb5)
+        ;
+
+        
+    
+    
+            marker_6bad5f6b8b89b73bafac156b5ac39633.bindTooltip(
+                `<div>
+                     F-lounge
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_6bad5f6b8b89b73bafac156b5ac39633.setIcon(icon_2f3c8d0f58456cb66067bf9739310474);
+            
+    
+            var marker_fb4974588d1cc95c39d3bda775649b70 = L.marker(
+                [55.71642674922346, 37.61238098144531],
+                {
+}
+            ).addTo(map_ecb33fa3bab448f2e4c9e10b54f2a488);
+        
+    
+            var icon_517db378ddd6ab2da5d406132cf3c76f = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "cutlery",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_af08e5149da88f5b489bbc49cee99e58 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_d0ad44717f82639605196618701e619b = $(`<div id="html_d0ad44717f82639605196618701e619b" style="width: 100.0%; height: 100.0%;">         <b>ГНЕZДО Lounge&Bar</b><br>         <b>Rating:</b> 4.9/5<br>         <b>Average Price:</b> 1500.0<br>         <b>Address:</b> улица Лестева 18<br>         </div>`)[0];
+                popup_af08e5149da88f5b489bbc49cee99e58.setContent(html_d0ad44717f82639605196618701e619b);
+            
+        
+
+        marker_fb4974588d1cc95c39d3bda775649b70.bindPopup(popup_af08e5149da88f5b489bbc49cee99e58)
+        ;
+
+        
+    
+    
+            marker_fb4974588d1cc95c39d3bda775649b70.bindTooltip(
+                `<div>
+                     ГНЕZДО Lounge&Bar
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_fb4974588d1cc95c39d3bda775649b70.setIcon(icon_517db378ddd6ab2da5d406132cf3c76f);
+            
+    
+            var marker_99c9579e5184451648867e9936f1ccb2 = L.marker(
+                [55.773802, 37.5786],
+                {
+}
+            ).addTo(map_ecb33fa3bab448f2e4c9e10b54f2a488);
+        
+    
+            var icon_31459186067b67eceff5a71a5c71b18d = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "cutlery",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_4c9d0ee832951ce2648c156cdfe18a2d = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_0ea7d93ea986f85491c98da9750fd836 = $(`<div id="html_0ea7d93ea986f85491c98da9750fd836" style="width: 100.0%; height: 100.0%;">         <b>Newada Bar</b><br>         <b>Rating:</b> 4.7/5<br>         <b>Average Price:</b> 700.0<br>         <b>Address:</b> Ул. Грузинский Вал, д.11, стр.4<br>         </div>`)[0];
+                popup_4c9d0ee832951ce2648c156cdfe18a2d.setContent(html_0ea7d93ea986f85491c98da9750fd836);
+            
+        
+
+        marker_99c9579e5184451648867e9936f1ccb2.bindPopup(popup_4c9d0ee832951ce2648c156cdfe18a2d)
+        ;
+
+        
+    
+    
+            marker_99c9579e5184451648867e9936f1ccb2.bindTooltip(
+                `<div>
+                     Newada Bar
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_99c9579e5184451648867e9936f1ccb2.setIcon(icon_31459186067b67eceff5a71a5c71b18d);
+            
+    
+            var marker_3672df65ab57c0a798f3dbb2185dc062 = L.marker(
+                [55.80591, 37.585552],
+                {
+}
+            ).addTo(map_ecb33fa3bab448f2e4c9e10b54f2a488);
+        
+    
+            var icon_3206a829f60bb2f7c57cc5e0e74c58f2 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "cutlery",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_b383a4374c8ce230c95c9b3bb1f3c711 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_fd55d3eb639aa48f246e0f3849f35337 = $(`<div id="html_fd55d3eb639aa48f246e0f3849f35337" style="width: 100.0%; height: 100.0%;">         <b>The Rusty pub</b><br>         <b>Rating:</b> 4.7/5<br>         <b>Average Price:</b> 700.0<br>         <b>Address:</b> Большая Новодмитровская ул., 36c6<br>         </div>`)[0];
+                popup_b383a4374c8ce230c95c9b3bb1f3c711.setContent(html_fd55d3eb639aa48f246e0f3849f35337);
+            
+        
+
+        marker_3672df65ab57c0a798f3dbb2185dc062.bindPopup(popup_b383a4374c8ce230c95c9b3bb1f3c711)
+        ;
+
+        
+    
+    
+            marker_3672df65ab57c0a798f3dbb2185dc062.bindTooltip(
+                `<div>
+                     The Rusty pub
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_3672df65ab57c0a798f3dbb2185dc062.setIcon(icon_3206a829f60bb2f7c57cc5e0e74c58f2);
+            
+    
+            var marker_1612c3a8dd66f6ad59a3db0744a8d723 = L.marker(
+                [55.762888, 37.615785],
+                {
+}
+            ).addTo(map_ecb33fa3bab448f2e4c9e10b54f2a488);
+        
+    
+            var icon_fb32c15743768f37f6893c83eb00176b = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "cutlery",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_38dd668da28715e1366faa7093460287 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_87ff7466a548fcfaa0aaea85e32f6bbf = $(`<div id="html_87ff7466a548fcfaa0aaea85e32f6bbf" style="width: 100.0%; height: 100.0%;">         <b>Журавли</b><br>         <b>Rating:</b> 4.8/5<br>         <b>Average Price:</b> 2000.0<br>         <b>Address:</b> Столешников пер., 14<br>         </div>`)[0];
+                popup_38dd668da28715e1366faa7093460287.setContent(html_87ff7466a548fcfaa0aaea85e32f6bbf);
+            
+        
+
+        marker_1612c3a8dd66f6ad59a3db0744a8d723.bindPopup(popup_38dd668da28715e1366faa7093460287)
+        ;
+
+        
+    
+    
+            marker_1612c3a8dd66f6ad59a3db0744a8d723.bindTooltip(
+                `<div>
+                     Журавли
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_1612c3a8dd66f6ad59a3db0744a8d723.setIcon(icon_fb32c15743768f37f6893c83eb00176b);
+            
+    
+            var marker_6dfb661cb6042fc07c9bd1f5a034448b = L.marker(
+                [55.759252670800734, 37.60299113398624],
+                {
+}
+            ).addTo(map_ecb33fa3bab448f2e4c9e10b54f2a488);
+        
+    
+            var icon_40ec20025886b716cd61946ed09a83c1 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "cutlery",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_2562f0d443c261bf3277decb0de3767a = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_e4a3af1a2e4b2ab71ca2b9fb44bc05e9 = $(`<div id="html_e4a3af1a2e4b2ab71ca2b9fb44bc05e9" style="width: 100.0%; height: 100.0%;">         <b>Whisky Rooms</b><br>         <b>Rating:</b> 4.9/5<br>         <b>Average Price:</b> 3000.0<br>         <b>Address:</b> Леонтьевский пер., д.8, стр.1<br>         </div>`)[0];
+                popup_2562f0d443c261bf3277decb0de3767a.setContent(html_e4a3af1a2e4b2ab71ca2b9fb44bc05e9);
+            
+        
+
+        marker_6dfb661cb6042fc07c9bd1f5a034448b.bindPopup(popup_2562f0d443c261bf3277decb0de3767a)
+        ;
+
+        
+    
+    
+            marker_6dfb661cb6042fc07c9bd1f5a034448b.bindTooltip(
+                `<div>
+                     Whisky Rooms
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_6dfb661cb6042fc07c9bd1f5a034448b.setIcon(icon_40ec20025886b716cd61946ed09a83c1);
+            
+    
+            var marker_7f1fac9e05fb8a1f1dee3aeff2c2f7ee = L.marker(
+                [55.78593448673087, 37.59553580658851],
+                {
+}
+            ).addTo(map_ecb33fa3bab448f2e4c9e10b54f2a488);
+        
+    
+            var icon_5969a43798dbd8fc4a518263b02e149e = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "cutlery",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_9691a1f3bac8b4b0e515f58ac1f3b7fe = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_975ed3461b55ca8d9659cb3ce5df6d20 = $(`<div id="html_975ed3461b55ca8d9659cb3ce5df6d20" style="width: 100.0%; height: 100.0%;">         <b>Guns & Bears Pub</b><br>         <b>Rating:</b> 4.7/5<br>         <b>Average Price:</b> 2000.0<br>         <b>Address:</b> Новослободская ул., 46<br>         </div>`)[0];
+                popup_9691a1f3bac8b4b0e515f58ac1f3b7fe.setContent(html_975ed3461b55ca8d9659cb3ce5df6d20);
+            
+        
+
+        marker_7f1fac9e05fb8a1f1dee3aeff2c2f7ee.bindPopup(popup_9691a1f3bac8b4b0e515f58ac1f3b7fe)
+        ;
+
+        
+    
+    
+            marker_7f1fac9e05fb8a1f1dee3aeff2c2f7ee.bindTooltip(
+                `<div>
+                     Guns & Bears Pub
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_7f1fac9e05fb8a1f1dee3aeff2c2f7ee.setIcon(icon_5969a43798dbd8fc4a518263b02e149e);
+            
+    
+            var marker_aeda846aebc199635099c46a3dff52be = L.marker(
+                [55.76458790384263, 37.65514272066311],
+                {
+}
+            ).addTo(map_ecb33fa3bab448f2e4c9e10b54f2a488);
+        
+    
+            var icon_6f9cc03ffb8436500f042df6bae85dcc = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "cutlery",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_0be07c4ffa0dfd94431b1f55d1f56ba8 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_46745d2e8a20a1232517ca6dc1fa0be4 = $(`<div id="html_46745d2e8a20a1232517ca6dc1fa0be4" style="width: 100.0%; height: 100.0%;">         <b>Silver's Irish Pub</b><br>         <b>Rating:</b> 4.6/5<br>         <b>Average Price:</b> 1500.0<br>         <b>Address:</b> ул. Машкова, 28/20<br>         </div>`)[0];
+                popup_0be07c4ffa0dfd94431b1f55d1f56ba8.setContent(html_46745d2e8a20a1232517ca6dc1fa0be4);
+            
+        
+
+        marker_aeda846aebc199635099c46a3dff52be.bindPopup(popup_0be07c4ffa0dfd94431b1f55d1f56ba8)
+        ;
+
+        
+    
+    
+            marker_aeda846aebc199635099c46a3dff52be.bindTooltip(
+                `<div>
+                     Silver's Irish Pub
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_aeda846aebc199635099c46a3dff52be.setIcon(icon_6f9cc03ffb8436500f042df6bae85dcc);
+            
+    
+            var marker_018e9b3c884c829d8d98497b6c97085b = L.marker(
+                [55.756934, 37.599681],
+                {
+}
+            ).addTo(map_ecb33fa3bab448f2e4c9e10b54f2a488);
+        
+    
+            var icon_5885c18934df2cdf52b49c8f3830ec67 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "cutlery",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_5d1e5a0cac3a911fa74d3baf8c50d05e = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_c18f844706c7e076ed71a99cc7a7377a = $(`<div id="html_c18f844706c7e076ed71a99cc7a7377a" style="width: 100.0%; height: 100.0%;">         <b>На вина!</b><br>         <b>Rating:</b> 4.9/5<br>         <b>Average Price:</b> 3000.0<br>         <b>Address:</b> Калашный пер., 9<br>         </div>`)[0];
+                popup_5d1e5a0cac3a911fa74d3baf8c50d05e.setContent(html_c18f844706c7e076ed71a99cc7a7377a);
+            
+        
+
+        marker_018e9b3c884c829d8d98497b6c97085b.bindPopup(popup_5d1e5a0cac3a911fa74d3baf8c50d05e)
+        ;
+
+        
+    
+    
+            marker_018e9b3c884c829d8d98497b6c97085b.bindTooltip(
+                `<div>
+                     На вина!
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_018e9b3c884c829d8d98497b6c97085b.setIcon(icon_5885c18934df2cdf52b49c8f3830ec67);
+            
+    
+            var marker_da67e11ebbca0e7ed2b933e7a3ce52a1 = L.marker(
+                [55.7481561147061, 37.54039794595376],
+                {
+}
+            ).addTo(map_ecb33fa3bab448f2e4c9e10b54f2a488);
+        
+    
+            var icon_8e1e8da04d2155a1e551952ff76520bd = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "cutlery",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_d983043e30c01d9536b6465e9153e2c0 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_3a9e805ff52af15ad8f47a48c084ba96 = $(`<div id="html_3a9e805ff52af15ad8f47a48c084ba96" style="width: 100.0%; height: 100.0%;">         <b>Nebo Lounge&Bar</b><br>         <b>Rating:</b> 4.8/5<br>         <b>Average Price:</b> 3500.0<br>         <b>Address:</b> Пресненская наб., 6, стр. 2<br>         </div>`)[0];
+                popup_d983043e30c01d9536b6465e9153e2c0.setContent(html_3a9e805ff52af15ad8f47a48c084ba96);
+            
+        
+
+        marker_da67e11ebbca0e7ed2b933e7a3ce52a1.bindPopup(popup_d983043e30c01d9536b6465e9153e2c0)
+        ;
+
+        
+    
+    
+            marker_da67e11ebbca0e7ed2b933e7a3ce52a1.bindTooltip(
+                `<div>
+                     Nebo Lounge&Bar
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_da67e11ebbca0e7ed2b933e7a3ce52a1.setIcon(icon_8e1e8da04d2155a1e551952ff76520bd);
+            
+    
+            var marker_463bf48544ce651c702fec882b4c0f90 = L.marker(
+                [55.76982496063046, 37.59716977891412],
+                {
+}
+            ).addTo(map_ecb33fa3bab448f2e4c9e10b54f2a488);
+        
+    
+            var icon_d2803307e4d072463a0342f684bbd11a = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "cutlery",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_3357f33bd027bbabb191e1dc7aced391 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_d13d60bb2c664f1a595611d6329299e9 = $(`<div id="html_d13d60bb2c664f1a595611d6329299e9" style="width: 100.0%; height: 100.0%;">         <b>Pivbar</b><br>         <b>Rating:</b> 4.8/5<br>         <b>Average Price:</b> 700.0<br>         <b>Address:</b> 1-я Тверская-Ямская ул., 2, стр. 1<br>         </div>`)[0];
+                popup_3357f33bd027bbabb191e1dc7aced391.setContent(html_d13d60bb2c664f1a595611d6329299e9);
+            
+        
+
+        marker_463bf48544ce651c702fec882b4c0f90.bindPopup(popup_3357f33bd027bbabb191e1dc7aced391)
+        ;
+
+        
+    
+    
+            marker_463bf48544ce651c702fec882b4c0f90.bindTooltip(
+                `<div>
+                     Pivbar
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_463bf48544ce651c702fec882b4c0f90.setIcon(icon_d2803307e4d072463a0342f684bbd11a);
+            
+    
+            var marker_c9a65a18c5dd1af572faf7ec7f138862 = L.marker(
+                [55.79853790161714, 37.58295125032027],
+                {
+}
+            ).addTo(map_ecb33fa3bab448f2e4c9e10b54f2a488);
+        
+    
+            var icon_95eb40a5616c014c0a9296344392caa4 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "cutlery",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_e822b960abeec0582c67021f7c56c6e4 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_4de3d64c286f040653932310d1f92c68 = $(`<div id="html_4de3d64c286f040653932310d1f92c68" style="width: 100.0%; height: 100.0%;">         <b>Lounge Bar [ Среди Своих ]</b><br>         <b>Rating:</b> 4.6/5<br>         <b>Average Price:</b> 1200.0<br>         <b>Address:</b> Бутырская ул., 17а<br>         </div>`)[0];
+                popup_e822b960abeec0582c67021f7c56c6e4.setContent(html_4de3d64c286f040653932310d1f92c68);
+            
+        
+
+        marker_c9a65a18c5dd1af572faf7ec7f138862.bindPopup(popup_e822b960abeec0582c67021f7c56c6e4)
+        ;
+
+        
+    
+    
+            marker_c9a65a18c5dd1af572faf7ec7f138862.bindTooltip(
+                `<div>
+                     Lounge Bar [ Среди Своих ]
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_c9a65a18c5dd1af572faf7ec7f138862.setIcon(icon_95eb40a5616c014c0a9296344392caa4);
+            
+    
+            var marker_6b18be86bbcfd209e5f54d87331b79df = L.marker(
+                [55.740442, 37.608674],
+                {
+}
+            ).addTo(map_ecb33fa3bab448f2e4c9e10b54f2a488);
+        
+    
+            var icon_7a5b44094f48acc11931a185dcf2c5c9 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "cutlery",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_aef3c54733ca8dcb9853c2afac8d43f8 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_1e9a8967ba65de7c7f42f990789b2b78 = $(`<div id="html_1e9a8967ba65de7c7f42f990789b2b78" style="width: 100.0%; height: 100.0%;">         <b>Dictatura Æstetica</b><br>         <b>Rating:</b> 4.9/5<br>         <b>Average Price:</b> 2200.0<br>         <b>Address:</b> Берсеневская наб., 6, стр. 2<br>         </div>`)[0];
+                popup_aef3c54733ca8dcb9853c2afac8d43f8.setContent(html_1e9a8967ba65de7c7f42f990789b2b78);
+            
+        
+
+        marker_6b18be86bbcfd209e5f54d87331b79df.bindPopup(popup_aef3c54733ca8dcb9853c2afac8d43f8)
+        ;
+
+        
+    
+    
+            marker_6b18be86bbcfd209e5f54d87331b79df.bindTooltip(
+                `<div>
+                     Dictatura Æstetica
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_6b18be86bbcfd209e5f54d87331b79df.setIcon(icon_7a5b44094f48acc11931a185dcf2c5c9);
+            
+    
+            var marker_f253c37a22060d213c206ba6403e953e = L.marker(
+                [55.76377, 37.65591],
+                {
+}
+            ).addTo(map_ecb33fa3bab448f2e4c9e10b54f2a488);
+        
+    
+            var icon_a4504bb30ad6b3c204068aa44f36ed86 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "cutlery",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_2ad34b68c7f0522fa84a91b278a18c1e = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_fca050bf5d875efc901433d62206d2c3 = $(`<div id="html_fca050bf5d875efc901433d62206d2c3" style="width: 100.0%; height: 100.0%;">         <b>Buddy McDaniel</b><br>         <b>Rating:</b> 4.7/5<br>         <b>Average Price:</b> 2000.0<br>         <b>Address:</b> ул. Покровка 50/2 стр. 2<br>         </div>`)[0];
+                popup_2ad34b68c7f0522fa84a91b278a18c1e.setContent(html_fca050bf5d875efc901433d62206d2c3);
+            
+        
+
+        marker_f253c37a22060d213c206ba6403e953e.bindPopup(popup_2ad34b68c7f0522fa84a91b278a18c1e)
+        ;
+
+        
+    
+    
+            marker_f253c37a22060d213c206ba6403e953e.bindTooltip(
+                `<div>
+                     Buddy McDaniel
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_f253c37a22060d213c206ba6403e953e.setIcon(icon_a4504bb30ad6b3c204068aa44f36ed86);
+            
+    
+            var marker_9849b05cc39a2940e418635ada1a8327 = L.marker(
+                [55.7354926874194, 37.592151331293564],
+                {
+}
+            ).addTo(map_ecb33fa3bab448f2e4c9e10b54f2a488);
+        
+    
+            var icon_93e302f79a583d9e288e57c0c03a83a7 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "cutlery",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_8e982e216c27b05281ea790b10f6b784 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_095f470e853f91271d21a38040df17f2 = $(`<div id="html_095f470e853f91271d21a38040df17f2" style="width: 100.0%; height: 100.0%;">         <b>Гамбринус</b><br>         <b>Rating:</b> 4.7/5<br>         <b>Average Price:</b> 3000.0<br>         <b>Address:</b> Зубовский бул., 13/2<br>         </div>`)[0];
+                popup_8e982e216c27b05281ea790b10f6b784.setContent(html_095f470e853f91271d21a38040df17f2);
+            
+        
+
+        marker_9849b05cc39a2940e418635ada1a8327.bindPopup(popup_8e982e216c27b05281ea790b10f6b784)
+        ;
+
+        
+    
+    
+            marker_9849b05cc39a2940e418635ada1a8327.bindTooltip(
+                `<div>
+                     Гамбринус
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_9849b05cc39a2940e418635ada1a8327.setIcon(icon_93e302f79a583d9e288e57c0c03a83a7);
+            
+    
+            var marker_7717d0558786b3cb2ef21836677426f5 = L.marker(
+                [55.73888097144404, 37.60566379608397],
+                {
+}
+            ).addTo(map_ecb33fa3bab448f2e4c9e10b54f2a488);
+        
+    
+            var icon_e947b99b2fb56cb0aacf90a9a0af65fe = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "cutlery",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_b100de6bf6bb5e132b6959ce1c6f468d = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_9c8e9c0fb91991bb2a390ec5cc2b1ed5 = $(`<div id="html_9c8e9c0fb91991bb2a390ec5cc2b1ed5" style="width: 100.0%; height: 100.0%;">         <b>Танцы food&people</b><br>         <b>Rating:</b> 4.8/5<br>         <b>Average Price:</b> 3500.0<br>         <b>Address:</b> Пречистенская наб., 15<br>         </div>`)[0];
+                popup_b100de6bf6bb5e132b6959ce1c6f468d.setContent(html_9c8e9c0fb91991bb2a390ec5cc2b1ed5);
+            
+        
+
+        marker_7717d0558786b3cb2ef21836677426f5.bindPopup(popup_b100de6bf6bb5e132b6959ce1c6f468d)
+        ;
+
+        
+    
+    
+            marker_7717d0558786b3cb2ef21836677426f5.bindTooltip(
+                `<div>
+                     Танцы food&people
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_7717d0558786b3cb2ef21836677426f5.setIcon(icon_e947b99b2fb56cb0aacf90a9a0af65fe);
+            
+    
+            var marker_d1638507750986de3ab58b3fffceef20 = L.marker(
+                [55.76746, 37.598644],
+                {
+}
+            ).addTo(map_ecb33fa3bab448f2e4c9e10b54f2a488);
+        
+    
+            var icon_615722151cee24b341dd05213eb3217d = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "cutlery",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_03a2d6c891b12fcf7eed71a59cc62746 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_c3981a34af89a348c1f19495ee6aca7c = $(`<div id="html_c3981a34af89a348c1f19495ee6aca7c" style="width: 100.0%; height: 100.0%;">         <b>Segreto</b><br>         <b>Rating:</b> 4.9/5<br>         <b>Average Price:</b> 4000.0<br>         <b>Address:</b> Благовещенский пер., 10, стр. 2<br>         </div>`)[0];
+                popup_03a2d6c891b12fcf7eed71a59cc62746.setContent(html_c3981a34af89a348c1f19495ee6aca7c);
+            
+        
+
+        marker_d1638507750986de3ab58b3fffceef20.bindPopup(popup_03a2d6c891b12fcf7eed71a59cc62746)
+        ;
+
+        
+    
+    
+            marker_d1638507750986de3ab58b3fffceef20.bindTooltip(
+                `<div>
+                     Segreto
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_d1638507750986de3ab58b3fffceef20.setIcon(icon_615722151cee24b341dd05213eb3217d);
+            
+    
+            var marker_6ec35eebf8f808116167f8b0ec31d5aa = L.marker(
+                [55.63372463865576, 37.657492706296495],
+                {
+}
+            ).addTo(map_ecb33fa3bab448f2e4c9e10b54f2a488);
+        
+    
+            var icon_7e786bf06d8c39554df20d384a8e7595 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "cutlery",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_51d822aca838acadba6bbe679cebeff7 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_af59d5d5f0b0fca522951025d117a575 = $(`<div id="html_af59d5d5f0b0fca522951025d117a575" style="width: 100.0%; height: 100.0%;">         <b>Opyata Food & Bar (Опята Бар)</b><br>         <b>Rating:</b> 4.8/5<br>         <b>Average Price:</b> 1500.0<br>         <b>Address:</b> Пролетарский проспект, д. 20, корп. 1<br>         </div>`)[0];
+                popup_51d822aca838acadba6bbe679cebeff7.setContent(html_af59d5d5f0b0fca522951025d117a575);
+            
+        
+
+        marker_6ec35eebf8f808116167f8b0ec31d5aa.bindPopup(popup_51d822aca838acadba6bbe679cebeff7)
+        ;
+
+        
+    
+    
+            marker_6ec35eebf8f808116167f8b0ec31d5aa.bindTooltip(
+                `<div>
+                     Opyata Food & Bar (Опята Бар)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_6ec35eebf8f808116167f8b0ec31d5aa.setIcon(icon_7e786bf06d8c39554df20d384a8e7595);
+            
+    
+            var marker_57f0e6d827544831c2b19aef64e15379 = L.marker(
+                [55.752686, 37.598262],
+                {
+}
+            ).addTo(map_ecb33fa3bab448f2e4c9e10b54f2a488);
+        
+    
+            var icon_a46c17b830570661732fc27b277b7b93 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "cutlery",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_3e4c34d98505b7d5faa69329f258fca4 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_4393f06061c37257fdaa7f5f11a3192e = $(`<div id="html_4393f06061c37257fdaa7f5f11a3192e" style="width: 100.0%; height: 100.0%;">         <b>Abbey Players</b><br>         <b>Rating:</b> 4.8/5<br>         <b>Average Price:</b> 1500.0<br>         <b>Address:</b> ул. Новый Арбат, 5<br>         </div>`)[0];
+                popup_3e4c34d98505b7d5faa69329f258fca4.setContent(html_4393f06061c37257fdaa7f5f11a3192e);
+            
+        
+
+        marker_57f0e6d827544831c2b19aef64e15379.bindPopup(popup_3e4c34d98505b7d5faa69329f258fca4)
+        ;
+
+        
+    
+    
+            marker_57f0e6d827544831c2b19aef64e15379.bindTooltip(
+                `<div>
+                     Abbey Players
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_57f0e6d827544831c2b19aef64e15379.setIcon(icon_a46c17b830570661732fc27b277b7b93);
+            
+    
+            var marker_5179d6b5aba2c5e41cc30daf4dfccd24 = L.marker(
+                [55.74891483496499, 37.53856658935547],
+                {
+}
+            ).addTo(map_ecb33fa3bab448f2e4c9e10b54f2a488);
+        
+    
+            var icon_f7b3c646fd6ccb75ed92d7bf86bd978f = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "cutlery",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_599198889e5aff0a82f69c203c18ee7d = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_95b46be15abed5f52abc7658a7e174fe = $(`<div id="html_95b46be15abed5f52abc7658a7e174fe" style="width: 100.0%; height: 100.0%;">         <b>Vasilchuki Chaihona № 1</b><br>         <b>Rating:</b> 4.4/5<br>         <b>Average Price:</b> 2200.0<br>         <b>Address:</b> Пресненская наб., 2<br>         </div>`)[0];
+                popup_599198889e5aff0a82f69c203c18ee7d.setContent(html_95b46be15abed5f52abc7658a7e174fe);
+            
+        
+
+        marker_5179d6b5aba2c5e41cc30daf4dfccd24.bindPopup(popup_599198889e5aff0a82f69c203c18ee7d)
+        ;
+
+        
+    
+    
+            marker_5179d6b5aba2c5e41cc30daf4dfccd24.bindTooltip(
+                `<div>
+                     Vasilchuki Chaihona № 1
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_5179d6b5aba2c5e41cc30daf4dfccd24.setIcon(icon_f7b3c646fd6ccb75ed92d7bf86bd978f);
+            
+    
+            var marker_b14bef7168917eb7ce4fb716543dda69 = L.marker(
+                [55.79061616816789, 37.533052410114585],
+                {
+}
+            ).addTo(map_ecb33fa3bab448f2e4c9e10b54f2a488);
+        
+    
+            var icon_fd5c09e6a708f01d3a334107619b3c6c = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "cutlery",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_bd5e356d78f3c2b90ffc3604d9d3c185 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_319daf9caf96c75e3d23066e333930ef = $(`<div id="html_319daf9caf96c75e3d23066e333930ef" style="width: 100.0%; height: 100.0%;">         <b>TGI Fridays</b><br>         <b>Rating:</b> 4.9/5<br>         <b>Average Price:</b> 1500.0<br>         <b>Address:</b> Ходынский бул., 4<br>         </div>`)[0];
+                popup_bd5e356d78f3c2b90ffc3604d9d3c185.setContent(html_319daf9caf96c75e3d23066e333930ef);
+            
+        
+
+        marker_b14bef7168917eb7ce4fb716543dda69.bindPopup(popup_bd5e356d78f3c2b90ffc3604d9d3c185)
+        ;
+
+        
+    
+    
+            marker_b14bef7168917eb7ce4fb716543dda69.bindTooltip(
+                `<div>
+                     TGI Fridays
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_b14bef7168917eb7ce4fb716543dda69.setIcon(icon_fd5c09e6a708f01d3a334107619b3c6c);
+            
+    
+            var marker_7d9f17fd3fe0ad03e7cc96362424170d = L.marker(
+                [55.79054076659056, 37.532849596945184],
+                {
+}
+            ).addTo(map_ecb33fa3bab448f2e4c9e10b54f2a488);
+        
+    
+            var icon_5050901ba6694fe6701cfb8b2c59b7cb = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "cutlery",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_d98cd134f1664231ed6ec41bd083669f = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_deec6f6369ae69bf62729375ec78a1ac = $(`<div id="html_deec6f6369ae69bf62729375ec78a1ac" style="width: 100.0%; height: 100.0%;">         <b>Шикари</b><br>         <b>Rating:</b> 4.3/5<br>         <b>Average Price:</b> 1200.0<br>         <b>Address:</b> Ходынский бул., 4<br>         </div>`)[0];
+                popup_d98cd134f1664231ed6ec41bd083669f.setContent(html_deec6f6369ae69bf62729375ec78a1ac);
+            
+        
+
+        marker_7d9f17fd3fe0ad03e7cc96362424170d.bindPopup(popup_d98cd134f1664231ed6ec41bd083669f)
+        ;
+
+        
+    
+    
+            marker_7d9f17fd3fe0ad03e7cc96362424170d.bindTooltip(
+                `<div>
+                     Шикари
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_7d9f17fd3fe0ad03e7cc96362424170d.setIcon(icon_5050901ba6694fe6701cfb8b2c59b7cb);
+            
+    
+            var marker_74142cca77faaa49a354ec1b2e4b5a67 = L.marker(
+                [55.79046470448199, 37.53271372675812],
+                {
+}
+            ).addTo(map_ecb33fa3bab448f2e4c9e10b54f2a488);
+        
+    
+            var icon_51cc7ff4981ab8894dc4ae6512ed9a55 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "cutlery",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_f7ac7723a3eb9f7bccfd0ea50f3e0207 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_cf23106329fb69d1fc2d58fd3066c3c6 = $(`<div id="html_cf23106329fb69d1fc2d58fd3066c3c6" style="width: 100.0%; height: 100.0%;">         <b>Torro Grill</b><br>         <b>Rating:</b> 4.9/5<br>         <b>Average Price:</b> 2000.0<br>         <b>Address:</b> Ходынский бул., 4<br>         </div>`)[0];
+                popup_f7ac7723a3eb9f7bccfd0ea50f3e0207.setContent(html_cf23106329fb69d1fc2d58fd3066c3c6);
+            
+        
+
+        marker_74142cca77faaa49a354ec1b2e4b5a67.bindPopup(popup_f7ac7723a3eb9f7bccfd0ea50f3e0207)
+        ;
+
+        
+    
+    
+            marker_74142cca77faaa49a354ec1b2e4b5a67.bindTooltip(
+                `<div>
+                     Torro Grill
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_74142cca77faaa49a354ec1b2e4b5a67.setIcon(icon_51cc7ff4981ab8894dc4ae6512ed9a55);
+            
+    
+            var marker_9ed1a8e1ebb7667dc0678617fffe92dc = L.marker(
+                [55.78226693250131, 37.53149671863471],
+                {
+}
+            ).addTo(map_ecb33fa3bab448f2e4c9e10b54f2a488);
+        
+    
+            var icon_a56dfb5ef54676a1091016c2695f3493 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "cutlery",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_6b4693a743c4430fed50885fda1e56ba = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_39dabc6dd9985c3e99b9386e73aa68cf = $(`<div id="html_39dabc6dd9985c3e99b9386e73aa68cf" style="width: 100.0%; height: 100.0%;">         <b>Изи Паб</b><br>         <b>Rating:</b> 4.8/5<br>         <b>Average Price:</b> 1200.0<br>         <b>Address:</b> ул. Гризодубовой, 2<br>         </div>`)[0];
+                popup_6b4693a743c4430fed50885fda1e56ba.setContent(html_39dabc6dd9985c3e99b9386e73aa68cf);
+            
+        
+
+        marker_9ed1a8e1ebb7667dc0678617fffe92dc.bindPopup(popup_6b4693a743c4430fed50885fda1e56ba)
+        ;
+
+        
+    
+    
+            marker_9ed1a8e1ebb7667dc0678617fffe92dc.bindTooltip(
+                `<div>
+                     Изи Паб
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_9ed1a8e1ebb7667dc0678617fffe92dc.setIcon(icon_a56dfb5ef54676a1091016c2695f3493);
+            
+    
+            var marker_9598530f31f2862c981678d0ec042985 = L.marker(
+                [55.788788, 37.539128],
+                {
+}
+            ).addTo(map_ecb33fa3bab448f2e4c9e10b54f2a488);
+        
+    
+            var icon_e02933c21128394263ed8fecbd850fe6 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "cutlery",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_b8e78bd170a9856169765bfa208c339b = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_ff5f76b0df12700bccde78ac19853152 = $(`<div id="html_ff5f76b0df12700bccde78ac19853152" style="width: 100.0%; height: 100.0%;">         <b>Brasserie Lambic</b><br>         <b>Rating:</b> 4.8/5<br>         <b>Average Price:</b> 2000.0<br>         <b>Address:</b> Ходынский Бульвар д. 2<br>         </div>`)[0];
+                popup_b8e78bd170a9856169765bfa208c339b.setContent(html_ff5f76b0df12700bccde78ac19853152);
+            
+        
+
+        marker_9598530f31f2862c981678d0ec042985.bindPopup(popup_b8e78bd170a9856169765bfa208c339b)
+        ;
+
+        
+    
+    
+            marker_9598530f31f2862c981678d0ec042985.bindTooltip(
+                `<div>
+                     Brasserie Lambic
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_9598530f31f2862c981678d0ec042985.setIcon(icon_e02933c21128394263ed8fecbd850fe6);
+            
+</script>
+</html>

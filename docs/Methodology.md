@@ -3,7 +3,19 @@
 ## Dataset and Preprocessing
 
 ### Data Source
-The FourSquare Moscow POI dataset (w11wo/FourSquare-Moscow-POI) contains 52,972 user check-in sequences across Moscow, Russia. Each sequence includes user ID, POI locations, timestamps, and semantic categories.
+
+**Primary Dataset:** FourSquare Moscow POI dataset (w11wo/FourSquare-Moscow-POI) contains 52,972 user check-in sequences across Moscow, Russia. Each sequence includes user ID, POI locations, timestamps, and semantic categories.
+
+**Knowledge Graph Dataset:** A separate curated dataset of 98 high-quality restaurants and bars in Moscow was constructed for knowledge graph-based recommendation system evaluation. This dataset was collected through a multi-stage process:
+
+1. **Initial Collection:** Extracted 60,964 establishments from FourSquare Open Street Places dataset (S3 snapshot, September 2025)
+2. **Quality Filtering:** Applied scoring algorithm to identify 8,541 quality establishments (excluding fast food chains)
+3. **Geographic Clustering:** Used K-Means clustering (50 clusters) to ensure balanced spatial distribution
+4. **Multi-Stage Selection:** Selected top 1,355 establishments, then top 100 for manual enrichment
+5. **Manual Enrichment:** Manually collected and verified 32 attributes per establishment from Яндекс Еда (Yandex Food)
+6. **Final Dataset:** 98 restaurants and bars with complete attribute information
+
+**Detailed methodology:** See `Dataset_Collection_Methodology.md` for complete documentation of the data collection, filtering, scoring, geographic clustering, manual enrichment, and knowledge graph construction process.
 
 ### POI Selection and Clustering
 We selected the top 600 POIs based on visit frequency, covering 26.1% of total visits. POIs were grouped into 12 balanced semantic clusters:
@@ -59,6 +71,18 @@ Advanced hybrid architecture incorporating:
 - Temporal pattern modeling
 - Spatial cluster relationships
 - Multi-dimensional user profiling
+
+## Knowledge Graph Construction (Separate Study)
+
+A parallel study was conducted using a manually curated dataset of 98 Moscow restaurants and bars to construct a knowledge graph-based recommendation system. This study implements three recommendation schemes (Content-Based, Geographically Weighted, and Hybrid) without user interaction data, focusing on restaurant-restaurant similarity.
+
+**Key Components:**
+- **Dataset:** 98 establishments manually enriched with 32 attributes from Яндекс Еда
+- **Graph Structure:** 176 nodes, 623 edges (NetworkX)
+- **Schemes:** Content-based, Geo-weighted, Hybrid
+- **Evaluation:** Precision@K, Recall@K, NDCG, Geo Relevance, Attribute Coverage, Personalization
+
+**Detailed Methodology:** See `Knowledge_Graph_Methodology.md` and `Dataset_Collection_Methodology.md` for complete documentation.
 
 ## Training Configuration
 

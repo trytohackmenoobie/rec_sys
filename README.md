@@ -4,6 +4,8 @@
 
 This repository presents an evaluation of four POI (Point of Interest) recommendation models using real user features extracted from the FourSquare Moscow dataset. The study compares baseline and improved implementations of cluster-based and hybrid recommendation approaches, demonstrating significant improvements in both accuracy and representativeness when using authentic user behavioral patterns versus synthetic features.
 
+**Additional Study:** This repository also includes a knowledge graph-based restaurant recommendation system using a manually curated dataset of 98 Moscow restaurants, implementing three recommendation schemes (Content-Based, Geographically Weighted, and Hybrid) without requiring user interaction data. See `docs/Knowledge_Graph_Methodology.md` and `docs/Dataset_Collection_Methodology.md` for details.
+
 ## Key Results
 
 | Model | Accuracy | Representativeness | Status |
@@ -104,7 +106,42 @@ python scripts/collect_all_results.py
 
 # Generate publication-ready visualizations
 python scripts/generate_all_visualizations.py
+
+# Generate interactive knowledge graph visualizations
+python scripts/generate_knowledge_graph_visualizations.py
 ```
+
+### Viewing Interactive Visualizations
+
+
+After generating the visualizations, you can view them in your web browser:
+
+**Knowledge Graph Visualization:**
+```bash
+# Open in default browser (macOS)
+open results/visualizations/knowledge_graph_interactive.html
+
+# Open in default browser (Linux)
+xdg-open results/visualizations/knowledge_graph_interactive.html
+
+# Or simply double-click the file in your file manager
+```
+
+**Restaurant Map Visualization:**
+```bash
+# Open in default browser (macOS)
+open results/visualizations/restaurant_map_100_interactive.html
+
+# Open in default browser (Linux)
+xdg-open results/visualizations/restaurant_map_100_interactive.html
+
+# Or simply double-click the file in your file manager
+```
+
+Alternatively, you can manually open the HTML files:
+- Navigate to `results/visualizations/` folder
+- Double-click `knowledge_graph_interactive.html` or `restaurant_map_100_interactive.html`
+- The visualizations will open in your default web browser
 
 ## Results
 
@@ -129,8 +166,54 @@ python scripts/generate_all_visualizations.py
 ├── results/             # Experimental results and visualizations
 │   ├── metrics/         # Performance data (JSON, CSV)
 │   └── visualizations/  # Publication-ready figures
+│       ├── knowledge_graph_interactive.html     # Interactive knowledge graph (98 restaurants)
+│       └── restaurant_map_100_interactive.html  # Interactive map of 100 restaurants
+├── notebooks/           # Jupyter notebooks for knowledge graph study
+│   ├── frsqr_2025.ipynb              # FourSquare S3 data parsing
+│   └── recsys_knowledge_graph.ipynb  # Knowledge graph construction
+├── data/                # Datasets
+│   └── processed/       # Processed datasets
+│       ├── workingrest.csv                    # Final dataset (98 establishments)
+│       ├── moscow_top_100_restaurants.csv     # Top 100 for enrichment
+│       └── moscow_data_lens_*.csv             # Visualization datasets (1,355 establishments)
+│                                               # [DataLens Dashboard](https://datalens.yandex/w3048zrqxgtyh)
+├── docs/                # Documentation
+│   ├── Methodology.md                    # Main methodology
+│   ├── Dataset_Collection_Methodology.md # Data collection process
+│   ├── Knowledge_Graph_Methodology.md    # Knowledge graph study
+│   └── Research_Integration_Summary.md  # Integration of both studies
 └── POI_RECOMMENDER/     # Core model implementations
 ```
+
+## Additional Research: Knowledge Graph-Based Recommendation
+
+This repository also contains a parallel study on knowledge graph-based restaurant recommendation:
+
+### Knowledge Graph Dataset
+- **Source:** FourSquare Open Street Places (S3, September 2025)
+- **Collection Process:** Multi-stage filtering from 60,964 → 98 establishments
+- **Enrichment:** Manual data collection from Яндекс Еда (32 attributes per establishment)
+- **Graph Structure:** 176 nodes, 623 edges (NetworkX)
+
+### Recommendation Schemes
+1. **Content-Based:** Precision@5 = 1.0000, Personalization = 0.7045
+2. **Geographically Weighted:** Precision@5 = 0.7163, Geo Relevance = 0.4145
+3. **Hybrid:** Precision@5 = 0.7755, NDCG@5 = 0.9188
+
+**Documentation:**
+- `docs/Dataset_Collection_Methodology.md` - Complete data collection process
+- `docs/Knowledge_Graph_Methodology.md` - Knowledge graph construction and evaluation
+- `docs/Research_Integration_Summary.md` - Integration of both studies
+
+**Interactive Visualizations:**
+- **Knowledge Graph**: `results/visualizations/knowledge_graph_interactive.html` - Interactive network graph (176 nodes, 623 edges)
+  - Shows all restaurants, price levels, areas, atmosphere scores, and features
+  - Interactive features: zoom, pan, drag nodes, click to inspect
+- **Restaurant Map**: `results/visualizations/restaurant_map_100_interactive.html` - Interactive map of 98 restaurants in Moscow
+  - Color-coded markers by rating (green ≥4.5, blue ≥4.0, orange ≥3.5, red <3.5)
+  - Click markers to see restaurant details
+- **Generate visualizations**: `python scripts/generate_knowledge_graph_visualizations.py`
+- **View visualizations**: See "Viewing Interactive Visualizations" section above
 
 ## Reproducibility
 
@@ -140,13 +223,28 @@ All experiments are fully reproducible with:
 - Automated pipeline execution
 - Automated logging
 
+## Documentation
+
+### Main Studies
+- **POI Recommendation:** See `docs/Methodology.md` and `docs/Results_Summary.md`
+- **Knowledge Graph:** See `docs/Knowledge_Graph_Methodology.md`
+- **Data Collection:** See `docs/Dataset_Collection_Methodology.md`
+- **Integration:** See `docs/Research_Integration_Summary.md`
+
+### Key Methodological Declarations
+- **Data Collection Process:** Fully documented S3 extraction, filtering, scoring, clustering
+- **Manual Enrichment:** Detailed process from Яндекс Еда (32 attributes, 98 establishments)
+- **Knowledge Graph Construction:** NetworkX-based implementation (176 nodes, 623 edges)
+- **Evaluation Metrics:** Comprehensive metrics for both studies
+
 ## Citation
 
 ```bibtex
 @article{poi_recommender_2025,
-  title={POI Recommender System: Evaluation with Real User Features},
+  title={POI Recommender System: Evaluation with Real User Features and Knowledge Graph-Based Recommendation},
   author={[Askhabaliev Gadzhi]},
-  year={2025}
+  year={2025},
+  note={Includes two complementary studies: deep learning-based POI recommendation and knowledge graph-based restaurant recommendation}
 }
 ```
 

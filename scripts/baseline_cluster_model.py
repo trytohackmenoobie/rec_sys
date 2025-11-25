@@ -33,7 +33,7 @@ logging.basicConfig(
 
 config = Config()
 
-class ClusterPersonalizedGRU(nn.Module):  
+class ClusterPersonalizedGRU(nn.Module):
     def __init__(self, num_clusters, user_feature_dim, cluster_embed_dim=32, 
                  user_embed_dim=16, hidden_dim=64, dropout=0.1):
         super(ClusterPersonalizedGRU, self).__init__()

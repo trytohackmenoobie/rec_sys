@@ -2,9 +2,10 @@ import os, sys
 sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 
 class Config:
-    BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+    # BASE_DIR теперь указывает на корень проекта (на уровень выше POI_RECOMMENDER)
+    BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
     DATA_DIR = os.path.join(BASE_DIR, 'data')
-    MODEL_DIR = os.path.join(BASE_DIR, 'models')
+    MODEL_DIR = os.path.join(BASE_DIR, 'models')  # Унифицировано: все модели в корне проекта
     DB_PATH = os.path.join(BASE_DIR, 'notifications.db')
     
     # Dataset/training parameters - OPTIMIZED for better performance
