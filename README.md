@@ -254,9 +254,6 @@ All experiments are fully reproducible with:
 **Student:** [Askhabaliev Gadzhi]  
 **Supervisor:** Patochenko Evgeny
 
-## Acknowledgments
-
-We would like to thank our supervisor, Patochenko Evgeny, for guidance and support throughout this research project.
 
 ## Citation
 
