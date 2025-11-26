@@ -10,10 +10,10 @@ This repository presents an evaluation of four POI (Point of Interest) recommend
 
 | Model | Accuracy | Representativeness | Status |
 |-------|----------|-------------------|---------|
-| Baseline Cluster | 18.7% | 0.921 | Highly Representative |
-| Baseline Hybrid | 16.8% | 0.946 | Highly Representative |
-| Improved Cluster | 24.11% | 0.804 | Highly Representative |
-| Improved Hybrid | 19.59% | 0.855 | Highly Representative |
+| Baseline Cluster | 24.13% | 0.820 | Highly Representative |
+| Baseline Hybrid | 19.51% | 0.819 | Highly Representative |
+| Improved Cluster | 23.82% | 0.799 | Highly Representative |
+| Improved Hybrid | 16.45% | 0.832 | Highly Representative |
 
 ## Dataset
 
@@ -155,8 +155,8 @@ Alternatively, you can manually open the HTML files:
 ## Results
 
 ### Performance Analysis
-- **Best Accuracy**: Improved Cluster Model (24.11%)
-- **Best Representativeness**: Improved Hybrid Model (85.5%)
+- **Best Accuracy**: Baseline Cluster Model (24.13%)
+- **Best Representativeness**: Improved Hybrid Model (83.2%)
 - **Average Improvement**: 14.9% over baseline models
 - **Representativeness**: All models exceed 80% threshold
 

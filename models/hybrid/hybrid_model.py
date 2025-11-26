@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 """
-HYBRID MODEL - Объединяем лучшие черты Improved Cluster и Ultimate моделей
-Цель: 18-20% accuracy + 35-40% Hits@5 через сбалансированную архитектуру
+HYBRID MODEL 
 """
 
 import torch
@@ -756,10 +755,7 @@ def train_hybrid_model():
     # Final comparison
     print("\nHYBRID MODEL COMPARISON:")
     print("=" * 60)
-    print("   Original Model (100 POIs):")
-    print("      - Accuracy: 8.7%")
-    print("      - Classes: 100")
-    print("      - Architecture: Simple GRU")
+    
     
     print("   Baseline Cluster Model (12 clusters):")
     print("      - Accuracy: 18.7%")

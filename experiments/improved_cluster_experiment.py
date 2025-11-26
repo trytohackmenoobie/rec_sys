@@ -662,17 +662,17 @@ def main():
     
     try:
         # experiments_dir already added to sys.path at top of file
-        from baseline_cluster_analyzer import ModelRepresentativenessAnalyzer
-        
-        analyzer = ModelRepresentativenessAnalyzer(
-            model=model,
-            clusters=clusters,
-            train_data=train_data,
-            val_data=val_data,
-            device=device
-        )
-        analyzer.analyze_data_representativeness()
-        overall_score = analyzer.generate_representativeness_report()
+    from baseline_cluster_analyzer import ModelRepresentativenessAnalyzer
+    
+    analyzer = ModelRepresentativenessAnalyzer(
+        model=model,
+        clusters=clusters,
+        train_data=train_data,
+        val_data=val_data,
+        device=device
+    )
+    analyzer.analyze_data_representativeness()
+    overall_score = analyzer.generate_representativeness_report()
     except ImportError as e:
         print(f"Warning: Could not import representativeness analyzer: {e}")
         print("Skipping representativeness analysis. Model training completed successfully.")

@@ -109,26 +109,50 @@ def interactive_training():
             
             if choice == "1":
                 print("\nTraining Improved Cluster Model...")
-                from experiments.improved_cluster_experiment import main as train_improved_cluster
-                train_improved_cluster()
+                try:
+                    from experiments.improved_cluster_experiment import main as train_improved_cluster
+                    train_improved_cluster()
+                except Exception as e:
+                    print(f"Error during training: {e}")
+                    import traceback
+                    traceback.print_exc()
+                    break
                 break
                 
             elif choice == "2":
                 print("\nTraining Improved Hybrid Model...")
-                from experiments.improved_hybrid_experiment import main as train_improved_hybrid
-                train_improved_hybrid()
+                try:
+                    from experiments.improved_hybrid_experiment import main as train_improved_hybrid
+                    train_improved_hybrid()
+                except Exception as e:
+                    print(f"Error during training: {e}")
+                    import traceback
+                    traceback.print_exc()
+                    break
                 break
                 
             elif choice == "3":
                 print("\nTraining All Models...")
-                from scripts.run_all_experiments import main as run_all
-                run_all()
+                try:
+                    from scripts.run_all_experiments import main as run_all
+                    run_all()
+                except Exception as e:
+                    print(f"Error during training: {e}")
+                    import traceback
+                    traceback.print_exc()
+                    break
                 break
                 
             elif choice == "4":
                 print("\nRunning Complete Pipeline...")
-                from scripts.run_complete_pipeline import main as run_pipeline
-                run_pipeline()
+                try:
+                    from scripts.run_complete_pipeline import main as run_pipeline
+                    run_pipeline()
+                except Exception as e:
+                    print(f"Error during pipeline execution: {e}")
+                    import traceback
+                    traceback.print_exc()
+                    break
                 break
                 
             elif choice == "5":
@@ -147,55 +171,60 @@ def interactive_training():
 
 def show_results():
     """Show training results and next steps"""
-    print("\n" + "=" * 60)
-    print("TRAINING COMPLETED!")
-    print("=" * 60)
-    print()
-    print("Results are available in:")
-    print("- models/          : Trained model weights")
-    print("- results/metrics/ : Performance data (JSON/CSV)")
-    print("- results/visualizations/ : Publication-ready plots")
-    print()
-    # Load metrics from experimental results
-    config = Config()
-    results_json_path = os.path.join(config.BASE_DIR, 'results', 'metrics', 'experimental_results.json')
-    
-    models_data = {}
-    if os.path.exists(results_json_path):
-        try:
-            with open(results_json_path, 'r') as f:
-                results_data = json.load(f)
-                models_data = results_data.get('models', {})
-        except Exception:
-            pass
-    
-    improved_cluster = models_data.get('improved_cluster', {})
-    improved_cluster_acc = improved_cluster.get('accuracy', 0.0) * 100 if improved_cluster else 0.0
-    improved_cluster_repr = improved_cluster.get('representativeness', 0.0) * 100 if improved_cluster else 0.0
-    
-    improved_hybrid = models_data.get('improved_hybrid', {})
-    improved_hybrid_acc = improved_hybrid.get('accuracy', 0.0) * 100 if improved_hybrid else 0.0
-    improved_hybrid_repr = improved_hybrid.get('representativeness', 0.0) * 100 if improved_hybrid else 0.0
-    
-    print("Key Results:")
-    if improved_cluster_acc > 0 and improved_cluster_repr > 0:
-        print(f"- Improved Cluster: {improved_cluster_acc:.2f}% accuracy, {improved_cluster_repr:.2f}% representativeness")
-    else:
-        print("- Improved Cluster: (metrics not available)")
-    if improved_hybrid_acc > 0 and improved_hybrid_repr > 0:
-        print(f"- Improved Hybrid:  {improved_hybrid_acc:.2f}% accuracy, {improved_hybrid_repr:.2f}% representativeness")
-    else:
-        print("- Improved Hybrid:  (metrics not available)")
-    print()
-    print("Next Steps:")
-    print("1. View visualizations: results/visualizations/")
-    print("2. Check results: results/metrics/")
-    print("3. Read documentation: docs/")
-    print()
-    print("For advanced usage:")
-    print("- Train specific model: python scripts/train_model.py --model improved_cluster")
-    print("- Run experiments: python scripts/run_all_experiments.py")
-    print("- Generate reports: python scripts/generate_all_visualizations.py")
+    try:
+        print("\n" + "=" * 60)
+        print("TRAINING COMPLETED!")
+        print("=" * 60)
+        print()
+        print("Results are available in:")
+        print("- models/          : Trained model weights")
+        print("- results/metrics/ : Performance data (JSON/CSV)")
+        print("- results/visualizations/ : Publication-ready plots")
+        print()
+        # Load metrics from experimental results
+        config = Config()
+        results_json_path = os.path.join(config.BASE_DIR, 'results', 'metrics', 'experimental_results.json')
+        
+        models_data = {}
+        if os.path.exists(results_json_path):
+            try:
+                with open(results_json_path, 'r') as f:
+                    results_data = json.load(f)
+                    models_data = results_data.get('models', {})
+            except Exception as e:
+                print(f"Warning: Could not load results from {results_json_path}: {e}")
+        
+        improved_cluster = models_data.get('improved_cluster', {})
+        improved_cluster_acc = improved_cluster.get('accuracy', 0.0) * 100 if improved_cluster else 0.0
+        improved_cluster_repr = improved_cluster.get('representativeness', 0.0) * 100 if improved_cluster else 0.0
+        
+        improved_hybrid = models_data.get('improved_hybrid', {})
+        improved_hybrid_acc = improved_hybrid.get('accuracy', 0.0) * 100 if improved_hybrid else 0.0
+        improved_hybrid_repr = improved_hybrid.get('representativeness', 0.0) * 100 if improved_hybrid else 0.0
+        
+        print("Key Results:")
+        if improved_cluster_acc > 0 and improved_cluster_repr > 0:
+            print(f"- Improved Cluster: {improved_cluster_acc:.2f}% accuracy, {improved_cluster_repr:.2f}% representativeness")
+        else:
+            print("- Improved Cluster: (metrics not available)")
+        if improved_hybrid_acc > 0 and improved_hybrid_repr > 0:
+            print(f"- Improved Hybrid:  {improved_hybrid_acc:.2f}% accuracy, {improved_hybrid_repr:.2f}% representativeness")
+        else:
+            print("- Improved Hybrid:  (metrics not available)")
+        print()
+        print("Next Steps:")
+        print("1. View visualizations: results/visualizations/")
+        print("2. Check results: results/metrics/")
+        print("3. Read documentation: docs/")
+        print()
+        print("For advanced usage:")
+        print("- Train specific model: python scripts/train_model.py --model improved_cluster")
+        print("- Run experiments: python scripts/run_all_experiments.py")
+        print("- Generate reports: python scripts/generate_all_visualizations.py")
+    except Exception as e:
+        print(f"Error displaying results: {e}")
+        import traceback
+        traceback.print_exc()
 
 def main():
     """Main quick start interface"""
@@ -216,6 +245,9 @@ def main():
             choice = input("Select option (1-3): ").strip()
             if choice == "1":
                 show_results()
+                print("\n" + "=" * 60)
+                print("Quick start completed. Goodbye!")
+                print("=" * 60)
                 return
             elif choice == "3":
                 print("Goodbye!")
@@ -226,6 +258,10 @@ def main():
         
         # Show results
         show_results()
+        print("\n" + "=" * 60)
+        print("Quick start completed. Goodbye!")
+        print("=" * 60)
+        return
         
     except KeyboardInterrupt:
         print("\n\nQuick start interrupted by user.")

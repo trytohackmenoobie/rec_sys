@@ -639,7 +639,7 @@ def train_cluster_model():
         print(f"   Improved Cluster Model (12 clusters):")
         print(f"      - Accuracy: {improved_acc:.2f}%")
         print(f"      - Classes: 12")
-        print(f"      - Architecture: Bidirectional GRU + Attention + Real Features")
+    print(f"      - Architecture: Bidirectional GRU + Attention + Real Features")
         print(f"      - Representativeness: {improved_repr:.2f}%")
         
         # Calculate improvement

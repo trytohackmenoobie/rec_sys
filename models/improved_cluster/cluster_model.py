@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 """
-POI CLUSTER MODEL - Radical improvement through clustering
-Expected result: 25-40% accuracy instead of 8.7%
+POI CLUSTER MODEL 
 """
 
 import torch
@@ -591,12 +590,7 @@ def train_cluster_model():
     print(f"Cluster info saved to: {cluster_info_path}")
     
     # Final comparison
-    print("\nDRAMATIC IMPROVEMENT ACHIEVED:")
-    print("=" * 50)
-    print("   Original Model (100 POIs):")
-    print("      - Accuracy: 8.7%")
-    print("      - Classes: 100")
-    print("      - Architecture: Simple GRU")
+   
     
     print("   Baseline Cluster Model (12 clusters):")
     print("      - Accuracy: 18.7%")

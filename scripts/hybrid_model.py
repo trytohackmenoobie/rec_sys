@@ -833,7 +833,7 @@ def train_hybrid_model():
     else:
         print("   Improved Cluster Model (12 clusters):")
         print("      - Accuracy: N/A (not found)")
-        print("      - Classes: 12")
+    print("      - Classes: 12")
         print(f"      - Architecture: Bidirectional GRU + Attention")
     
     # Improved Hybrid Model
@@ -849,7 +849,7 @@ def train_hybrid_model():
     else:
         print("   Improved Hybrid Model (15 clusters):")
         print("      - Accuracy: N/A (not found)")
-        print("      - Classes: 15")
+    print("      - Classes: 15")
         print(f"      - Architecture: Multi-layer + Multi-head Attention + Temporal + Ranking")
     
     # Current HYBRID Model
