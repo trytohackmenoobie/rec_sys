@@ -1,49 +1,54 @@
 {
   "experiment_summary": {
-    "total_execution_time": 49.5576810836792,
-    "start_time": "2025-11-25T13:45:38.696046",
-    "end_time": "2025-11-25T19:29:25.185741",
+    "total_execution_time": 189.3463580608368,
+    "start_time": "2025-11-26T20:25:23.967305",
+    "end_time": "2025-11-26T20:25:23.967308",
     "total_experiments": 4,
-    "successful_experiments": 2
+    "successful_experiments": 4
   },
   "experiments": {
     "baseline_cluster": {
       "experiment_name": "Baseline Cluster Model",
-      "status": "error",
-      "execution_time": 4.215105056762695,
-      "error": "Unknown error",
-      "timestamp": "2025-11-25T13:44:53.353432"
+      "status": "success",
+      "execution_time": 20.761101245880127,
+      "results": {
+        "accuracy": 0.2413,
+        "representativeness": 0.82
+      },
+      "timestamp": "2025-11-26T20:22:35.382382"
     },
     "baseline_hybrid": {
       "experiment_name": "Baseline Hybrid Model",
-      "status": "error",
-      "execution_time": 1.7779090404510498,
-      "error": "Unknown error",
-      "timestamp": "2025-11-25T13:44:55.131485"
+      "status": "success",
+      "execution_time": 87.31535005569458,
+      "results": {
+        "accuracy": 0.19510000000000002,
+        "representativeness": 0.8190000000000001,
+        "hits_at_5": 57.55
+      },
+      "timestamp": "2025-11-26T20:24:02.698210"
     },
     "improved_cluster": {
       "experiment_name": "Improved Cluster Model",
       "status": "success",
-      "execution_time": 40.40073084831238,
+      "execution_time": 26.286101818084717,
       "results": {
-        "accuracy": 0.2411,
-        "representativeness": 0.804,
-        "hits_at_3": 0.378,
-        "hits_at_5": 0.521
+        "accuracy": 0.2382,
+        "representativeness": 0.799
       },
-      "timestamp": "2025-11-25T13:45:35.532793"
+      "timestamp": "2025-11-26T20:24:28.984755"
     },
     "improved_hybrid": {
       "experiment_name": "Improved Hybrid Model",
       "status": "success",
-      "execution_time": 128.0,
+      "execution_time": 54.98189401626587,
       "results": {
-        "accuracy": 0.1959,
-        "representativeness": 0.855,
-        "hits_at_3": 0.404,
-        "hits_at_5": 0.594
+        "accuracy": 0.1645,
+        "representativeness": 0.832,
+        "hits_at_3": 0.3575,
+        "hits_at_5": 0.5589
       },
-      "timestamp": "2025-11-25T19:29:25.185741"
+      "timestamp": "2025-11-26T20:25:23.967147"
     }
   }
 }

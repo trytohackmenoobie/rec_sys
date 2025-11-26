@@ -3,6 +3,14 @@
 POI Cluster Model
 """
 
+import os
+import sys
+from pathlib import Path
+
+# Add project root to path
+project_root = Path(__file__).parent.parent
+sys.path.insert(0, str(project_root))
+
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
@@ -10,8 +18,6 @@ from torch.utils.data import DataLoader, TensorDataset
 import numpy as np
 import pandas as pd
 import logging
-import os
-import sys
 import re
 from collections import Counter, defaultdict
 from datasets import load_dataset
@@ -19,7 +25,7 @@ import pickle
 from sklearn.cluster import KMeans
 from sklearn.feature_extraction.text import TfidfVectorizer
 import json
-from POI_RECOMMENDER.config import Config
+from dualpoi.config import Config
 
 #logging
 logging.basicConfig(
@@ -540,7 +546,6 @@ def train_cluster_model():
     
     print(f"\nCLUSTER MODEL RESULTS:")
     print(f"   Overall Accuracy: {overall_accuracy:.4f} ({overall_accuracy*100:.2f}%)")
-    print(f"   Improvement: {overall_accuracy*100/8.7:.1f}x better than original!")
     
     print(f"\nPer-cluster accuracy:")
     for cluster_name, stats in cluster_accuracy.items():
@@ -583,26 +588,64 @@ def train_cluster_model():
     print(f"Metadata saved to: {metadata_path}")
     print(f"Cluster info saved to: {cluster_info_path}")
     
+    # Load comparison metrics from experimental results
+    comparison_metrics = {}
+    results_json_path = os.path.join(config.BASE_DIR, 'results', 'metrics', 'experimental_results.json')
+    if os.path.exists(results_json_path):
+        try:
+            with open(results_json_path, 'r') as f:
+                results_data = json.load(f)
+                models_data = results_data.get('models', {})
+                
+                # Get baseline cluster metrics
+                if 'baseline_cluster' in models_data:
+                    baseline = models_data['baseline_cluster']
+                    comparison_metrics['baseline_cluster'] = {
+                        'accuracy': baseline.get('accuracy', 0.0) * 100,
+                        'representativeness': baseline.get('representativeness', 0.0) * 100
+                    }
+                
+                # Get improved cluster metrics (for comparison)
+                if 'improved_cluster' in models_data:
+                    improved = models_data['improved_cluster']
+                    comparison_metrics['improved_cluster'] = {
+                        'accuracy': improved.get('accuracy', 0.0) * 100,
+                        'representativeness': improved.get('representativeness', 0.0) * 100
+                    }
+        except Exception as e:
+            logging.warning(f"Could not load comparison metrics from {results_json_path}: {e}")
+    
     # Final comparison
     print("\nIMPROVEMENT ACHIEVED:")
     print("=" * 50)
+    
+    # Original Model (baseline reference)
     print("   Original Model (100 POIs):")
-    print("      - Accuracy: 8.7%")
+    print("      - Accuracy: N/A (reference baseline)")
     print("      - Classes: 100")
     print("      - Architecture: Simple GRU")
     
-    print("   Baseline Cluster Model (12 clusters):")
-    print("      - Accuracy: 18.7%")
-    print("      - Classes: 12")
-    print("      - Architecture: Bidirectional GRU + Attention")
-    print("      - Representativeness: 92.1%")
-    
-    print(f"   Improved Cluster Model ({num_clusters} clusters):")
-    print(f"      - Accuracy: {overall_accuracy*100:.1f}%")
+    # Baseline Cluster Model (current model - just trained)
+    print(f"   Baseline Cluster Model ({num_clusters} clusters):")
+    print(f"      - Accuracy: {overall_accuracy*100:.2f}%")
     print(f"      - Classes: {num_clusters}")
-    print(f"      - Architecture: Bidirectional GRU + Attention + Real Features")
-    print(f"      - Representativeness: 81.5%")
-    print(f"      - Improvement: {overall_accuracy*100/8.7:.1f}x better than original!")
+    print(f"      - Architecture: Bidirectional GRU + Attention")
+    # Representativeness would need to be calculated separately if available
+    
+    # Improved Cluster Model (for comparison)
+    if 'improved_cluster' in comparison_metrics:
+        improved_acc = comparison_metrics['improved_cluster'].get('accuracy', 0.0)
+        improved_repr = comparison_metrics['improved_cluster'].get('representativeness', 0.0)
+        print(f"   Improved Cluster Model (12 clusters):")
+        print(f"      - Accuracy: {improved_acc:.2f}%")
+        print(f"      - Classes: 12")
+        print(f"      - Architecture: Bidirectional GRU + Attention + Real Features")
+        print(f"      - Representativeness: {improved_repr:.2f}%")
+        
+        # Calculate improvement
+        if improved_acc > 0 and overall_accuracy > 0:
+            improvement = improved_acc / (overall_accuracy * 100)
+            print(f"      - Improved Cluster is {improvement:.2f}x better than Baseline Cluster")
     
     print("\nCLUSTER MODEL READY FOR PRODUCTION!")
     print("=" * 50)

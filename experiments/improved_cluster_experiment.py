@@ -12,9 +12,16 @@ from torch.utils.data import DataLoader, TensorDataset
 from collections import Counter, defaultdict
 import numpy as np
 import logging
+import sys
+import os
 from datasets import load_dataset
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import classification_report, confusion_matrix
+
+# Add experiments directory to path for imports
+experiments_dir = os.path.dirname(os.path.abspath(__file__))
+if experiments_dir not in sys.path:
+    sys.path.insert(0, experiments_dir)
 
 # Setup logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
@@ -653,17 +660,27 @@ def main():
     print("REPRESENTATIVENESS ANALYSIS")
     print("="*80)
     
-    from baseline_cluster_analyzer import ModelRepresentativenessAnalyzer
-    
-    analyzer = ModelRepresentativenessAnalyzer(
-        model=model,
-        clusters=clusters,
-        train_data=train_data,
-        val_data=val_data,
-        device=device
-    )
-    analyzer.analyze_data_representativeness()
-    overall_score = analyzer.generate_representativeness_report()
+    try:
+        # experiments_dir already added to sys.path at top of file
+        from baseline_cluster_analyzer import ModelRepresentativenessAnalyzer
+        
+        analyzer = ModelRepresentativenessAnalyzer(
+            model=model,
+            clusters=clusters,
+            train_data=train_data,
+            val_data=val_data,
+            device=device
+        )
+        analyzer.analyze_data_representativeness()
+        overall_score = analyzer.generate_representativeness_report()
+    except ImportError as e:
+        print(f"Warning: Could not import representativeness analyzer: {e}")
+        print("Skipping representativeness analysis. Model training completed successfully.")
+        overall_score = None
+    except Exception as e:
+        print(f"Warning: Error during representativeness analysis: {e}")
+        print("Skipping representativeness analysis. Model training completed successfully.")
+        overall_score = None
     
     # Interpretation of results
     print(f"\n REPRESENTATIVENESS INTERPRETATION:")

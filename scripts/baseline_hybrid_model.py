@@ -1,8 +1,15 @@
 #!/usr/bin/env python3
 """
-HYBRID MODEL - Combining the best features of the Improved Cluster and Ultimate models
-Goal: 18-20% accuracy + 35-40% Hits@5 through a balanced architecture
+HYBRID MODEL 
 """
+
+import os
+import sys
+from pathlib import Path
+
+# Add project root to path
+project_root = Path(__file__).parent.parent
+sys.path.insert(0, str(project_root))
 
 import torch
 import torch.nn as nn
@@ -11,8 +18,6 @@ from torch.utils.data import DataLoader, TensorDataset
 import numpy as np
 import pandas as pd
 import logging
-import os
-import sys
 import re
 from collections import Counter, defaultdict
 from datasets import load_dataset
@@ -22,8 +27,8 @@ from datetime import datetime
 import math
 
 # Import modules
-from POI_RECOMMENDER.utils.model import PersonalityAwareLoss
-from POI_RECOMMENDER.config import Config
+from dualpoi.utils.model import PersonalityAwareLoss
+from dualpoi.config import Config
 
 # Setup logging
 logging.basicConfig(
@@ -711,7 +716,6 @@ def train_hybrid_model():
     
     print(f"\nHYBRID MODEL RESULTS:")
     print(f"   Overall Accuracy: {overall_accuracy:.4f} ({overall_accuracy*100:.2f}%)")
-    print(f"   Improvement: {overall_accuracy*100/8.7:.1f}x better than original!")
     
     print(f"\nHybrid ranking metrics:")
     for metric, value in hybrid_metrics.items():
@@ -750,38 +754,109 @@ def train_hybrid_model():
     print(f"Model saved to: {model_path}")
     print(f"Metadata saved to: {metadata_path}")
     
+    # Load comparison metrics from experimental results
+    comparison_metrics = {}
+    results_json_path = os.path.join(config.BASE_DIR, 'results', 'metrics', 'experimental_results.json')
+    if os.path.exists(results_json_path):
+        try:
+            with open(results_json_path, 'r') as f:
+                results_data = json.load(f)
+                models_data = results_data.get('models', {})
+                
+                # Get baseline cluster metrics
+                if 'baseline_cluster' in models_data:
+                    baseline = models_data['baseline_cluster']
+                    comparison_metrics['baseline_cluster'] = {
+                        'accuracy': baseline.get('accuracy', 0.0) * 100,
+                        'representativeness': baseline.get('representativeness', 0.0) * 100
+                    }
+                
+                # Get baseline hybrid metrics
+                if 'baseline_hybrid' in models_data:
+                    baseline_hybrid = models_data['baseline_hybrid']
+                    comparison_metrics['baseline_hybrid'] = {
+                        'accuracy': baseline_hybrid.get('accuracy', 0.0) * 100,
+                        'representativeness': baseline_hybrid.get('representativeness', 0.0) * 100
+                    }
+                
+                # Get improved cluster metrics
+                if 'improved_cluster' in models_data:
+                    improved = models_data['improved_cluster']
+                    comparison_metrics['improved_cluster'] = {
+                        'accuracy': improved.get('accuracy', 0.0) * 100,
+                        'representativeness': improved.get('representativeness', 0.0) * 100
+                    }
+                
+                # Get improved hybrid metrics
+                if 'improved_hybrid' in models_data:
+                    improved_hybrid = models_data['improved_hybrid']
+                    hits_at_5_raw = improved_hybrid.get('hits_at_5', 0.0)
+                    hits_at_5_value = hits_at_5_raw * 100 if isinstance(hits_at_5_raw, (int, float)) and hits_at_5_raw <= 1.0 else hits_at_5_raw
+                    comparison_metrics['improved_hybrid'] = {
+                        'accuracy': improved_hybrid.get('accuracy', 0.0) * 100,
+                        'representativeness': improved_hybrid.get('representativeness', 0.0) * 100,
+                        'hits_at_5': hits_at_5_value
+                    }
+        except Exception as e:
+            logging.warning(f"Could not load comparison metrics from {results_json_path}: {e}")
+    
     # Final comparison
     print("\nHYBRID MODEL COMPARISON:")
     print("=" * 60)
-   
     
-    print("   Baseline Cluster Model (12 clusters):")
-    print("      - Accuracy: 18.7%")
-    print("      - Classes: 12")
-    print("      - Architecture: Bidirectional GRU + Attention")
-    print("      - Representativeness: 92.1%")
+    # Baseline Cluster Model
+    if 'baseline_cluster' in comparison_metrics:
+        baseline_acc = comparison_metrics['baseline_cluster'].get('accuracy', 0.0)
+        baseline_repr = comparison_metrics['baseline_cluster'].get('representativeness', 0.0)
+        print(f"   Baseline Cluster Model (12 clusters):")
+        print(f"      - Accuracy: {baseline_acc:.2f}%")
+        print(f"      - Classes: 12")
+        print(f"      - Architecture: Bidirectional GRU + Attention")
+        print(f"      - Representativeness: {baseline_repr:.2f}%")
+    else:
+        print("   Baseline Cluster Model (12 clusters):")
+        print("      - Accuracy: N/A (not found)")
+        print("      - Classes: 12")
+        print(f"      - Architecture: Bidirectional GRU + Attention")
     
-    print("   Baseline Hybrid Model (12 clusters):")
-    print("      - Accuracy: 16.8%")
-    print("      - Classes: 12")
-    print("      - Architecture: Hybrid GRU + Temporal + Attention")
-    print("      - Representativeness: 94.6%")
-    
-    print("   Improved Cluster Model (12 clusters):")
-    print("      - Accuracy: 24.11%")
-    print("      - Classes: 12")
-    print("      - Architecture: Bidirectional GRU + Attention + Real Features + Neighbor-aware Clustering")
-    print("      - Representativeness: 80.4%")
-    
-    print(f"   Improved Hybrid Model ({len(cluster_to_idx)} clusters):")
-    print(f"      - Accuracy: {overall_accuracy*100:.1f}%")
+    # Baseline Hybrid Model (current model)
+    print(f"   Baseline Hybrid Model ({len(cluster_to_idx)} clusters):")
+    print(f"      - Accuracy: {overall_accuracy*100:.2f}%")
     print(f"      - Classes: {len(cluster_to_idx)}")
-    print(f"      - Architecture: Balanced (Best of Both Worlds)")
-    print(f"      - Representativeness: 85.5%")
-    if hybrid_metrics:
-        print(f"      - Hits@5: {hybrid_metrics.get('hits@5', 0)*100:.1f}%")
-        print(f"      - Hits@10: {hybrid_metrics.get('hits@10', 0)*100:.1f}%")
-    print(f"      - Total improvement: {overall_accuracy*100/8.7:.1f}x better!")
+    print(f"      - Architecture: Hybrid GRU + Temporal + Attention")
+    if 'baseline_hybrid' in comparison_metrics:
+        baseline_hybrid_repr = comparison_metrics['baseline_hybrid'].get('representativeness', 0.0)
+        print(f"      - Representativeness: {baseline_hybrid_repr:.2f}%")
+    
+    # Improved Cluster Model
+    if 'improved_cluster' in comparison_metrics:
+        improved_acc = comparison_metrics['improved_cluster'].get('accuracy', 0.0)
+        improved_repr = comparison_metrics['improved_cluster'].get('representativeness', 0.0)
+        print(f"   Improved Cluster Model (12 clusters):")
+        print(f"      - Accuracy: {improved_acc:.2f}%")
+        print(f"      - Classes: 12")
+        print(f"      - Architecture: Bidirectional GRU + Attention + Real Features + Neighbor-aware Clustering")
+        print(f"      - Representativeness: {improved_repr:.2f}%")
+    
+    # Improved Hybrid Model
+    if 'improved_hybrid' in comparison_metrics:
+        improved_hybrid_acc = comparison_metrics['improved_hybrid'].get('accuracy', 0.0)
+        improved_hybrid_repr = comparison_metrics['improved_hybrid'].get('representativeness', 0.0)
+        improved_hybrid_hits5 = comparison_metrics['improved_hybrid'].get('hits_at_5', 0.0)
+        print(f"   Improved Hybrid Model (15 clusters):")
+        print(f"      - Accuracy: {improved_hybrid_acc:.2f}%")
+        print(f"      - Classes: 15")
+        print(f"      - Architecture: Multi-layer + Multi-head Attention + Temporal + Ranking")
+        print(f"      - Representativeness: {improved_hybrid_repr:.2f}%")
+        if improved_hybrid_hits5 > 0:
+            print(f"      - Hits@5: {improved_hybrid_hits5:.2f}%")
+    
+    # Calculate improvement
+    if 'baseline_cluster' in comparison_metrics:
+        baseline_acc = comparison_metrics['baseline_cluster'].get('accuracy', 0.0)
+        if baseline_acc > 0 and overall_accuracy > 0:
+            improvement = (overall_accuracy * 100) / baseline_acc
+            print(f"      - Improvement vs Baseline Cluster: {improvement:.2f}x")
     
     print("\nHYBRID MODEL READY FOR PRODUCTION!")
     print("=" * 60)

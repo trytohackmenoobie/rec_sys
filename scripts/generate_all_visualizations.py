@@ -1,10 +1,7 @@
 """
-Visualization Generation Script
-Academic Implementation
 
-This script generates all visualizations for the POI Recommender System
-based on experimental results. Creates publication-ready figures for
-academic presentations and reports.
+This script generates all visualizations for the DualPOI system
+based on experimental results. 
 """
 
 import json
@@ -311,7 +308,7 @@ def save_visualizations(figures):
 def main():
     """Main visualization generation function"""
     
-    print("POI RECOMMENDER SYSTEM - VISUALIZATION GENERATION")
+    print("DUALPOI - VISUALIZATION GENERATION")
     print("=" * 55)
     
     try:

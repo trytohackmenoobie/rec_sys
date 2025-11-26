@@ -44,7 +44,7 @@ This document describes the methodology for constructing a knowledge graph-based
 
 ### 1.2 Manual Data Enrichment
 
-**Source:** Яндекс Еда (Yandex Food)  
+**Source:** [Яндекс Карты](https://yandex.ru/maps) (Yandex Maps)  
 **Method:** Manual data collection and verification  
 **Attributes Collected (32 total):**
 
@@ -321,7 +321,7 @@ hybrid_score = (0.40 * attr_sim) + (0.30 * geo_prox) + (0.30 * rating_sim)
 | **Users** | 138 users | 0 users |
 | **Ratings** | 1,161 ratings | 0 ratings |
 | **Dataset** | 935 restaurants | 98 restaurants/bars |
-| **Enrichment** | Automated | Manual (Яндекс Еда) |
+| **Enrichment** | Automated | Manual ([Яндекс Карты](https://yandex.ru/maps)) |
 | **Schemes** | 3 with user-user similarity | 3 without user data |
 | **Accuracy** | 84.97% (Scheme 3) | 77.55% (Hybrid, revised) |
 
@@ -433,51 +433,14 @@ Two interactive HTML visualizations have been generated and are available in `re
 ### 8.1 Data Sources
 
 - **FourSquare:** Public Open Street Places dataset
-- **Яндекс Еда:** Publicly available restaurant information
+- **[Яндекс Карты](https://yandex.ru/maps):** Publicly available restaurant information
 - **No Personal Data:** Only public restaurant information
 
 ### 8.2 Usage Rights
 
 - Research and academic purposes only
 - Proper attribution to data sources
-- No commercial use without permission
+
 
 ---
-
-## 9. Future Work
-
-### 9.1 Dataset Expansion
-
-1. Increase to 200-300 establishments
-2. Include more cities
-3. Add user interaction data (if available)
-
-### 9.2 System Enhancements
-
-1. Package recommendation logic into reusable module
-2. Create RESTful API for production deployment
-3. User preference learning
-4. Temporal pattern integration
-5. Multi-modal features (images, reviews)
-
-### 9.3 Evaluation Improvements
-
-1. User studies for ground truth
-2. A/B testing framework
-3. Online evaluation metrics
-4. Long-term user satisfaction tracking
-
----
-
-## References
-
-1. Nitamayega et al. (2024). "Utilizing GP 2 for Restaurant Recommendation." *Ind. Journal on Computing*, Vol. 9, Issue. 1, pp. 8-19.
-2. FourSquare Open Street Places: https://github.com/foursquare/fsq-os-places
-3. NetworkX Documentation: https://networkx.org/
-4. DuckDB Documentation: https://duckdb.org/docs/
-
----
-
-**Document Version:** 1.0  
-**Last Updated:** November 25, 2025
 

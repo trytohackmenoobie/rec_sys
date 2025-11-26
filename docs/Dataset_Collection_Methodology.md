@@ -194,7 +194,7 @@ df['geo_cluster'] = kmeans.fit_predict(coords)
 
 ### 4.1 Data Source for Enrichment
 
-**Primary Source:** Яндекс Еда (Yandex Food)  
+**Primary Source:** [Яндекс Карты](https://yandex.ru/maps) (Yandex Maps)  
 **Enrichment Method:** Manual data collection and verification  
 **Time Investment:** Extensive manual curation process
 
@@ -250,7 +250,7 @@ For each of the top 100 establishments, the following attributes were manually c
 ### 4.3 Data Quality Assurance
 
 **Verification Steps:**
-1. Cross-reference with Яндекс Еда for accuracy
+1. Cross-reference with [Яндекс Карты](https://yandex.ru/maps) for accuracy
 2. Verify contact information (phone, website, Instagram)
 3. Validate geographic coordinates
 4. Confirm category classification
@@ -471,7 +471,7 @@ DataLens Visualization: [1500 Restaurants Dashboard](https://datalens.yandex/w30
     ↓
 Top 100 Selection (for manual enrichment)
     ↓
-Manual Enrichment via Яндекс Еда
+Manual Enrichment via [Яндекс Карты](https://yandex.ru/maps)
     ↓
 Data Cleaning & Preprocessing
     ↓
@@ -525,7 +525,7 @@ Recommendation System Implementation
 | **Final Size** | 935 restaurants | 98 restaurants/bars |
 | **Users** | 138 users | 0 users (no user data) |
 | **Ratings** | 1,161 ratings | 0 ratings |
-| **Enrichment** | Automated | Manual (Яндекс Еда) |
+| **Enrichment** | Automated | Manual ([Яндекс Карты](https://yandex.ru/maps)) |
 | **Graph Nodes** | Variable | 176 nodes |
 | **Graph Edges** | Variable | 623 edges |
 
@@ -605,7 +605,7 @@ Recommendation System Implementation
 - Access: Direct DuckDB queries (no authentication required for public data)
 
 **Manual Enrichment Source:**
-- Яндекс Еда (Yandex Food): https://eda.yandex.ru
+- [Яндекс Карты](https://yandex.ru/maps) (Yandex Maps)
 - Manual verification and data entry
 
 ---
@@ -620,7 +620,7 @@ Recommendation System Implementation
 
 ### 10.2 Manual Data Collection
 
-- **Source:** Яндекс Еда (publicly available information)
+- **Source:** [Яндекс Карты](https://yandex.ru/maps) (publicly available information)
 - **Purpose:** Research and academic study
 - **Scope:** Restaurant information only (no personal data)
 - **Verification:** All data manually verified for accuracy
@@ -643,7 +643,7 @@ Recommendation System Implementation
 
 ### 11.2 Data Collection Automation
 
-1. **API Integration:** Direct integration with Яндекс Еда API (if available)
+1. **API Integration:** Direct integration with [Яндекс Карты API](https://yandex.ru/dev/maps/) (if available)
 2. **Web Scraping:** Automated data collection (with proper permissions)
 3. **Crowdsourcing:** User-contributed data validation
 
@@ -672,14 +672,9 @@ The final dataset of 98 establishments, enriched with 32 manually verified attri
 
 This methodology can serve as a template for similar studies in other cities or domains, demonstrating the value of combining automated data collection with manual quality assurance.
 
----
 
-## References
 
-1. FourSquare Open Street Places Dataset: https://github.com/foursquare/fsq-os-places
-2. DuckDB Documentation: https://duckdb.org/docs/
-3. NetworkX Documentation: https://networkx.org/
-4. Nitamayega et al. (2024). "Utilizing GP 2 for Restaurant Recommendation." *Ind. Journal on Computing*, Vol. 9, Issue. 1, pp. 8-19.
+
 
 ---
 

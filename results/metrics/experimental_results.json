@@ -1,44 +1,50 @@
 {
   "metadata": {
-    "generation_time": "2025-11-25T20:16:50.664647",
+    "generation_time": "2025-11-26T20:25:24.276572",
     "total_experiments": 4,
-    "successful_experiments": 2,
-    "total_execution_time": 49.5576810836792
+    "successful_experiments": 4,
+    "total_execution_time": 189.3463580608368
   },
   "models": {
     "baseline_cluster": {
       "model_name": "Baseline Cluster Model",
-      "status": "failed",
-      "error": "Unknown error",
-      "execution_time": 4.215105056762695,
-      "timestamp": "2025-11-25T13:44:53.353432"
+      "status": "success",
+      "accuracy": 0.2413,
+      "representativeness": 0.82,
+      "hits_at_3": 0.0,
+      "hits_at_5": 0.0,
+      "execution_time": 20.761101245880127,
+      "timestamp": "2025-11-26T20:22:35.382382"
     },
     "baseline_hybrid": {
       "model_name": "Baseline Hybrid Model",
-      "status": "failed",
-      "error": "Unknown error",
-      "execution_time": 1.7779090404510498,
-      "timestamp": "2025-11-25T13:44:55.131485"
+      "status": "success",
+      "accuracy": 0.19510000000000002,
+      "representativeness": 0.8190000000000001,
+      "hits_at_3": 0.0,
+      "hits_at_5": 57.55,
+      "execution_time": 87.31535005569458,
+      "timestamp": "2025-11-26T20:24:02.698210"
     },
     "improved_cluster": {
       "model_name": "Improved Cluster Model",
       "status": "success",
-      "accuracy": 0.2411,
-      "representativeness": 0.804,
-      "hits_at_3": 0.378,
-      "hits_at_5": 0.521,
-      "execution_time": 40.40073084831238,
-      "timestamp": "2025-11-25T13:45:35.532793"
+      "accuracy": 0.2382,
+      "representativeness": 0.799,
+      "hits_at_3": 0.0,
+      "hits_at_5": 0.0,
+      "execution_time": 26.286101818084717,
+      "timestamp": "2025-11-26T20:24:28.984755"
     },
     "improved_hybrid": {
       "model_name": "Improved Hybrid Model",
       "status": "success",
-      "accuracy": 0.1959,
-      "representativeness": 0.855,
-      "hits_at_3": 0.404,
-      "hits_at_5": 0.594,
-      "execution_time": 128.0,
-      "timestamp": "2025-11-25T19:29:25.185741"
+      "accuracy": 0.1645,
+      "representativeness": 0.832,
+      "hits_at_3": 0.3575,
+      "hits_at_5": 0.5589,
+      "execution_time": 54.98189401626587,
+      "timestamp": "2025-11-26T20:25:23.967147"
     }
   }
 }

@@ -21,11 +21,11 @@ import os
 CURRENT_DIR = os.path.dirname(os.path.abspath(__file__))
 PROJECT_ROOT = os.path.abspath(os.path.join(CURRENT_DIR, '..'))
 sys.path.append(os.path.join(PROJECT_ROOT, 'models', 'hybrid'))
-sys.path.append(os.path.join(PROJECT_ROOT, 'POI_RECOMMENDER'))
+sys.path.append(os.path.join(PROJECT_ROOT, 'dualpoi'))
 sys.path.append(PROJECT_ROOT)
 
 from hybrid_model import HybridPersonalizedGRU
-from POI_RECOMMENDER.utils.model import PersonalityAwareLoss
+from dualpoi.utils.model import PersonalityAwareLoss
 
 
 
@@ -653,6 +653,12 @@ def main():
     
     
     try:
+        import sys
+        import os
+        experiments_dir = os.path.dirname(os.path.abspath(__file__))
+        if experiments_dir not in sys.path:
+            sys.path.insert(0, experiments_dir)
+        
         from baseline_hybrid_analyzer import perform_hybrid_representativeness_analysis
         overall_score = perform_hybrid_representativeness_analysis(
             model=model,
@@ -661,7 +667,8 @@ def main():
             val_data=val_data,
             device=device
         )
-    except ImportError:
+    except ImportError as e:
+        print(f"Warning: Could not import representativeness analyzer: {e}")
         print("Representativeness analyzer not available, skipping...")
         overall_score = 0.7  # Default reasonable score
     

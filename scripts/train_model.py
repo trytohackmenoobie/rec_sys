@@ -1,24 +1,16 @@
 #!/usr/bin/env python3
-"""
-POI Recommender System - Model Training Script
-
-This script provides a simple interface for training POI recommendation models.
-Supports all four model types with configurable parameters.
-
-Usage:
-    python scripts/train_model.py --model improved_cluster --epochs 10
-    python scripts/train_model.py --model baseline_hybrid --save_model
-    python scripts/train_model.py --list_models
-"""
 
 import argparse
 import sys
 import os
+import json
 from pathlib import Path
 
 # Add project root to path
 project_root = Path(__file__).parent.parent
 sys.path.append(str(project_root))
+
+from dualpoi.config import Config
 
 def train_baseline_cluster(epochs=25, save_model=True, verbose=True):
     """Train baseline cluster model with original parameters"""
@@ -83,17 +75,65 @@ def list_available_models():
     print("")
     print("Model Descriptions:")
     print("-" * 50)
+    
+    # Load metrics from experimental results
+    config = Config()
+    results_json_path = os.path.join(config.BASE_DIR, 'results', 'metrics', 'experimental_results.json')
+    
+    models_data = {}
+    if os.path.exists(results_json_path):
+        try:
+            with open(results_json_path, 'r') as f:
+                results_data = json.load(f)
+                models_data = results_data.get('models', {})
+        except Exception:
+            pass
+    
     print("Baseline Models:")
     print("  - Use synthetic user features for validation")
     print("  - Provide reliable comparison benchmarks")
-    print("  - Baseline Cluster: 18.7% accuracy, 92.1% representativeness")
-    print("  - Baseline Hybrid: 16.8% accuracy, 94.6% representativeness")
+    
+    baseline_cluster = models_data.get('baseline_cluster', {})
+    baseline_cluster_acc = baseline_cluster.get('accuracy', 0.0) * 100 if baseline_cluster else 0.0
+    baseline_cluster_repr = baseline_cluster.get('representativeness', 0.0) * 100 if baseline_cluster else 0.0
+    
+    baseline_hybrid = models_data.get('baseline_hybrid', {})
+    baseline_hybrid_acc = baseline_hybrid.get('accuracy', 0.0) * 100 if baseline_hybrid else 0.0
+    baseline_hybrid_repr = baseline_hybrid.get('representativeness', 0.0) * 100 if baseline_hybrid else 0.0
+    
+    if baseline_cluster_acc > 0:
+        print(f"  - Baseline Cluster: {baseline_cluster_acc:.2f}% accuracy, {baseline_cluster_repr:.2f}% representativeness")
+    else:
+        print("  - Baseline Cluster: (metrics not available)")
+    
+    if baseline_hybrid_acc > 0:
+        print(f"  - Baseline Hybrid: {baseline_hybrid_acc:.2f}% accuracy, {baseline_hybrid_repr:.2f}% representativeness")
+    else:
+        print("  - Baseline Hybrid: (metrics not available)")
+    
     print("")
     print("Improved Models:")
     print("  - Extract real user features from FourSquare data")
     print("  - Demonstrate superior performance (15%+ improvement)")
-    print("  - Improved Cluster: 24.11% accuracy, 80.4% representativeness")
-    print("  - Improved Hybrid: 19.59% accuracy, 85.5% representativeness")
+    
+    improved_cluster = models_data.get('improved_cluster', {})
+    improved_cluster_acc = improved_cluster.get('accuracy', 0.0) * 100 if improved_cluster else 0.0
+    improved_cluster_repr = improved_cluster.get('representativeness', 0.0) * 100 if improved_cluster else 0.0
+    
+    improved_hybrid = models_data.get('improved_hybrid', {})
+    improved_hybrid_acc = improved_hybrid.get('accuracy', 0.0) * 100 if improved_hybrid else 0.0
+    improved_hybrid_repr = improved_hybrid.get('representativeness', 0.0) * 100 if improved_hybrid else 0.0
+    
+    if improved_cluster_acc > 0:
+        print(f"  - Improved Cluster: {improved_cluster_acc:.2f}% accuracy, {improved_cluster_repr:.2f}% representativeness")
+    else:
+        print("  - Improved Cluster: (metrics not available)")
+    
+    if improved_hybrid_acc > 0:
+        print(f"  - Improved Hybrid: {improved_hybrid_acc:.2f}% accuracy, {improved_hybrid_repr:.2f}% representativeness")
+    else:
+        print("  - Improved Hybrid: (metrics not available)")
+    
     print("")
     print("Recommended: Start with 'improved_cluster' for best accuracy")
 
@@ -157,7 +197,7 @@ Examples:
         return
     
     # Print training configuration
-    print("POI RECOMMENDER SYSTEM - MODEL TRAINING")
+    print("DUALPOI - MODEL TRAINING")
     print("=" * 50)
     print(f"Model: {args.model}")
     print(f"Epochs: {args.epochs}")

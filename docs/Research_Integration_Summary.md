@@ -41,7 +41,7 @@ Both studies contribute to the broader goal of developing effective recommendati
 - **Initial:** 60,964 Moscow establishments
 - **Filtered:** 8,541 quality establishments
 - **Selected:** 1,355 → 100 → **98 final establishments**
-- **Enrichment:** Manual data collection from Яндекс Еда
+- **Enrichment:** Manual data collection from [Яндекс Карты](https://yandex.ru/maps)
 - **Attributes:** 32 manually verified attributes per establishment
 
 ### Knowledge Graph
@@ -137,11 +137,11 @@ Score Range: 8-44 points
 
 ### Manual Data Enrichment Process
 
-**Source:** Яндекс Еда (Yandex Food) - https://eda.yandex.ru
+**Source:** [Яндекс Карты](https://yandex.ru/maps) (Yandex Maps)
 
 **Enrichment Method:**
 1. For each of top 100 establishments:
-   - Opened Яндекс Еда page
+   - Opened [Яндекс Карты](https://yandex.ru/maps) page
    - Manually collected and verified information
    - Cross-referenced with FourSquare data
    - Verified contact information
@@ -242,7 +242,7 @@ Score Range: 8-44 points
 
 **Data Sources:**
 - FourSquare Open Street Places: Public dataset, open access
-- Яндекс Еда: Publicly available restaurant information
+- [Яндекс Карты](https://yandex.ru/maps): Publicly available restaurant information
 - No personal data collected
 - No user tracking or behavior monitoring
 
@@ -250,7 +250,7 @@ Score Range: 8-44 points
 - Automated: S3 data extraction via DuckDB
 - Automated: Quality filtering and scoring
 - Automated: Geographic clustering
-- **Manual:** Data enrichment from Яндекс Еда (public information only)
+- **Manual:** Data enrichment from [Яндекс Карты](https://yandex.ru/maps) (public information only)
 
 **Usage:**
 - Research and academic purposes only
@@ -326,14 +326,6 @@ Both studies contribute to the understanding of recommendation system design, ev
 3. **Evaluation Framework:** Metrics for no-user-data scenarios
 4. **Dual Study:** Integration of two complementary approaches
 
-### Ready for Publication
-
-- Complete methodology documentation
-- Reproducible code and data
-- Comprehensive evaluation results
-- Ethical considerations addressed
-- Comparison with related work
-- Future work directions identified
 
 ---
 

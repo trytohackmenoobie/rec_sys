@@ -12,7 +12,7 @@
 2. **Quality Filtering:** Applied scoring algorithm to identify 8,541 quality establishments (excluding fast food chains)
 3. **Geographic Clustering:** Used K-Means clustering (50 clusters) to ensure balanced spatial distribution
 4. **Multi-Stage Selection:** Selected top 1,355 establishments, then top 100 for manual enrichment
-5. **Manual Enrichment:** Manually collected and verified 32 attributes per establishment from Яндекс Еда (Yandex Food)
+5. **Manual Enrichment:** Manually collected and verified 32 attributes per establishment from [Яндекс Карты](https://yandex.ru/maps) (Yandex Maps)
 6. **Final Dataset:** 98 restaurants and bars with complete attribute information
 
 **Detailed methodology:** See `Dataset_Collection_Methodology.md` for complete documentation of the data collection, filtering, scoring, geographic clustering, manual enrichment, and knowledge graph construction process.
@@ -77,7 +77,7 @@ Advanced hybrid architecture incorporating:
 A parallel study was conducted using a manually curated dataset of 98 Moscow restaurants and bars to construct a knowledge graph-based recommendation system. This study implements three recommendation schemes (Content-Based, Geographically Weighted, and Hybrid) without user interaction data, focusing on restaurant-restaurant similarity.
 
 **Key Components:**
-- **Dataset:** 98 establishments manually enriched with 32 attributes from Яндекс Еда
+- **Dataset:** 98 establishments manually enriched with 32 attributes from [Яндекс Карты](https://yandex.ru/maps)
 - **Graph Structure:** 176 nodes, 623 edges (NetworkX)
 - **Schemes:** Content-based, Geo-weighted, Hybrid
 - **Evaluation:** Precision@K, Recall@K, NDCG, Geo Relevance, Attribute Coverage, Personalization

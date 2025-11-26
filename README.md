@@ -1,4 +1,4 @@
-# POI Recommender System: Evaluation with Real User Features
+# DualPOI: A Dual-Modal Framework Integrating Deep Learning and Knowledge Graphs for Personalized Point-of-Interest Recommendation
 
 ## Abstract
 
@@ -79,7 +79,7 @@ python scripts/train_model.py --model improved_hybrid
 - Improved Cluster: 10 epochs @ 0.001 learning rate
 - Improved Hybrid: 20 epochs @ 0.0008 learning rate (48 batch, StepLR)
 - **DO NOT** change epochs unless you want different results
-- See `config/training_parameters.md` for exact configuration
+- See `docs/training_parameters.md` for exact configuration
 
 ### Complete Pipeline
 ```bash
@@ -172,6 +172,8 @@ Alternatively, you can manually open the HTML files:
 │   ├── frsqr_2025.ipynb              # FourSquare S3 data parsing
 │   └── recsys_knowledge_graph.ipynb  # Knowledge graph construction
 ├── data/                # Datasets
+│   ├── raw/             # Raw data sources documentation
+│   │   └── DATA_SOURCES.md  # Reference to original data sources
 │   └── processed/       # Processed datasets
 │       ├── workingrest.csv                    # Final dataset (98 establishments)
 │       ├── moscow_top_100_restaurants.csv     # Top 100 for enrichment
@@ -181,8 +183,9 @@ Alternatively, you can manually open the HTML files:
 │   ├── Methodology.md                    # Main methodology
 │   ├── Dataset_Collection_Methodology.md # Data collection process
 │   ├── Knowledge_Graph_Methodology.md    # Knowledge graph study
-│   └── Research_Integration_Summary.md  # Integration of both studies
-└── POI_RECOMMENDER/     # Core model implementations
+│   ├── Research_Integration_Summary.md  # Integration of both studies
+│   └── training_parameters.md            # Training hyperparameters reference
+└── dualpoi/             # Core model implementations and utilities
 ```
 
 ## Additional Research: Knowledge Graph-Based Recommendation
@@ -192,7 +195,7 @@ This repository also contains a parallel study on knowledge graph-based restaura
 ### Knowledge Graph Dataset
 - **Source:** FourSquare Open Street Places (S3, September 2025)
 - **Collection Process:** Multi-stage filtering from 60,964 → 98 establishments
-- **Enrichment:** Manual data collection from Яндекс Еда (32 attributes per establishment)
+- **Enrichment:** Manual data collection from [Яндекс Карты](https://yandex.ru/maps) (32 attributes per establishment)
 - **Graph Structure:** 176 nodes, 623 edges (NetworkX)
 
 ### Recommendation Schemes
@@ -233,15 +236,15 @@ All experiments are fully reproducible with:
 
 ### Key Methodological Declarations
 - **Data Collection Process:** Fully documented S3 extraction, filtering, scoring, clustering
-- **Manual Enrichment:** Detailed process from Яндекс Еда (32 attributes, 98 establishments)
+- **Manual Enrichment:** Detailed process from [Яндекс Карты](https://yandex.ru/maps) (32 attributes, 98 establishments)
 - **Knowledge Graph Construction:** NetworkX-based implementation (176 nodes, 623 edges)
 - **Evaluation Metrics:** Comprehensive metrics for both studies
 
 ## Citation
 
 ```bibtex
-@article{poi_recommender_2025,
-  title={POI Recommender System: Evaluation with Real User Features and Knowledge Graph-Based Recommendation},
+@article{dual_poi_2025,
+  title={DualPOI: A Dual-Modal Framework Integrating Deep Learning and Knowledge Graphs for Personalized Point-of-Interest Recommendation},
   author={[Askhabaliev Gadzhi]},
   year={2025},
   note={Includes two complementary studies: deep learning-based POI recommendation and knowledge graph-based restaurant recommendation}

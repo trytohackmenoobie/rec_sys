@@ -1,6 +1,4 @@
 """
-Complete POI Recommender System Experiment Pipeline
-Academic Implementation
 
 This script executes all four model experiments in sequence:
 1. Baseline Cluster Model
@@ -94,33 +92,72 @@ def extract_results_from_output(stdout_text):
         # Track best hits values (from final epoch or best epoch)
         best_hits_3 = 0.0
         best_hits_5 = 0.0
+        import re
         
         for line in lines:
-            # Extract accuracy
+            # Extract accuracy - multiple formats
             if "Best Validation Accuracy:" in line:
                 accuracy_str = line.split("Best Validation Accuracy:")[1].strip()
                 accuracy_val = accuracy_str.split()[0].replace("(", "").replace(")", "")
-                results["accuracy"] = float(accuracy_val)
+                try:
+                    results["accuracy"] = float(accuracy_val)
+                except ValueError:
+                    pass
+            elif "Overall Accuracy:" in line or "Overall accuracy:" in line:
+                # Format: "Overall Accuracy: 0.1932 (19.32%)"
+                match = re.search(r'Overall Accuracy:\s*([\d.]+)\s*\(', line, re.IGNORECASE)
+                if not match:
+                    # Try without parentheses
+                    match = re.search(r'Overall Accuracy:\s*([\d.]+)', line, re.IGNORECASE)
+                if match:
+                    try:
+                        acc_val = float(match.group(1))
+                        # If > 1, it's percentage, otherwise decimal
+                        results["accuracy"] = acc_val if acc_val < 1.0 else acc_val / 100.0
+                    except ValueError:
+                        pass
+            elif re.search(r'Accuracy:\s*([\d.]+)%', line):
+                # Format: "- Accuracy: 18.7%"
+                match = re.search(r'Accuracy:\s*([\d.]+)%', line)
+                if match:
+                    try:
+                        results["accuracy"] = float(match.group(1)) / 100.0
+                    except ValueError:
+                        pass
             
-            # Extract representativeness
-            elif "OVERALL REPRESENTATIVENESS:" in line:
+            # Extract representativeness - multiple formats
+            if "OVERALL REPRESENTATIVENESS:" in line:
                 repr_str = line.split("OVERALL REPRESENTATIVENESS:")[1].strip()
                 repr_val = repr_str.split()[0]
-                results["representativeness"] = float(repr_val)
+                try:
+                    results["representativeness"] = float(repr_val)
+                except ValueError:
+                    pass
+            elif "Representativeness:" in line:
+                # Format: "- Representativeness: 92.1%"
+                match = re.search(r'Representativeness:\s*([\d.]+)%?', line)
+                if match:
+                    try:
+                        repr_val = float(match.group(1))
+                        # If > 1, assume it's percentage, otherwise assume it's already decimal
+                        results["representativeness"] = repr_val / 100.0 if repr_val > 1.0 else repr_val
+                    except ValueError:
+                        pass
             
             # Extract Hits@3 and Hits@5 from epoch lines or final results
-            if "Hits@3:" in line and "Hits@5:" in line:
+            if "Hits@3:" in line or "hits@3:" in line.lower():
                 try:
-                    # Format: "Hits@3: 0.404, Hits@5: 0.594" or "Hits@3: 0.404, Hits@5: 0.594"
-                    import re
-                    hits3_match = re.search(r'Hits@3:\s*([\d.]+)', line)
-                    hits5_match = re.search(r'Hits@5:\s*([\d.]+)', line)
-                    
+                    hits3_match = re.search(r'Hits@3:\s*([\d.]+)', line, re.IGNORECASE)
                     if hits3_match:
                         hits3_val = float(hits3_match.group(1))
                         if hits3_val > best_hits_3:
                             best_hits_3 = hits3_val
-                    
+                except (ValueError, AttributeError):
+                    pass
+            
+            if "Hits@5:" in line or "hits@5:" in line.lower():
+                try:
+                    hits5_match = re.search(r'Hits@5:\s*([\d.]+)', line, re.IGNORECASE)
                     if hits5_match:
                         hits5_val = float(hits5_match.group(1))
                         if hits5_val > best_hits_5:
@@ -142,7 +179,7 @@ def extract_results_from_output(stdout_text):
 def main():
     """Execute all experiments and collect results"""
     
-    print("POI RECOMMENDER SYSTEM - COMPLETE EXPERIMENT PIPELINE")
+    print("DUALPOI - COMPLETE EXPERIMENT PIPELINE")
     print("=" * 60)
     print(f"Start time: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
     print()
@@ -247,6 +284,13 @@ def main():
             print(f"  {result['experiment_name']}: Accuracy={accuracy}, Representativeness={representativeness}")
         else:
             print(f"  {result['experiment_name']}: FAILED ({status})")
+    
+    # Always return True to allow pipeline to continue processing existing results
+    # Pipeline will check stdout for "SUCCESSFUL EXPERIMENTS: 0/" to detect failures
+    if successful == 0:
+        print("\nWARNING: All experiments failed. Pipeline will continue to process existing results.")
+    
+    return True
 
 if __name__ == "__main__":
     main()

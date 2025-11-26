@@ -21,8 +21,8 @@ from datetime import datetime
 import math
 
 # Import modules
-from POI_RECOMMENDER.utils.model import PersonalityAwareLoss
-from POI_RECOMMENDER.config import Config
+from dualpoi.utils.model import PersonalityAwareLoss
+from dualpoi.config import Config
 
 # Setup logging
 logging.basicConfig(
@@ -436,7 +436,7 @@ def create_hybrid_dataloader(data, batch_size, shuffle, num_clusters):
     targets_tensor = torch.tensor(targets, dtype=torch.long)
     temporal_tensor = torch.tensor(temporal_features, dtype=torch.float)
     
-    print(f"📊 Hybrid tensor shapes → clusters: {tuple(cluster_tensor.shape)}, user: {tuple(user_features_tensor.shape)}, targets: {tuple(targets_tensor.shape)}, temporal: {tuple(temporal_tensor.shape)}")
+    print(f"Hybrid tensor shapes -> clusters: {tuple(cluster_tensor.shape)}, user: {tuple(user_features_tensor.shape)}, targets: {tuple(targets_tensor.shape)}, temporal: {tuple(temporal_tensor.shape)}")
     
     dataset = TensorDataset(cluster_tensor, user_features_tensor, targets_tensor, temporal_tensor)
     dataloader = DataLoader(dataset, batch_size=batch_size, shuffle=shuffle)
@@ -473,16 +473,16 @@ def calculate_hybrid_metrics(predictions, targets, k_values=[1, 5, 10, 20]):
 
 def train_hybrid_model():
     """Train the hybrid model"""
-    print("🚀 HYBRID MODEL TRAINING")
+    print("HYBRID MODEL TRAINING")
     print("=" * 60)
-    print("📊 Strategy: Best of Improved Cluster + Ultimate Model")
-    print("🎯 Expected: 18-20% accuracy + 35-40% Hits@5")
+    print("Strategy: Best of Improved Cluster + Ultimate Model")
+    print("Expected: 18-20% accuracy + 35-40% Hits@5")
     print("=" * 60)
     
     # Load data
     train_df = load_foursquare_data(config.TRAIN_SPLIT)
     if train_df is None:
-        print("❌ Failed to load training data")
+        print("Failed to load training data")
         return
     
     validation_df = load_foursquare_data(config.VAL_SPLIT)
@@ -493,7 +493,7 @@ def train_hybrid_model():
     training_data = preprocess_foursquare_data_hybrid(train_df)
     validation_data = preprocess_foursquare_data_hybrid(validation_df) if validation_df is not None else None
     
-    print(f"📊 Hybrid training data: {len(training_data)} examples")
+    print(f"Hybrid training data: {len(training_data)} examples")
     
     # Count POIs
     poi_counts = Counter()
@@ -501,8 +501,8 @@ def train_hybrid_model():
         poi_counts.update(example['poi_sequence'])
         poi_counts[example['next_poi_id']] += 1
     
-    print(f"📊 Found {len(poi_counts)} unique POIs")
-    print(f"📊 Most frequent POIs: {dict(poi_counts.most_common(10))}")
+    print(f"Found {len(poi_counts)} unique POIs")
+    print(f"Most frequent POIs: {dict(poi_counts.most_common(10))}")
     
     # Create hybrid clusters (оптимальный размер от Improved Model)
     clusters, poi_to_cluster, cluster_to_idx = create_hybrid_clusters(poi_counts, num_clusters=12)
@@ -519,8 +519,8 @@ def train_hybrid_model():
     train_data = cluster_training_data[:split_idx]
     val_data = cluster_training_data[split_idx:] if len(cluster_training_data) > split_idx else cluster_training_data[-100:]
     
-    print(f"📈 Train samples: {len(train_data)}")
-    print(f"📈 Validation samples: {len(val_data)}")
+    print(f"Train samples: {len(train_data)}")
+    print(f"Validation samples: {len(val_data)}")
     
     # Create hybrid dataloaders
     train_dataloader = create_hybrid_dataloader(train_data, config.BATCH_SIZE, shuffle=True, num_clusters=num_clusters)
@@ -574,7 +574,7 @@ def train_hybrid_model():
             print("🚨 CRITICAL: Loss too high!")
             return
         
-        print("✅ Hybrid model validation passed!")
+        print("Hybrid model validation passed!")
     
     model.train()
     
@@ -584,7 +584,7 @@ def train_hybrid_model():
     
     # Training loop
     epochs = 30  # Оптимальное количество эпох
-    print(f"\n🚀 Starting hybrid training for {epochs} epochs...")
+    print(f"\nStarting hybrid training for {epochs} epochs...")
     print("=" * 50)
     
     best_accuracy = 0
@@ -625,11 +625,11 @@ def train_hybrid_model():
         
         # Epoch summary
         avg_epoch_loss = total_loss / batch_count
-        print(f"✅ Epoch {epoch+1}/{epochs} completed - Average Loss: {avg_epoch_loss:.4f}")
+        print(f"Epoch {epoch+1}/{epochs} completed - Average Loss: {avg_epoch_loss:.4f}")
         
         scheduler.step()
         current_lr = optimizer.param_groups[0]['lr']
-        print(f"📈 Learning rate updated to: {current_lr:.6f}")
+        print(f"Learning rate updated to: {current_lr:.6f}")
         
         # Validation check
         if epoch % 5 == 0:  # Check every 5 epochs
@@ -651,7 +651,7 @@ def train_hybrid_model():
                     total_predictions += targets.size(0)
             
             val_accuracy = correct_predictions / total_predictions
-            print(f"📊 Validation Accuracy: {val_accuracy:.4f} ({val_accuracy*100:.2f}%)")
+            print(f"Validation Accuracy: {val_accuracy:.4f} ({val_accuracy*100:.2f}%)")
             
             # Early stopping
             if val_accuracy > best_accuracy:
@@ -661,7 +661,7 @@ def train_hybrid_model():
                 patience_counter += 1
                 
             if patience_counter >= patience:
-                print(f"🛑 Early stopping triggered after {epoch+1} epochs")
+                print(f" Early stopping triggered after {epoch+1} epochs")
                 break
         
         model.train()
@@ -708,15 +708,14 @@ def train_hybrid_model():
     overall_accuracy = correct_predictions / total_predictions
     hybrid_metrics = calculate_hybrid_metrics(all_predictions, all_targets)
     
-    print(f"\n📊 HYBRID MODEL RESULTS:")
-    print(f"   🎯 Overall Accuracy: {overall_accuracy:.4f} ({overall_accuracy*100:.2f}%)")
-    print(f"   📈 Improvement: {overall_accuracy*100/8.7:.1f}x better than original!")
+    print(f"\nHYBRID MODEL RESULTS:")
+    print(f"   Overall Accuracy: {overall_accuracy:.4f} ({overall_accuracy*100:.2f}%)")
     
-    print(f"\n📊 Hybrid ranking metrics:")
+    print(f"\nHybrid ranking metrics:")
     for metric, value in hybrid_metrics.items():
         print(f"   {metric}: {value:.4f} ({value*100:.2f}%)")
     
-    print(f"\n📊 Per-cluster accuracy:")
+    print(f"\nPer-cluster accuracy:")
     for cluster_name, stats in cluster_accuracy.items():
         acc = stats['correct'] / stats['total'] if stats['total'] > 0 else 0
         print(f"   {cluster_name}: {acc:.3f} ({stats['correct']}/{stats['total']})")
@@ -745,39 +744,140 @@ def train_hybrid_model():
     with open(metadata_path, 'wb') as f:
         pickle.dump(hybrid_metadata, f)
     
-    print("✅ HYBRID training completed successfully!")
-    print(f"📁 Model saved to: {model_path}")
-    print(f"📁 Metadata saved to: {metadata_path}")
+    print("HYBRID training completed successfully!")
+    print(f"Model saved to: {model_path}")
+    print(f"Metadata saved to: {metadata_path}")
+    
+    # Load comparison metrics from experimental results
+    comparison_metrics = {}
+    results_json_path = os.path.join(config.BASE_DIR, 'results', 'metrics', 'experimental_results.json')
+    if os.path.exists(results_json_path):
+        try:
+            with open(results_json_path, 'r') as f:
+                results_data = json.load(f)
+                models_data = results_data.get('models', {})
+                
+                # Get baseline cluster metrics
+                if 'baseline_cluster' in models_data:
+                    baseline = models_data['baseline_cluster']
+                    comparison_metrics['baseline_cluster'] = {
+                        'accuracy': baseline.get('accuracy', 0.0) * 100,
+                        'representativeness': baseline.get('representativeness', 0.0) * 100
+                    }
+                
+                # Get improved cluster metrics
+                if 'improved_cluster' in models_data:
+                    improved = models_data['improved_cluster']
+                    comparison_metrics['improved_cluster'] = {
+                        'accuracy': improved.get('accuracy', 0.0) * 100,
+                        'representativeness': improved.get('representativeness', 0.0) * 100
+                    }
+                
+                # Get improved hybrid metrics
+                if 'improved_hybrid' in models_data:
+                    improved_hybrid = models_data['improved_hybrid']
+                    hits_at_5_raw = improved_hybrid.get('hits_at_5', 0.0)
+                    # hits_at_5 is stored as fraction (0.6607 = 66.07%), convert to percentage
+                    if isinstance(hits_at_5_raw, (int, float)):
+                        hits_at_5_value = hits_at_5_raw * 100 if hits_at_5_raw <= 1.0 else hits_at_5_raw
+                    else:
+                        hits_at_5_value = 0.0
+                    comparison_metrics['improved_hybrid'] = {
+                        'accuracy': improved_hybrid.get('accuracy', 0.0) * 100,
+                        'representativeness': improved_hybrid.get('representativeness', 0.0) * 100,
+                        'hits_at_5': hits_at_5_value
+                    }
+        except Exception as e:
+            logging.warning(f"Could not load comparison metrics from {results_json_path}: {e}")
+    
+    # Try to load metadata from saved models
+    baseline_cluster_metadata_path = os.path.join(config.MODEL_DIR, 'cluster_personalized_model.pth')
+    if os.path.exists(baseline_cluster_metadata_path):
+        baseline_metadata_path = os.path.join(config.MODEL_DIR, 'cluster_metadata.pkl')
+        if os.path.exists(baseline_metadata_path):
+            try:
+                with open(baseline_metadata_path, 'rb') as f:
+                    baseline_metadata = pickle.load(f)
+                    if 'num_clusters' in baseline_metadata:
+                        if 'baseline_cluster' not in comparison_metrics:
+                            comparison_metrics['baseline_cluster'] = {}
+                        comparison_metrics['baseline_cluster']['num_clusters'] = baseline_metadata['num_clusters']
+            except Exception as e:
+                logging.warning(f"Could not load baseline cluster metadata: {e}")
     
     # Final comparison
-    print("\n🎯 HYBRID MODEL COMPARISON:")
+    print("\nHYBRID MODEL COMPARISON:")
     print("=" * 60)
-    print("   📊 Original Model (100 POIs):")
-    print("      - Accuracy: 8.7%")
-    print("      - Classes: 100")
-    print("      - Architecture: Simple GRU")
     
-    print("   🚀 Improved Cluster Model (12 clusters):")
-    print("      - Accuracy: 17.6%")
-    print("      - Classes: 12")
-    print("      - Architecture: Bidirectional GRU + Attention")
+    # Original/Baseline Model
+    if 'baseline_cluster' in comparison_metrics:
+        baseline_acc = comparison_metrics['baseline_cluster'].get('accuracy', 0.0)
+        baseline_clusters = comparison_metrics['baseline_cluster'].get('num_clusters', 100)
+        print(f"   Baseline Cluster Model ({baseline_clusters} clusters):")
+        print(f"      - Accuracy: {baseline_acc:.2f}%")
+        print(f"      - Classes: {baseline_clusters}")
+        print(f"      - Architecture: Simple GRU")
+    else:
+        print("   Baseline Cluster Model:")
+        print("      - Accuracy: N/A (not found)")
+        print("      - Classes: N/A")
+        print(f"      - Architecture: Simple GRU")
     
-    print("   🎉 Ultimate Model (15 clusters):")
-    print("      - Accuracy: 15.98%")
-    print("      - Classes: 15")
-    print("      - Architecture: Multi-layer + Multi-head Attention + Temporal + Ranking")
-    print("      - Hits@5: 45.6%")
+    # Improved Cluster Model
+    if 'improved_cluster' in comparison_metrics:
+        improved_acc = comparison_metrics['improved_cluster'].get('accuracy', 0.0)
+        print(f"   Improved Cluster Model (12 clusters):")
+        print(f"      - Accuracy: {improved_acc:.2f}%")
+        print(f"      - Classes: 12")
+        print(f"      - Architecture: Bidirectional GRU + Attention")
+    else:
+        print("   Improved Cluster Model (12 clusters):")
+        print("      - Accuracy: N/A (not found)")
+        print("      - Classes: 12")
+        print(f"      - Architecture: Bidirectional GRU + Attention")
     
-    print(f"   🏆 HYBRID Model ({len(cluster_to_idx)} clusters):")
-    print(f"      - Accuracy: {overall_accuracy*100:.1f}%")
+    # Improved Hybrid Model
+    if 'improved_hybrid' in comparison_metrics:
+        hybrid_acc = comparison_metrics['improved_hybrid'].get('accuracy', 0.0)
+        hybrid_hits5 = comparison_metrics['improved_hybrid'].get('hits_at_5', 0.0)
+        print(f"   Improved Hybrid Model (15 clusters):")
+        print(f"      - Accuracy: {hybrid_acc:.2f}%")
+        print(f"      - Classes: 15")
+        print(f"      - Architecture: Multi-layer + Multi-head Attention + Temporal + Ranking")
+        if hybrid_hits5 > 0:
+            print(f"      - Hits@5: {hybrid_hits5:.2f}%")
+    else:
+        print("   Improved Hybrid Model (15 clusters):")
+        print("      - Accuracy: N/A (not found)")
+        print("      - Classes: 15")
+        print(f"      - Architecture: Multi-layer + Multi-head Attention + Temporal + Ranking")
+    
+    # Current HYBRID Model
+    print(f"   HYBRID Model ({len(cluster_to_idx)} clusters):")
+    print(f"      - Accuracy: {overall_accuracy*100:.2f}%")
     print(f"      - Classes: {len(cluster_to_idx)}")
     print(f"      - Architecture: Balanced (Best of Both Worlds)")
     if hybrid_metrics:
-        print(f"      - Hits@5: {hybrid_metrics.get('hits@5', 0)*100:.1f}%")
-        print(f"      - Hits@10: {hybrid_metrics.get('hits@10', 0)*100:.1f}%")
-    print(f"      - Total improvement: {overall_accuracy*100/8.7:.1f}x better!")
+        hits5 = hybrid_metrics.get('hits@5', 0)
+        hits10 = hybrid_metrics.get('hits@10', 0)
+        if hits5 > 0:
+            print(f"      - Hits@5: {hits5*100:.2f}%")
+        if hits10 > 0:
+            print(f"      - Hits@10: {hits10*100:.2f}%")
     
-    print("\n🎉 HYBRID MODEL READY FOR PRODUCTION!")
+    # Calculate improvement
+    if 'baseline_cluster' in comparison_metrics:
+        baseline_acc = comparison_metrics['baseline_cluster'].get('accuracy', 0.0)
+        if baseline_acc > 0:
+            improvement = (overall_accuracy * 100) / baseline_acc
+            print(f"      - Total improvement: {improvement:.2f}x better than baseline!")
+    elif 'improved_cluster' in comparison_metrics:
+        improved_acc = comparison_metrics['improved_cluster'].get('accuracy', 0.0)
+        if improved_acc > 0:
+            improvement = (overall_accuracy * 100) / improved_acc
+            print(f"      - Improvement vs Improved Cluster: {improvement:.2f}x")
+    
+    print("\nHYBRID MODEL READY FOR PRODUCTION!")
     print("=" * 60)
 
 if __name__ == "__main__":

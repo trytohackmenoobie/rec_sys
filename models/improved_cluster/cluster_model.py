@@ -22,8 +22,8 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 import json
 
 # Import modules
-from POI_RECOMMENDER.utils.model import PersonalityAwareLoss
-from POI_RECOMMENDER.config import Config
+from dualpoi.utils.model import PersonalityAwareLoss
+from dualpoi.config import Config
 
 # Setup logging
 logging.basicConfig(

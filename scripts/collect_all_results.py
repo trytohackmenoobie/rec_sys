@@ -1,6 +1,6 @@
 """
 Results Collection and Processing Script
-Academic Implementation
+
 
 This script processes raw experiment results and creates structured
 summary files for visualization and documentation generation.
@@ -166,7 +166,7 @@ def save_results(processed_results, performance_summary, comparison_table):
 def main():
     """Main results collection and processing function"""
     
-    print("POI RECOMMENDER SYSTEM - RESULTS COLLECTION")
+    print("DUALPOI - RESULTS COLLECTION")
     print("=" * 50)
     print(f"Processing time: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
     print()
