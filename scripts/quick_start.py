@@ -194,23 +194,36 @@ def show_results():
             except Exception as e:
                 print(f"Warning: Could not load results from {results_json_path}: {e}")
         
-        improved_cluster = models_data.get('improved_cluster', {})
-        improved_cluster_acc = improved_cluster.get('accuracy', 0.0) * 100 if improved_cluster else 0.0
-        improved_cluster_repr = improved_cluster.get('representativeness', 0.0) * 100 if improved_cluster else 0.0
+        # Helper function to safely extract metrics
+        def get_model_metrics(model_data):
+            if not model_data:
+                return None, None, False
+            status = model_data.get('status', 'unknown')
+            if status == 'success' and 'accuracy' in model_data:
+                acc = model_data.get('accuracy', 0.0) * 100
+                repr = model_data.get('representativeness', 0.0) * 100
+                return acc, repr, True
+            return None, None, False
         
-        improved_hybrid = models_data.get('improved_hybrid', {})
-        improved_hybrid_acc = improved_hybrid.get('accuracy', 0.0) * 100 if improved_hybrid else 0.0
-        improved_hybrid_repr = improved_hybrid.get('representativeness', 0.0) * 100 if improved_hybrid else 0.0
+        # Get all model metrics
+        improved_cluster_acc, improved_cluster_repr, improved_cluster_ok = get_model_metrics(models_data.get('improved_cluster', {}))
+        improved_hybrid_acc, improved_hybrid_repr, improved_hybrid_ok = get_model_metrics(models_data.get('improved_hybrid', {}))
+        baseline_cluster_acc, baseline_cluster_repr, baseline_cluster_ok = get_model_metrics(models_data.get('baseline_cluster', {}))
+        baseline_hybrid_acc, baseline_hybrid_repr, baseline_hybrid_ok = get_model_metrics(models_data.get('baseline_hybrid', {}))
         
         print("Key Results:")
-        if improved_cluster_acc > 0 and improved_cluster_repr > 0:
+        if improved_cluster_ok:
             print(f"- Improved Cluster: {improved_cluster_acc:.2f}% accuracy, {improved_cluster_repr:.2f}% representativeness")
         else:
-            print("- Improved Cluster: (metrics not available)")
-        if improved_hybrid_acc > 0 and improved_hybrid_repr > 0:
+            print("- Improved Cluster: (experiment failed or not available)")
+        if improved_hybrid_ok:
             print(f"- Improved Hybrid:  {improved_hybrid_acc:.2f}% accuracy, {improved_hybrid_repr:.2f}% representativeness")
         else:
-            print("- Improved Hybrid:  (metrics not available)")
+            print("- Improved Hybrid:  (experiment failed or not available)")
+        if baseline_cluster_ok:
+            print(f"- Baseline Cluster: {baseline_cluster_acc:.2f}% accuracy, {baseline_cluster_repr:.2f}% representativeness")
+        if baseline_hybrid_ok:
+            print(f"- Baseline Hybrid:  {baseline_hybrid_acc:.2f}% accuracy, {baseline_hybrid_repr:.2f}% representativeness")
         print()
         print("Next Steps:")
         print("1. View visualizations: results/visualizations/")

@@ -382,14 +382,22 @@ def train_cluster_model():
     train_df = load_foursquare_data(config.TRAIN_SPLIT)
     if train_df is None:
         print("Failed to load training data")
-        return
+        sys.exit(1)
     
     validation_df = load_foursquare_data(config.VAL_SPLIT)
     if validation_df is None:
         validation_df = load_foursquare_data(config.TEST_SPLIT)
     
+    if validation_df is None:
+        print("Failed to load validation data")
+        sys.exit(1)
+    
     # Preprocess
     training_data = preprocess_foursquare_data(train_df)
+    if not training_data:
+        print("Failed to preprocess training data")
+        sys.exit(1)
+    
     validation_data = preprocess_foursquare_data(validation_df) if validation_df is not None else None
     
     print(f"Training data: {len(training_data)} examples")
@@ -639,7 +647,7 @@ def train_cluster_model():
         print(f"   Improved Cluster Model (12 clusters):")
         print(f"      - Accuracy: {improved_acc:.2f}%")
         print(f"      - Classes: 12")
-    print(f"      - Architecture: Bidirectional GRU + Attention + Real Features")
+        print(f"      - Architecture: Bidirectional GRU + Attention + Real Features")
         print(f"      - Representativeness: {improved_repr:.2f}%")
         
         # Calculate improvement

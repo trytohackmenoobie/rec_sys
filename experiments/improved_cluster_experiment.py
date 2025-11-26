@@ -552,8 +552,8 @@ def main():
     val_data = recommender.preprocess_data(val_df, user_feature_cache)  # Use same feature cache
     
     if not train_data or not val_data:
-        print(" No valid data after balancing!")
-        return
+        print("ERROR: No valid data after balancing!")
+        sys.exit(1)
     
     # Create dataloaders
     def create_dataloader(data, batch_size, num_clusters):
@@ -662,17 +662,17 @@ def main():
     
     try:
         # experiments_dir already added to sys.path at top of file
-    from baseline_cluster_analyzer import ModelRepresentativenessAnalyzer
-    
-    analyzer = ModelRepresentativenessAnalyzer(
-        model=model,
-        clusters=clusters,
-        train_data=train_data,
-        val_data=val_data,
-        device=device
-    )
-    analyzer.analyze_data_representativeness()
-    overall_score = analyzer.generate_representativeness_report()
+        from baseline_cluster_analyzer import ModelRepresentativenessAnalyzer
+        
+        analyzer = ModelRepresentativenessAnalyzer(
+            model=model,
+            clusters=clusters,
+            train_data=train_data,
+            val_data=val_data,
+            device=device
+        )
+        analyzer.analyze_data_representativeness()
+        overall_score = analyzer.generate_representativeness_report()
     except ImportError as e:
         print(f"Warning: Could not import representativeness analyzer: {e}")
         print("Skipping representativeness analysis. Model training completed successfully.")

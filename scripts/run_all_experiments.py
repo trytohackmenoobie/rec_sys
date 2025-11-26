@@ -54,13 +54,27 @@ def run_experiment(script_name, experiment_name, script_dir):
                 "stderr": result.stderr
             }
         else:
+            error_msg = f"Return code {result.returncode}"
+            if result.stderr:
+                error_lines = result.stderr.strip().split('\n')[:10]
+                error_msg = '; '.join(error_lines)
+            elif result.stdout:
+                error_lines = result.stdout.strip().split('\n')[-10:]
+                error_msg = '; '.join(error_lines)
+            
             print(f"ERROR: {experiment_name} failed with return code {result.returncode}")
+            if result.stderr:
+                print(f"STDERR: {result.stderr[:500]}")
+            if result.stdout:
+                print(f"STDOUT (last 500 chars): {result.stdout[-500:]}")
+            
             return {
                 "status": "error", 
                 "execution_time": execution_time,
                 "returncode": result.returncode,
                 "stdout": result.stdout,
-                "stderr": result.stderr
+                "stderr": result.stderr,
+                "error": error_msg
             }
             
     except subprocess.TimeoutExpired:
@@ -233,11 +247,28 @@ def main():
                 "timestamp": datetime.now().isoformat()
             }
         else:
+            # Extract error message from stderr if available
+            error_msg = result.get("error", "Unknown error")
+            if not error_msg or error_msg == "Unknown error":
+                stderr_text = result.get("stderr", "")
+                stdout_text = result.get("stdout", "")
+                if stderr_text:
+                    # Take first few lines of stderr as error message
+                    error_lines = stderr_text.strip().split('\n')[:5]
+                    error_msg = '; '.join(error_lines) if error_lines else "Unknown error"
+                elif stdout_text:
+                    # If no stderr, check stdout for errors
+                    error_lines = stdout_text.strip().split('\n')[-5:]
+                    error_msg = '; '.join(error_lines) if error_lines else "Unknown error"
+            
             all_results[exp["key"]] = {
                 "experiment_name": exp["name"],
                 "status": result["status"],
                 "execution_time": result["execution_time"],
-                "error": result.get("error", "Unknown error"),
+                "error": error_msg,
+                "stdout": result.get("stdout", "")[:5000],  # Limit length
+                "stderr": result.get("stderr", "")[:5000],  # Limit length
+                "returncode": result.get("returncode"),
                 "timestamp": datetime.now().isoformat()
             }
         
