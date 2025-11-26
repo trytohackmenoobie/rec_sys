@@ -169,32 +169,94 @@ Alternatively, you can manually open the HTML files:
 ## File Structure
 
 ```
-├── experiments/          # Model experiments and analyzers
-├── scripts/             # Automation and execution scripts
-├── models/              # Trained model weights and metadata
-├── results/             # Experimental results and visualizations
-│   ├── metrics/         # Performance data (JSON, CSV)
-│   └── visualizations/  # Publication-ready figures
-│       ├── knowledge_graph_interactive.html     # Interactive knowledge graph (98 restaurants)
-│       └── restaurant_map_100_interactive.html  # Interactive map of 100 restaurants
-├── notebooks/           # Jupyter notebooks for knowledge graph study
-│   ├── frsqr_2025.ipynb              # FourSquare S3 data parsing
-│   └── recsys_knowledge_graph.ipynb  # Knowledge graph construction
-├── data/                # Datasets
-│   ├── raw/             # Raw data sources documentation
-│   │   └── DATA_SOURCES.md  # Reference to original data sources
-│   └── processed/       # Processed datasets
-│       ├── workingrest.csv                    # Final dataset (98 establishments)
-│       ├── moscow_top_100_restaurants.csv     # Top 100 for enrichment
-│       └── moscow_data_lens_*.csv             # Visualization datasets (1,355 establishments)
-│                                               # [DataLens Dashboard](https://datalens.yandex/w3048zrqxgtyh)
-├── docs/                # Documentation
-│   ├── Methodology.md                    # Main methodology
-│   ├── Dataset_Collection_Methodology.md # Data collection process
-│   ├── Knowledge_Graph_Methodology.md    # Knowledge graph study
-│   ├── Research_Integration_Summary.md  # Integration of both studies
-│   └── training_parameters.md            # Training hyperparameters reference
-└── dualpoi/             # Core model implementations and utilities
+├── README.md            # Project documentation and usage guide
+├── requirements.txt     # Python dependencies
+├── LICENSE              # MIT License
+│
+├── experiments/         # Model experiments and analyzers
+│   ├── improved_cluster_experiment.py    # Improved cluster model training
+│   ├── improved_hybrid_experiment.py     # Improved hybrid model training
+│   ├── baseline_cluster_analyzer.py      # Baseline cluster analysis
+│   ├── baseline_hybrid_analyzer.py       # Baseline hybrid analysis
+│   └── comprehensive_representativeness_analysis.py  # Representativeness evaluation
+│
+├── scripts/            # Automation and execution scripts
+│   ├── run_complete_pipeline.py          # Full pipeline execution
+│   ├── run_all_experiments.py            # Run all model experiments
+│   ├── collect_all_results.py            # Collect experimental results
+│   ├── generate_all_visualizations.py    # Generate all visualizations
+│   ├── generate_knowledge_graph_visualizations.py  # KG interactive visualizations
+│   ├── train_model.py                    # Train specific model
+│   ├── quick_start.py                    # Interactive training guide
+│   ├── run_notebook.py                   # Execute Jupyter notebooks
+│   ├── baseline_cluster_model.py         # Baseline cluster training script
+│   ├── baseline_hybrid_model.py          # Baseline hybrid training script
+│   └── hybrid_model.py                   # Hybrid model training script
+│
+├── models/             # Trained model weights and metadata
+│   ├── cluster_personalized_model.pth    # Baseline cluster model weights
+│   ├── cluster_metadata.pkl              # Baseline cluster metadata
+│   ├── cluster_info.json                 # Cluster information
+│   ├── hybrid_personalized_model.pth     # Baseline hybrid model weights
+│   ├── hybrid_metadata.pkl               # Baseline hybrid metadata
+│   ├── improved_cluster_personalized_model.pth  # Improved cluster weights
+│   ├── improved_cluster_metadata.pkl     # Improved cluster metadata
+│   ├── hybrid/                           # Hybrid model code
+│   │   └── hybrid_model.py
+│   └── improved_cluster/                 # Improved cluster model code
+│       └── cluster_model.py
+│
+├── results/            # Experimental results and visualizations
+│   ├── metrics/        # Performance data (JSON, CSV)
+│   │   ├── experimental_results.json     # All experiment results
+│   │   ├── performance_summary.json      # Performance summary
+│   │   ├── model_comparison.csv          # Model comparison table
+│   │   └── raw_experiment_results.json   # Raw experiment data
+│   ├── visualizations/ # Publication-ready figures
+│   │   ├── knowledge_graph_interactive.html     # Interactive KG (98 restaurants)
+│   │   ├── restaurant_map_100_interactive.html  # Interactive map (100 restaurants)
+│   │   ├── accuracy_comparison.png              # Accuracy comparison chart
+│   │   ├── performance_heatmap.png              # Performance heatmap
+│   │   ├── performance_radar_chart.png          # Performance radar chart
+│   │   └── model_comparison_scatter.png         # Model comparison scatter
+│   ├── notebook_executions/              # Converted notebook scripts
+│   │   └── frsqr_2025.py
+│   └── pipeline_execution_summary.txt    # Pipeline execution log
+│
+├── notebooks/          # Jupyter notebooks for knowledge graph study
+│   ├── frsqr_2025.ipynb                  # FourSquare S3 data parsing
+│   └── recsys_knowledge_graph.ipynb      # Knowledge graph construction
+│
+├── data/               # Datasets
+│   ├── raw/            # Raw data sources documentation
+│   │   └── DATA_SOURCES.md               # Reference to original data sources
+│   └── processed/      # Processed datasets
+│       ├── workingrest.csv                       # Final dataset (98 establishments)
+│       ├── moscow_top_100_restaurants.csv        # Top 100 for enrichment
+│       ├── moscow_data_lens_export.csv           # DataLens export (1,355 establishments)
+│       └── moscow_data_lens_small.csv            # Small export (1,000 establishments)
+│       # DataLens Dashboard: https://datalens.yandex/w3048zrqxgtyh
+│
+├── docs/               # Documentation
+│   ├── Abstract.md                         # Project abstract
+│   ├── Methodology.md                      # Main methodology
+│   ├── Results_Summary.md                  # Results summary
+│   ├── Dataset_Collection_Methodology.md   # Data collection process
+│   ├── Knowledge_Graph_Methodology.md      # Knowledge graph study
+│   ├── Research_Integration_Summary.md     # Integration of both studies
+│   └── training_parameters.md              # Training hyperparameters reference
+│
+└── dualpoi/            # Core model implementations and utilities
+    ├── config.py                           # Configuration settings
+    ├── models/                             # Model weights (duplicate for compatibility)
+    │   ├── cluster_personalized_model.pth
+    │   ├── cluster_metadata.pkl
+    │   ├── hybrid_personalized_model.pth
+    │   ├── hybrid_metadata.pkl
+    │   ├── improved_cluster_personalized_model.pth
+    │   └── improved_cluster_metadata.pkl
+    └── utils/                              # Utility modules
+        └── model.py                        # Model utilities
 ```
 
 ## Additional Research: Knowledge Graph-Based Recommendation
