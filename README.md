@@ -56,9 +56,18 @@ This repository presents an evaluation of four POI (Point of Interest) recommend
 ## Installation
 
 ```bash
-git clone <https://github.com/trytohackmenoobie/rec_sys>
-cd <rec_sys>
+git clone https://github.com/trytohackmenoobie/rec_sys
+cd rec_sys
 pip install -r requirements.txt
+```
+
+**Note:** If you encounter build errors related to `pyarrow` (cmake required), install it via conda:
+```bash
+conda install pyarrow
+```
+Alternatively, install cmake:
+```bash
+brew install cmake  # macOS
 ```
 
 ## Usage
