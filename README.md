@@ -249,12 +249,22 @@ All experiments are fully reproducible with:
 - **Knowledge Graph Construction:** NetworkX-based implementation (176 nodes, 623 edges)
 - **Evaluation Metrics:** Comprehensive metrics for both studies
 
+## Authors
+
+**Student:** [Askhabaliev Gadzhi]  
+**Supervisor:** Patochenko Evgeny
+
+## Acknowledgments
+
+We would like to thank our supervisor, Patochenko Evgeny, for guidance and support throughout this research project.
+
 ## Citation
 
 ```bibtex
 @article{dual_poi_2025,
   title={DualPOI: A Dual-Modal Framework Integrating Deep Learning and Knowledge Graphs for Personalized Point-of-Interest Recommendation},
-  author={[Askhabaliev Gadzhi]},
+  author={Askhabaliev, Gadzhi},
+  supervisor={Patochenko, Evgeny},
   year={2025},
   note={Includes two complementary studies: deep learning-based POI recommendation and knowledge graph-based restaurant recommendation}
 }
