@@ -21,10 +21,10 @@ Both studies contribute to the broader goal of developing effective recommendati
 - **User Features:** Real behavioral patterns extracted from sequences
 
 ### Models
-1. **Baseline Cluster:** 18.7% accuracy, 0.921 representativeness
-2. **Baseline Hybrid:** 16.8% accuracy, 0.946 representativeness
-3. **Improved Cluster:** 24.11% accuracy, 0.804 representativeness, 37.8% Hits@3, 52.1% Hits@5
-4. **Improved Hybrid:** 19.59% accuracy, 0.855 representativeness, 40.4% Hits@3, 59.4% Hits@5
+1. **Baseline Cluster:** 24.13% accuracy, 0.820 representativeness
+2. **Baseline Hybrid:** 19.51% accuracy, 0.819 representativeness
+3. **Improved Cluster:** 23.82% accuracy, 0.799 representativeness
+4. **Improved Hybrid:** 16.45% accuracy, 0.832 representativeness, 35.8% Hits@3, 55.9% Hits@5
 
 ### Key Contributions
 - Real user feature extraction from behavioral patterns
@@ -284,7 +284,7 @@ Score Range: 8-44 points
 
 This research presents a comprehensive evaluation of restaurant/POI recommendation systems through two complementary approaches:
 
-1. **Deep Learning Approach:** Sequence-based recommendation using real user behavioral features from FourSquare check-in data, achieving 24.11% accuracy with the Improved Cluster Model.
+1. **Deep Learning Approach:** Sequence-based recommendation using real user behavioral features from FourSquare check-in data, achieving 24.13% accuracy with the Baseline Cluster Model.
 
 2. **Knowledge Graph Approach:** Attribute-based recommendation using a manually curated dataset of 98 Moscow restaurants, achieving 77.55% precision@5 with the Hybrid scheme, without requiring user interaction data.
 
@@ -310,14 +310,14 @@ Both studies contribute to the understanding of recommendation system design, ev
 
 ### Documentation Completeness
 
-✅ **Data Collection:** Fully documented (S3 extraction, filtering, scoring, clustering)  
-✅ **Manual Enrichment:** Process described in detail  
-✅ **Knowledge Graph:** Construction methodology documented  
-✅ **Recommendation Schemes:** All three schemes implemented and evaluated  
-✅ **Evaluation Metrics:** Comprehensive metrics with results  
-✅ **Comparison:** Comparison with original research  
-✅ **Reproducibility:** All parameters and code documented  
-✅ **Ethics:** Data sources and usage declared  
+ **Data Collection:** Fully documented (S3 extraction, filtering, scoring, clustering)  
+ **Manual Enrichment:** Process described in detail  
+ **Knowledge Graph:** Construction methodology documented  
+ **Recommendation Schemes:** All three schemes implemented and evaluated  
+ **Evaluation Metrics:** Comprehensive metrics with results  
+ **Comparison:** Comparison with original research  
+ **Reproducibility:** All parameters and code documented  
+ **Ethics:** Data sources and usage declared  
 
 ### Research Contributions
 

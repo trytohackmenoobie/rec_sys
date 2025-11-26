@@ -75,10 +75,10 @@
 
 | Model | Accuracy | Representativeness | Epochs Used |
 |-------|----------|-------------------|-------------|
-| Baseline Cluster | 18.7% | 0.921 | 25 |
-| Baseline Hybrid | 16.8% | 0.946 | 30 |
-| Improved Cluster | 24.11% | 0.804 | 10 |
-| Improved Hybrid | 19.59% | 0.855 | 20 |
+| Baseline Cluster | 24.13% | 0.820 | 25 |
+| Baseline Hybrid | 19.51% | 0.819 | 30 |
+| Improved Cluster | 23.82% | 0.799 | 10 |
+| Improved Hybrid | 16.45% | 0.832 | 20 |
 
 ## IMPORTANT NOTES
 

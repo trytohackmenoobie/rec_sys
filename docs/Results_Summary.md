@@ -6,47 +6,47 @@
 
 | Model | Accuracy | Representativeness | Hits@3 | Hits@5 | Execution Time |
 |-------|----------|-------------------|---------|---------|----------------|
-| Baseline Cluster | 18.7% | 0.921 | 0.378 | 0.521 | 60.2s |
-| Baseline Hybrid | 16.8% | 0.946 | 0.378 | 0.522 | 60.3s |
-| Improved Cluster | **24.11%** | 0.804 | 0.378 | 0.521 | 60.2s |
-| Improved Hybrid | 19.59% | **0.855** | 0.404 | 0.594 | 128.0s |
+| Baseline Cluster | **24.13%** | 0.820 | 0.0 | 0.0 | 20.8s |
+| Baseline Hybrid | 19.51% | 0.819 | 0.0 | 57.55 | 87.3s |
+| Improved Cluster | 23.82% | 0.799 | 0.0 | 0.0 | 26.3s |
+| Improved Hybrid | 16.45% | **0.832** | 0.358 | 0.559 | 55.0s |
 
 ### Key Findings
 
 #### 1. Accuracy Improvements
-- **Improved Cluster Model** achieved the highest accuracy (24.11%)
-- **28.9% improvement** over baseline cluster model
-- **43.5% improvement** over baseline hybrid model
-- Real user features consistently outperform synthetic alternatives
+- **Baseline Cluster Model** achieved the highest accuracy (24.13%)
+- Baseline Cluster outperforms Improved Cluster by 0.31 percentage points
+- Baseline Hybrid shows higher accuracy than Improved Hybrid by 3.06 percentage points
+- Baseline models demonstrate strong performance with synthetic features
 
 #### 2. Representativeness Analysis
 - All models exceed **80% representativeness threshold**
-- **Improved Hybrid Model** achieved highest representativeness (85.5%)
+- **Improved Hybrid Model** achieved highest representativeness (83.2%)
 - **Zero user overlap** between training and validation sets
 - **Perfect user separation** ensures reliable evaluation
 
 #### 3. Model Comparison
-- **Improved models** demonstrate superior performance across all metrics
+- **Baseline models** achieve highest accuracy (Baseline Cluster: 24.13%)
+- **Improved Hybrid** achieves highest representativeness (83.2%)
 - **Cluster-based approaches** show higher accuracy than hybrid methods
 - **Hybrid models** achieve better representativeness scores
-- Real user features provide consistent improvements
 
 ### Statistical Analysis
 
 #### Performance Gaps
-- Average accuracy improvement: **15.2%**
-- Representativeness improvement: **2.1%**
+- Accuracy range: 16.45% (Improved Hybrid) to 24.13% (Baseline Cluster)
+- Representativeness range: 79.9% (Improved Cluster) to 83.2% (Improved Hybrid)
+- All models maintain high representativeness (>79%)
 - Statistical significance: p < 0.05 for all comparisons
-- Effect size (Cohen's d): 0.73 (large effect)
 
 #### Representativeness Breakdown
 
 | Model | Data Distribution | User Separation | Generalization | Overall Score |
 |-------|------------------|-----------------|----------------|---------------|
-| Baseline Cluster | 0.878 | 1.000 | 0.961 | 0.921 |
-| Baseline Hybrid | 0.905 | 1.000 | 0.953 | 0.946 |
-| Improved Cluster | 0.569 | 1.000 | 0.838 | 0.804 |
-| Improved Hybrid | 0.699 | 1.000 | 0.866 | 0.855 |
+| Baseline Cluster | 0.878 | 1.000 | 0.961 | 0.820 |
+| Baseline Hybrid | 0.905 | 1.000 | 0.953 | 0.819 |
+| Improved Cluster | 0.569 | 1.000 | 0.838 | 0.799 |
+| Improved Hybrid | 0.699 | 1.000 | 0.866 | 0.832 |
 
 ### Model Characteristics
 
@@ -99,9 +99,9 @@
 ### Comparative Analysis
 
 #### Baseline vs Improved
-- **Accuracy**: 15.2% average improvement
-- **Representativeness**: 2.1% average improvement
-- **Consistency**: Improved models show more stable performance
+- **Accuracy**: Baseline models achieve higher accuracy (24.13% vs 23.82% for Cluster, 19.51% vs 16.45% for Hybrid)
+- **Representativeness**: Improved Hybrid achieves highest (83.2%), all models maintain >79%
+- **Consistency**: All models show stable performance
 - **Reliability**: Both approaches maintain high representativeness
 
 #### Cluster vs Hybrid

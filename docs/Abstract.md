@@ -16,7 +16,7 @@ I evaluated seven recommendation models using the FourSquare Moscow POI dataset:
 
 ### Results
 
-The improved models demonstrated superior performance across all metrics. The Improved Cluster Model achieved the highest accuracy (24.11%), while the Improved Hybrid Model (accuracy - 19.59%) attained the highest representativeness score (0.855). All models exceeded the 80% representativeness threshold, indicating reliable and reproducible results. The baseline models achieved accuracies of 18.7% (Cluster) and 16.8% (Hybrid), with representativeness scores of 0.921 and 0.946, respectively.
+The baseline models demonstrated strong performance with the Baseline Cluster Model achieving the highest accuracy (24.13%), while the Improved Hybrid Model (accuracy - 16.45%) attained the highest representativeness score (0.832). All models exceeded the 80% representativeness threshold, indicating reliable and reproducible results. The baseline models achieved accuracies of 24.13% (Cluster) and 19.51% (Hybrid), with representativeness scores of 0.820 and 0.819, respectively. The improved models achieved accuracies of 23.82% (Cluster) and 16.45% (Hybrid), with representativeness scores of 0.799 and 0.832, respectively.
 
 ### Conclusions
 
